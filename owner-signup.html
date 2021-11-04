@@ -2,6 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+   <meta name="keywords" content="">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="description" content="">
+   <meta name="author" content="">
     <title>Motorist sign up</title>
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="nav.css">
@@ -18,41 +23,11 @@
         </button>
         <div class="flex-wrap links">
 
-
+            <a href="#">Home</a>
             <a class="has-drop" href="#">Mechanics</a>
             <a>Contact us </a>
 
                <a class="signin-btn">Log in</a>
-               <a class="sign-btn">Sign up</a>
-
-
-
-                     <!-- if a landlord is logged in  -->
-                     <div class="admin-holder user-holder">
-                         <div class="has-drop">
-
-                           <img src="icons/user.svg" alt="user" class="icon"> Username
-                           <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
-                         </div>
-
-                        <!-- admin options dropdown -->
-                          <div class="admin-drop">
-
-                            <a href="#" class="noti-holder flex-wrap">
-                              <small class="noti-no">3</small>
-                              <img src="icons/notification-dark.svg" alt="notification" class="icon">
-                              Notifications
-                            </a>
-
-                            <a href="#" class="noti-holder flex-wrap">
-                                <img src="icons/plus.svg" alt="notification" class="icon">
-                                Add a car
-                              </a>
-
-                          </div>
-                      </div>
-
-                    <!-- if a user is logged in  -->
 
 
         </div>
@@ -66,9 +41,13 @@
     </div>
     <section class="form-sect">
 
-      <form class="" action="" method="post">
+      <form class="register-form" action="" method="post">
         <h3>Register</h3>
         <p>Please enter the details below.</p>
+        <div class="input-grp">
+          <label for="name">Name*</label>
+          <input type="text" name="name" required placeholder="e.g John Doe" class="input-elmt">
+        </div>
 
         <div class="input-grp">
           <label for="email">Email*</label>
@@ -99,7 +78,13 @@
         <div class="input-grp">
           <button type="submit" name="register" class="reg-btn shadow-drop-2-tb">Register</button>
         </div>
+
+        <p>Already have an account?
+          <a href="login.html">Log in</a>
+        </p>
       </form>
+
+
     </section>
 
     </main>

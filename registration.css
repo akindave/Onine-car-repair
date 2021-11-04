@@ -17,12 +17,22 @@ flex-grow: 1;
 }
 form h3{
   text-align: center;
-margin-bottom: 1rem;
+margin-bottom:5px;
+}
+form{
+  flex-grow: 0.3;
+}
+form p a{
+  color: var(--blue);
+font-weight: 600;
+}
+form p a:hover{
+color: var(--highlightBlueHover);
 }
 .input-grp{
   display: grid;
-  grid-row-gap: 6px;
-  margin: 20px 0;
+  grid-row-gap: 5px;
+  margin: 13px 0;
 }
 .input-elmt{
   border: 2px solid var(--grey3);
@@ -45,7 +55,7 @@ margin-bottom: 1rem;
 }
 .bgImage{
   width: 60%;
-background: linear-gradient(320deg,#f98e0e78,#f98e0ec9),url("Images/brake-disc.jpg");
+background: linear-gradient(320deg,transparent,#f98e0ea3),url("Images/brake-disc.jpg");
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -54,6 +64,8 @@ background: linear-gradient(320deg,#f98e0e78,#f98e0ec9),url("Images/brake-disc.j
 .reg-btn:hover{
   background: var(--highlightBlueHover);
 }
+
+
 
 @media screen and (max-width:600px){
 .bgImage{
