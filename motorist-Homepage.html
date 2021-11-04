@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MechLocator</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="nav.css">
+    <script src="https://kit.fontawesome.com/e5226850c4.js" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <nav class="nav">
+        <img src="icons/car.svg" alt="logo" class="logo">
+        <button class="menu-btn">
+            <img src="icons/menu.svg" alt="menu" class="nav-icon">
+            Menu
+
+            <!--    code for 3 lines in html -->
+        </button>
+        <div class="flex-wrap links">
+
+
+            <a class="has-drop" href="#">Mechanics</a>
+            <a>Contact us </a>
+
+               <a class="signin-btn">Log in</a>
+               <a class="sign-btn">Sign up</a>
+
+
+
+                     <!-- if a landlord is logged in  -->
+                     <div class="admin-holder user-holder">
+                         <div class="has-drop">
+
+                           <img src="icons/user.svg" alt="user" class="icon"> Username
+                           <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
+                         </div>
+
+                        <!-- admin options dropdown -->
+                          <div class="admin-drop">
+
+                            <a href="#" class="noti-holder flex-wrap">
+                              <small class="noti-no">3</small>
+                              <img src="icons/notification-dark.svg" alt="notification" class="icon">
+                              Notifications
+                            </a>
+
+                            <a href="#" class="noti-holder flex-wrap">
+                                <img src="icons/plus.svg" alt="notification" class="icon">
+                                Add a car
+                              </a>
+
+                          </div>
+                      </div>
+
+                    <!-- if a user is logged in  -->
+
+
+        </div>
+    </nav>
+
+    <main>
+
+      <!-- button for locating a mech  -->
+      <button type="button" name="button" class="loc-btn flex-wrap">
+        <img src="icons/location.svg" alt="locate" class="icon"> Mechanic near me
+      </button>
+       <section class="landing">
+           <article class="mid-landing">
+              <article class="search-holder">
+                  <input type="text" name="search" id="" placeholder="Search mechanic by location.." class="searchType">
+                  <img src="icons/search-icon.svg" alt="search" class="icon search-icon">
+               </article>
+          </article>
+
+          <div class="swiper-container">
+
+             <section class="swiper-wrapper swiper-wrapper-new houses-sect">
+
+
+               <div class="swiper-slide" >
+                 <img src="Images/broken-car.jpg" alt="broken" class="slide-img">
+               </div>
+
+               <div class="swiper-slide" >
+                 <img src="Images/broken-car.jpg" alt="broken" class="slide-img">
+               </div>
+               <div class="swiper-slide" >
+                 <img src="Images/broken-car.jpg" alt="broken" class="slide-img">
+               </div>
+
+             </section>
+
+       <div class="swiper-button-next swiper-button-next-img"></div>
+       <div class="swiper-button-prev swiper-button-prev-img"></div>
+       <div class="swiper-pagination swiper-pagination-new"></div>
+
+     </div>
+
+        </section>
+
+        <section class="flex-wrap card-sect">
+          <article class="card">
+            <img src="icons/repair.svg" alt="repair history" class="card-icon">
+            <p>Repair History</p>
+          </article>
+
+          <article class="card">
+            <img src="icons/tools.svg" alt="repair history" class="card-icon">
+            <p>Mechanics</p>
+          </article>
+        </section>
+  </body>
+  <script src="js/nav.js" charset="utf-8"></script>
+  <script src="js/swiperJs/swiper.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="js/swiperJs/swiper.min.css">
+
+  <script type="text/javascript">
+  let swiperNew = new Swiper('.swiper-container', {
+ slidesPerView: 'auto',
+ spaceBetween: 15,
+ // centeredSlides: true,
+ watchSlidesVisibility: true,
+ watchSlidesProgress: true,
+ freeMode: false,
+ pagination: {
+  el: '.swiper-pagination-new',
+  clickable: true,
+ },
+ loop:false,
+ navigation: {
+  nextEl: '.swiper-button-next-img',
+  prevEl: '.swiper-button-prev-img',
+ },
+});
+  </script>
+</html>

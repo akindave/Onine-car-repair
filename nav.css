@@ -1,0 +1,251 @@
+nav{
+    position: fixed;
+    /* background: #0000006b; */
+    background:var(--orangeColor);
+    top: 0;
+    width: 100%;
+    padding: 10px 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    z-index: 20;
+    transition: top 0.3s;
+}
+.admin-drop .icon{
+  width: 20px;
+  height: 20px;
+}
+.links a{
+  color: white;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.links a:hover{
+  color: var(--textGreyish);
+}
+.logo{
+    width: 50px;
+    height: 33px;
+}
+.nav-icon{
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+}
+.menu-btn{
+    background: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    place-items: center;
+    cursor: pointer;
+    display: none;
+    color: white;
+}
+.sign-btn{
+    border:1.8px solid var(--orangeColor);
+    border-radius: 30px;
+    padding: 3px 10px;
+}
+.down-arrow{
+    width: 15px;
+    height: 15px;
+    margin-left: 3px;
+    transform: rotate(90deg);
+}
+.has-drop{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.links{
+  flex-grow: 0.2;
+}
+
+.drop-holder{
+  /* position: relative; */
+  padding: 10px 0;
+}
+.link-dropdown{
+  background: white;
+  display: none;
+padding: 10px;
+position: absolute;
+top: 43px;
+left: 50%;
+transform: translateX(-50%);
+pointer-events: all;
+z-index: 2;
+}
+.filter-input{
+  border-right: 2px solid var(--grayish);
+  margin-right: 5px;
+  outline: none;
+  border:none;
+  width: 140px;
+  padding: 4px;
+}
+.input-holder{
+  border: 1px solid hsla(0, 5%, 89%, 1);
+  box-shadow: var(--inputBoxShadow);
+  align-items: center;
+  background: white;
+  border-radius: 4px;
+  display: flex;
+  padding: 5px;
+  margin: 5px 0;
+}
+.filter-title{
+border: 1px solid var(--highlightBlue);
+border-radius: 4px;
+padding: 6px 12px;
+margin-bottom: 12px;
+width: max-content;
+}
+.filter-form{
+  width: 86vw;
+  align-items: flex-start;
+  max-height: 80vh;
+overflow-y: auto;
+}
+.filter-column{
+  margin: 6px;
+min-height: 200px;
+border-right: 2px solid #D0D0D038;
+padding-right: 5px;
+}
+.clear-btn{
+background: inherit;
+font-size: 16px;
+border: 1.2px solid var(--highlightBlue);
+padding: var(--btnPadding);
+cursor: pointer;
+border-radius: 2px;
+
+}
+.save-btn{
+padding: var(--btnPadding);
+color: var(--f3White);
+border-radius: 2px;
+font-size: 16px;
+cursor: pointer;
+margin-right: 40px;
+border:none;
+background-color: var(--highlightBlue);
+}
+.save-btn:hover {
+    background-color: var(--highlightBlueHover);
+  }
+.filter-form-btns{
+  width: 100%;
+justify-content: center;
+margin-top: 1rem;
+}
+.drop-holder:hover .link-dropdown{
+  display: flex;
+}
+.price-filter{
+  text-align: left;
+}
+.admin-holder{
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+}
+.admin-drop{
+  position: absolute;
+  width: max-content;
+  top: 41px;
+  right: 50%;
+  transform: translateX(41%);
+  grid-row-gap: 15px;
+  padding: 20px 0;
+  background: var(--orangeColor);
+  display: none;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.admin-holder:hover .admin-drop{
+  display: grid;
+}
+.admin-holder a{
+  justify-content: center;
+  color: white;
+border-bottom: 1px solid var(--horizontalLine);
+padding-bottom: 5px;
+}
+.admin-holder a:last-child{
+  border:none;
+}
+
+/* animations */
+@keyframes moveDown {
+    0%{
+transform: translateY(-30%);
+opacity: .4;
+    }
+    100%{
+transform: none;
+opacity: 1;
+border-top: 2px solid var(--orangeColor);
+border-bottom: 2px solid var(--orangeColor);
+    }
+}
+
+@media screen and (max-width: 980px) {
+.filter-column{
+  min-height: unset;
+}
+}
+
+/* responsiveness  */
+@media screen and (max-width: 570px) {
+    .links{
+        display: none;
+        position: absolute;
+    top: 53px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: #000000c9;
+    backdrop-filter: blur(4px);
+    max-height: 90vh;
+    overflow-y: auto;
+    }
+    .link-dropdown{
+      top: 32px;
+    }
+    .filter-column{
+      min-height: unset;
+      border-right: unset;
+      border-bottom: 2px solid #D0D0D06B;
+      padding-bottom: 5px;
+    }
+    .show{
+    display: grid;
+    animation: moveDown 0.3s cubic-bezier(0.71, 0.21, 0.55, 0.93) forwards;
+    }
+    .menu-btn{
+        display: flex;
+    }
+    .links a{
+        margin: 20px 0;
+    }
+    .admin-drop{
+      border-top: 2px dashed var(--orangeColor);
+      top: unset;
+      right: unset;
+      margin-top: 5px;
+      transform: unset;
+      grid-row-gap: unset;
+      /* background: unset; */
+      padding: 10px;
+      position: relative;
+    }
+    .save-btn{
+      padding: 4px;
+    }
+}
