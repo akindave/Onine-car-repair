@@ -1,0 +1,250 @@
+:root{
+  --menuSectBg: hsla(0, 1.2%, 52%, 0.261);
+  --lessSpaceBoxShaodw: -13px 13px 26px rgba(181, 181, 181, 0.2), 13px -13px 26px rgba(181, 181, 181, 0.2), -13px -13px 26px rgba(255, 255, 255, 0.9), 13px 13px 33px rgba(181, 181, 181, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(181, 181, 181, 0.5);
+
+}
+
+/* 
+.noti-no{
+  color: var(--orangeColor);
+align-self: baseline;
+}
+.noti-holder{
+  display: flex;
+place-items: end;
+position: relative;
+}
+.links{
+  flex-grow: 0.6;
+}
+
+.admin-holder{
+  position: relative;
+  cursor: pointer;
+}
+.admin-drop{
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  grid-row-gap: 15px;
+  padding: 20px 0;
+  background: #000000c9;
+  display: none;
+  text-align: center;
+}
+
+.admin-holder:hover .admin-drop{
+  display: grid;
+} */
+main{
+  padding-top: 3.9rem;
+  display: flex;
+  min-height: 100vh;
+}
+.menu-links{
+/* width: 215px; */
+width: 45px;
+display: flex;
+flex-direction: column;
+place-items: center;
+}
+.menu-sect{
+  width: max-content;
+  margin-top: 15px;
+  margin-right: 1.5rem;
+}
+.menu-option-btn{
+  display: flex;
+place-items: center;
+margin: 10px 0;
+background: var(--menuSectBg);
+padding: 10px 0;
+border-radius: 0 30px 30px 0;
+justify-content: center;
+width: 80%;
+cursor: pointer;
+transition: 0.2s;
+place-self: flex-start;
+}
+.menu-option-btn:hover{
+  width: 100%;
+}
+.activeBtn{
+  background: var(--skyBlue);
+  color: white;
+  width: 100%;
+}
+.activeBtn .nav-text{
+  color: white;
+}
+.menu-dark{
+color: var(--grayish);
+display: flex;
+}
+.nav-text{
+  display: none;
+}
+
+.view-details{
+  padding: 1.5rem;
+  flex-grow: 1;
+  border-left: 2px solid var(--menuSectBg);
+  /* margin-left: 5px; */
+  padding-top: 10px;
+}
+.detail-title{
+  width: 100%;
+border-bottom: 2px solid var(--menuSectBg);
+padding-bottom: 4px;
+}
+.detail-cards-holder{
+  margin: 2.5rem 0;
+  justify-content:flex-start;
+}
+.detail-card{
+  box-shadow: var(--lessSpaceBoxShaodw);
+  position: relative;
+  border-radius: 4px;
+  text-align: center;
+  display: grid;
+  padding: 10px;
+  min-width: 210px;
+  width: max-content;
+  margin: 20px;
+}
+.num-value{
+  font-size: 70px;
+border-bottom: 2px solid var(--menuSectBg);
+margin: 0px 8px;
+margin-bottom: 15px;
+margin-top: 10px;
+color: var(--faintGray);
+}
+.detail-icon{
+  justify-self: end;
+background: var(--menuSectBg);
+position: absolute;
+top: 0;
+right: 0;
+margin: unset;
+padding: 2px;
+width: 30px;
+height: 30px;
+}
+
+
+
+/* landlord */
+.landlord-details{
+  display: none;
+}
+.landlord-details .detail-card, .user-details .detail-card{
+  text-align: left;
+}
+.landlord-details .icon{
+  /* margin: unset; */
+}
+.landlord-details .detail-card div, .user-details .detail-card div{
+  display: flex;
+  place-items:center;
+
+}
+.detail-option{
+  cursor: pointer;
+  margin: 3px 0;
+  padding: 4px 6px;
+  border-radius: 30px;
+}
+.detail-option:hover{
+  background: var(--highlightBlue);
+  color: white;
+}
+.detail-option span:hover{
+  color: white;
+}
+.landlord-details .detail-card div:last-child, .user-details .detail-card div:last-child{
+justify-content: space-around;
+}
+.landlord-details .user-icon, .user-details .user-icon{
+  margin-right: 8px;
+}
+.username{
+  border-bottom: 2px solid var(--menuSectBg);
+  padding-bottom: 4px;
+}
+.detail-option{
+  position: relative;
+}
+.line{
+  width: 2px;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--grayish);
+
+}
+
+
+
+@media screen and (max-width:1020px){
+.detail-cards-holder{
+  justify-content: center;
+}
+}
+
+/* mobile devices  */
+@media screen and (max-width:570px){
+  .nav-text{
+    /* display: none; */
+  }
+  .menu-links{
+    /* width: 45px; */
+  }
+  .detail-title{
+    text-align: center;
+  }
+.menu-sect{
+  margin: unset;
+  position: fixed;
+  z-index: 2;
+  background: white;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 1px 2px 10px -2px #00000036;
+}
+.view-details{
+  padding: unset;
+  padding-left: 2rem;
+  margin: unset;
+}
+.detail-card{
+  margin: 20px 15px;
+  padding: 10px 3px;
+}
+}
+
+/* very small devices  */
+@media screen and (max-width:270px){
+.detail-card{
+  margin: 20px 0;
+}
+
+}
+
+/* classes for use in js  */
+.hide{
+  display: none;
+}
+.smallWidth{
+  width: 45px;
+}
+.bigWidth{
+  width: 215px;
+}
+.showBlock{
+  display: block;
+}
+.user-details{
+  display: none;
+}

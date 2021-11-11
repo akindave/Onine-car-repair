@@ -1,0 +1,58 @@
+.num-plate{
+    color:var(--blue);
+    font-weight: 600;
+
+}
+main{
+    padding: 5rem 1rem;
+}
+h3{
+    text-align: center;
+}
+.total-lbl,.total-val{
+    font-weight: 600;
+}
+.repair-card{
+border: 1px solid var(--grey3);
+border-radius: var(--bRadius);
+padding: 10px;
+box-shadow: var(--darkerShadow);
+margin: 15px 5px;
+}
+.date{
+    margin-right:10px ;
+}
+table th{
+    text-align: left;
+}
+.tbl-row1{
+    border-bottom: 1px solid var(--grey3);
+}
+.holder-tbl{
+    padding: 5px 12px;
+}
+.data-row li{
+    margin-right: 10px;
+}
+.data-row{
+    width: 100%;
+text-align: left;
+display: flex;
+justify-content: space-between;
+margin: 2px 0;
+/* align-items: center; */
+
+}
+.data-row:first-child{
+    border-top: 1px solid var(--grey3);
+}
+.data-row:last-child{
+    border-bottom: 1px solid var(--grey3);
+
+}
+.header-row{
+    justify-content: space-between;
+}
+.row-activity{
+    max-width: 200px;
+}

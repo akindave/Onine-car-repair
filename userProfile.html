@@ -8,10 +8,12 @@
    <meta name="description" content="">
    <meta name="author" content="">
     <title>User profile</title>
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="registration.css">
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <!-- <link rel="stylesheet" href="css/registration.css"> -->
+    <link rel="stylesheet" href="css/profile.css">
+  <script src="js/profile.js"></script>
+
   </head>
   <body>
     <nav class="nav">
@@ -74,7 +76,7 @@
             <div class="input-grp">
               <label for="email">Name</label>
               <div class="flex-wrap">
-                <input type="email" name="email" required placeholder="john" class="input-elmt">
+                <input type="email" name="email" required value="john doe" class="input-elmt" readonly>
                 <button type="button" class="edit-btn flex-wrap">
                   Edit
                   <img src="icons/edit.svg" alt="edit" class="icon">
@@ -89,7 +91,7 @@
             <div class="input-grp">
               <label for="email">Phone no:</label>
               <div class="flex-wrap">
-                <input type="number" name="email" required placeholder="0712345678" class="input-elmt">
+                <input type="number" name="email" required value="0712345678" class="input-elmt" readonly>
                 <button type="button" class="edit-btn flex-wrap">
                   Edit
                   <img src="icons/edit.svg" alt="edit" class="icon">
@@ -99,13 +101,50 @@
           </article>
 
           <article class="detail">
-            <button type="button" name="button" class="edit-btn flex-wrap">Edit password
+            <img src="icons/loc-dark.svg" alt="location" class="icon">
+            <div class="input-grp">
+              <label for="email">Location:</label>
+              <div class="flex-wrap">
+                <input type="text" name="email" required value="Rongai" class="input-elmt" readonly>
+                <button type="button" class="edit-btn flex-wrap">
+                  Edit
+                  <img src="icons/edit.svg" alt="edit" class="icon">
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="detail">
+            <img src="icons/picture.svg" alt="picture" class="icon">
+            <div class="input-grp">
+              <label for="email">Profile image:</label>
+              <div class="flex-wrap">
+                <input type="file" name="email" required value="file name" class="input-elmt">
+                <button type="button" class="edit-btn flex-wrap">
+                  Edit
+                  <img src="icons/edit.svg" alt="edit" class="icon">
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="detail">
+            <button type="button" name="button" class="edit-btn flex-wrap" onclick="openPop('pwd-pop')">
+              <img src="icons/password.svg" alt="password" class="icon">
+              Edit password
               <img src="icons/edit.svg" alt="edit" class="icon">
              </button>
           </article>
 
+          <article class="detail flex-wrap">
+           
+              <button class="save-changes">Save Changes</button>
+              <button class="cancel-btn">Cancel</button>
+        
+          </article>
       </section>
 
+      <!-- car details  -->
       <section class="prof-sect">
 
           <h3>Car details</h3>
@@ -116,7 +155,7 @@
               <div class="input-grp">
                 <label for="email">Number plate:</label>
                 <div class="flex-wrap">
-                  <input type="number" name="email" required placeholder="KAA 123A" class="input-elmt">
+                  <input type="text" name="email" required value="KAA 123A" class="input-elmt">
                   <button type="button" class="edit-btn flex-wrap">
                     Edit
                     <img src="icons/edit.svg" alt="edit" class="icon">
@@ -141,6 +180,34 @@
       <img src="icons/delete-red.svg" alt="add" class="icon">
       Delete account
     </button>
+
+
+
+    <div class="dark-overlay"></div>
+
+    <aside class="pwd-pop flex-wrap">
+      <div class="close-icon" onclick="closePop('pwd-pop')">X</div>
+      <!-- <img src="icons/close.svg" alt="close window" class="icon"> -->
+
+      <form action="" method="post">
+        <div class="input-grp">
+          <label for="pass">Enter old Password*</label>
+          <input type="text" name="pass" required placeholder="******" class="input-elmt">
+        </div>
+
+        <div class="input-grp">
+          <label for="pass">Enter new Password*</label>
+          <input type="text" name="pass" required placeholder="******" class="input-elmt">
+        </div>
+
+        <div class="pwd-btns">
+          <button type="submit" class="save-changes">Save Changes</button>
+        <button type="reset" class="cancel-btn" onclick="closePop('pwd-pop')">Cancel</button>
+        </div>
+
+      </form>
+    </aside>
+
 
     </main>
   </body>

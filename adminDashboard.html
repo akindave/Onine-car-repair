@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+   <meta name="keywords" content="">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="description" content="">
+   <meta name="author" content="">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/adminPanel.css">
+  </head>
+  <body>
+    <nav class="nav">
+        <img src="icons/car.svg" alt="logo" class="logo">
+        <button class="menu-btn">
+            <img src="icons/menu.svg" alt="menu" class="nav-icon">
+            Menu
+
+            <!--    code for 3 lines in html -->
+        </button>
+        <div class="flex-wrap links">
+
+          <a href="#">Home</a>
+
+            <a class="has-drop" href="#">Mechanics</a>
+            <a>Contact us </a>
+
+            <div class="admin-holder user-holder">
+                <div class="has-drop">
+
+                  <img src="icons/user.svg" alt="user" class="icon"> Username
+                  <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
+                </div>
+
+               <!-- admin options dropdown -->
+                 <div class="admin-drop">
+
+                   <a href="#" class="noti-holder flex-wrap">
+                     <small class="noti-no">3</small>
+                     <img src="icons/notification-dark.svg" alt="notification" class="icon">
+                     Notifications
+                   </a>
+
+                   <a href="#" class="noti-holder flex-wrap">
+                       <img src="icons/plus.svg" alt="notification" class="icon">
+                       Add a car
+                     </a>
+
+                 </div>
+             </div>
+        </div>
+    </nav>
+
+<main>
+    <section class="menu-sect">
+      <button class="menu-btn menu-dark">
+          <img src="icons/menu-dark.svg" alt="menu" class="nav-icon">
+          <span class="nav-text">Menu</span>
+          <!--    code for 3 lines in html -->
+      </button>
+      <div class="menu-links">
+
+                <div class="overview-btn  menu-option-btn activeBtn">
+                  <img src="icons/overview-light.svg" alt="overview" class="icon">
+                  <span class="nav-text">Overview</span>
+                </div>
+
+                <div class="landlord-btn menu-option-btn ">
+                  <img src="icons/user-dark.svg" alt="owners" class="icon">
+                <span class="nav-text">Car owners</span>
+              </div>
+
+                <div class="user-btn menu-option-btn ">
+                  <img src="icons/mechanic.svg" alt="Mechanics" class="icon">
+                  <span class="nav-text">Mechanics</span>
+                </div>
+
+                <div class="user-btn menu-option-btn ">
+                    <img src="icons/mechanic.svg" alt="Mechanics" class="icon">
+                    <span class="nav-text">Cars</span>
+                  </div>
+
+                <div class="user-btn menu-option-btn ">
+                    <img src="icons/mechanic.svg" alt="Mechanics" class="icon">
+                    <span class="nav-text">Applications</span>
+                </div>
+            
+                <div class="user-btn menu-option-btn ">
+                    <img src="icons/mechanic.svg" alt="Mechanics" class="icon">
+                    <span class="nav-text">Mechanic Questions</span>
+                </div>
+      </div>
+    </section>
+
+    <!-- overview  -->
+    <section class="view-details overview-details">
+      <div class="detail-title">
+        <img src="{% static 'icons/thick-house.svg' %}" alt="overview" class="icon">
+        Overview
+      </div>
+
+      <div class="detail-cards-holder flex-wrap">
+        <!-- number of users  -->
+        <div class="detail-card">
+          <img src="{% static 'icons/user-dark.svg' %}" alt="users" class="icon detail-icon">
+          <p class="num-value">
+            437
+          </p>
+
+          <p class="detail-desc">
+            Total no. of users
+          </p>
+        </div>
+
+        <!-- number of Landlords  -->
+        <div class="detail-card">
+          <img src="{% static 'icons/landlord.svg' %}" alt="landlord" class="icon detail-icon">
+          <p class="num-value">
+            237
+          </p>
+
+          <p class="detail-desc">
+            Total no. of Landlords
+          </p>
+        </div>
+
+        <!-- number of houses  -->
+        <div class="detail-card">
+          <img src="{% static 'icons/thick-house.svg' %}" alt="houses" class="icon detail-icon">
+          <p class="num-value">
+            300
+          </p>
+
+          <p class="detail-desc">
+            Total no. of houses
+          </p>
+        </div>
+
+        <!-- scheduled appointments  -->
+        <div class="detail-card">
+          <img src="{% static 'icons/calendar.svg' %}" alt="users" class="icon detail-icon">
+          <p class="num-value">
+            120
+          </p>
+
+          <p class="detail-desc">
+            Scheduled Appointments
+          </p>
+        </div>
+
+        <!-- number of likes  -->
+        <div class="detail-card">
+          <img src="{% static 'icons/like-svgrepo-com.svg' %}" alt="users" class="icon detail-icon">
+          <p class="num-value">
+            600
+          </p>
+
+          <p class="detail-desc">
+            Total no. of likes
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- landlord -->
+    <section class="view-details landlord-details">
+      <div class="detail-title">
+        <img src="{% static 'icons/landlord.svg' %}" alt="landlord" class="icon">
+        Landlords
+      </div>
+
+      <div class="detail-cards-holder flex-wrap">
+
+        <!-- one landlord -->
+        <div class="detail-card">
+          <div class="username">
+            <img src="{% static 'icons/user-dark.svg' %}" alt="user" class="user-icon icon">
+            <strong>George Doe</strong>
+          </div>
+          <div class="detail-option">
+            <img src="{% static 'icons/house.svg' %}" alt="house" class="icon">
+            View posted houses
+          </div>
+          <div class="detail-option">
+            <img src="{% static 'icons/calendar.svg' %}" alt="calendar" class="icon">
+            Scheduled appointments
+          </div>
+          <div class="detail-option">
+            <img src="{% static 'icons/remove.svg' %}" alt="remove" class="icon">
+            Remove priviledge
+          </div>
+          <div class="detail-option">
+            <img src="{% static 'icons/delete.svg' %}" alt="delete" class="icon">
+            Delete user
+          </div>
+          <div class="detail-option">
+            <span class="flex-wrap">
+              <img src="{% static 'icons/email-plain.svg' %}" alt="email" class="icon">
+              Email
+            </span>
+
+            <span class="line"></span>
+            <span class="flex-wrap">
+              <img src="{% static 'icons/call.svg' %}" alt="call" class="icon">
+              Call
+            </span>
+          </div>
+
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- user section -->
+    <section class="view-details user-details">
+      <div class="detail-title">
+        <img src="{% static 'icons/user-dark.svg' %}" alt="user" class="icon">
+        Users
+      </div>
+
+      <div class="detail-cards-holder flex-wrap">
+
+        <!-- one user -->
+        <div class="detail-card">
+          <div class="username">
+            <img src="{% static 'icons/user-dark.svg' %}" alt="user" class="user-icon icon">
+            <strong>George Smith</strong>
+          </div>
+          <div class="detail-option">
+            <img src="{% static 'icons/calendar.svg' %}" alt="calendar" class="icon">
+            Scheduled appointments
+          </div>
+          <div class="detail-option">
+            <img src="{% static 'icons/redLike.svg' %}" alt="like" class="icon">
+            Likes
+          </div>
+          <div class="detail-option">
+            <img src="{% static 'icons/delete.svg' %}" alt="delete" class="icon">
+            Delete user
+          </div>
+          <div class="detail-option">
+            <span class="flex-wrap">
+              <img src="{% static 'icons/email-plain.svg' %}" alt="email" class="icon">
+              Email
+            </span>
+
+            <span class="line"></span>
+            <span class="flex-wrap">
+              <img src="{% static 'icons/call.svg' %}" alt="call" class="icon">
+              Call
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
