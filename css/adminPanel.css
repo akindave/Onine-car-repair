@@ -61,7 +61,7 @@ background: var(--menuSectBg);
 padding: 10px 0;
 border-radius: 0 30px 30px 0;
 justify-content: center;
-width: 80%;
+width: 92%;
 cursor: pointer;
 transition: 0.2s;
 place-self: flex-start;
@@ -74,6 +74,9 @@ place-self: flex-start;
   color: white;
   width: 100%;
 }
+.activeBtn .icon{
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(233deg) brightness(105%) contrast(102%);
+}
 .activeBtn .nav-text{
   color: white;
 }
@@ -85,24 +88,41 @@ display: flex;
   display: none;
 }
 
+.user-icon{
+  width: 60px;
+  height: 60px;
+  /* margin-right: 8px; */
+}
+.icon{
+  margin: 0 8px;
+}
 .view-details{
   padding: 1.5rem;
   flex-grow: 1;
   border-left: 2px solid var(--menuSectBg);
   /* margin-left: 5px; */
+  display: none;
   padding-top: 10px;
+}
+.overview-details{
+  display: block;
 }
 .detail-title{
   width: 100%;
 border-bottom: 2px solid var(--menuSectBg);
 padding-bottom: 4px;
+display: flex;
+align-items: end;
+justify-content: flex-start;
 }
 .detail-cards-holder{
-  margin: 2.5rem 0;
+  margin: 0.5rem 0;
   justify-content:flex-start;
 }
 .detail-card{
-  box-shadow: var(--lessSpaceBoxShaodw);
+  /* box-shadow: var(--lessSpaceBoxShaodw); */
+  box-shadow: var(--darkerShadow);
+  border: 1px solid var(--horizontalLine);
   position: relative;
   border-radius: 4px;
   text-align: center;
@@ -111,6 +131,9 @@ padding-bottom: 4px;
   min-width: 210px;
   width: max-content;
   margin: 20px;
+}
+.detail-card .flex-wrap{
+  align-items: flex-start;
 }
 .num-value{
   font-size: 70px;
@@ -127,54 +150,65 @@ position: absolute;
 top: 0;
 right: 0;
 margin: unset;
-padding: 2px;
-width: 30px;
-height: 30px;
+border-bottom-left-radius: 4px;
+padding: 4px;
+width: 38px;
+height: 38px;
 }
 
 
 
-/* landlord */
-.landlord-details{
+/* mech */
+.mech-details{
   display: none;
 }
-.landlord-details .detail-card, .user-details .detail-card{
+.mech-details .detail-card, .user-details .detail-card{
   text-align: left;
 }
-.landlord-details .icon{
-  /* margin: unset; */
-}
-.landlord-details .detail-card div, .user-details .detail-card div{
+
+/* .mech-details .detail-card div, .user-details .detail-card div{
   display: flex;
   place-items:center;
 
-}
+} */
 .detail-option{
   cursor: pointer;
-  margin: 3px 0;
-  padding: 4px 6px;
-  border-radius: 30px;
+  margin: 4px 0;
+  /* padding: 4px 6px; */
+  /* border-radius: 30px; */
 }
-.detail-option:hover{
+.detail-option .icon{
+  width: 20px;
+height: 20px;
+}
+/* .detail-option:hover{
   background: var(--highlightBlue);
   color: white;
-}
-.detail-option span:hover{
+} */
+/* .detail-option span:hover{
   color: white;
-}
-.landlord-details .detail-card div:last-child, .user-details .detail-card div:last-child{
+} */
+.mech-details .detail-card div:last-child, .user-details .detail-card div:last-child{
 justify-content: space-around;
 }
-.landlord-details .user-icon, .user-details .user-icon{
+.mech-details .user-icon, .user-details .user-icon{
   margin-right: 8px;
 }
+
 .username{
   border-bottom: 2px solid var(--menuSectBg);
   padding-bottom: 4px;
 }
 .detail-option{
   position: relative;
+  display: flex;
+align-items: center;
 }
+.contact-dets {
+  display: grid;
+  justify-items: flex-start;
+  margin-left: 8px;
+  }
 .line{
   width: 2px;
   height: 100%;
@@ -187,11 +221,147 @@ justify-content: space-around;
 }
 
 
+.edit-btn, .accept-btn, .repair-btn, .add-btn, .del-btn, .save-changes{
+  padding: 5px 10px;
+  border-radius: var(--bRadius);
+  border: 2px solid var(--textGreyish);
+  /* outline: none; */
+  background: white;
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-btn .icon, .repair-btn .icon, .add-btn .icon{
+  width: 20px;
+height: 20px;
+margin: 0 3px;
+}
+.accept-btn{
+  background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+.edit-btn{
+  /* margin-top: 5px; */
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.del-btn{
+  color: var(--red);
+  width: max-content;
+  border-color: var(--red);
+  margin: auto;
+}
+.remove-btn{
+  border: none;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  background: none;
+}
+.cars-details .detail-card{
+  min-width: unset;
+  padding: 6px 12px;
+}
+.own-name{
+  margin-left: 4px;
+}
+.num-plate{
+  color: var(--orangeColor);
+  font-weight: 600;
+  font-size: 16px;
+}
+.around{
+  justify-content: space-around;
+  margin-top: 10px;
+  width: 100%;
+}
+.around .del-btn{
+  margin: unset;
+}
+.detail-card h3{
+  text-align: left;
+}
+.ques-choices{
+  margin-left: 20px;
+}
+.addQues-btn{
+  margin: auto;
+}
+.square{
+  width: 12px;
+height: 12px;
+border: 2px solid var(--textGreyish);
+border-radius: 2px;
+margin-right: 10px;
+}
+.input-elmt {
+  border: 2px solid var(--grey3);
+  padding: 10px 6px 5px 6px;
+  border-radius: var(--bRadius);
+  max-width: 300px;
+  width: 100%;
+}
+.input-grp{
+  display: flex;
+align-items: center;
+margin: 13px 0;
+}
+.grid{
+  display: grid;
+}
+.register-form{
+  max-width: 390px;
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+padding: 10px 5px;
+border: 2px solid var(--grey3);
+border-radius: var(--bRadius);
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+width: 100%;
+background: white;
+z-index: 50;
+display: none;
+}
+.register-form textarea{
+  max-width: 325px;
+padding: 5px;
+border: 2px solid var(--grey3);
+border-radius: var(--bRadius);
+}
+.dark-overlay{
+  background: #3333336e;
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+  display: none;
+}
+.cancel-btn{
+  color: var(--red);
+border: 2px solid var(--red);
+border-radius: var(--bRadius);
+}
 
 @media screen and (max-width:1020px){
 .detail-cards-holder{
   justify-content: center;
 }
+
+}
+@media screen and (min-width:600px){
+
 }
 
 /* mobile devices  */
@@ -224,6 +394,9 @@ justify-content: space-around;
 }
 }
 
+
+
+
 /* very small devices  */
 @media screen and (max-width:270px){
 .detail-card{
@@ -244,6 +417,9 @@ justify-content: space-around;
 }
 .showBlock{
   display: block;
+}
+.showFlex{
+  display: flex;
 }
 .user-details{
   display: none;
