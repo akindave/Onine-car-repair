@@ -55,7 +55,7 @@ color: var(--highlightBlueHover);
 }
 .bgImage{
   width: 60%;
-background: linear-gradient(320deg,transparent,#f98e0ea3),url("Images/brake-disc.jpg");
+background: linear-gradient(320deg,transparent,#f98e0ea3),url("../Images/brake-disc.jpg");
   background-position: center;
   background-size: cover;
   height: 100vh;

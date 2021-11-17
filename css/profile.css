@@ -1,10 +1,27 @@
 nav, .admin-drop{
   background: unset;
 }
+button{
+  cursor: pointer;
+}
+.input-grp{
+  display: grid;
+  grid-row-gap: 5px;
+  margin: 13px 0;
+}
+.input-elmt{
+  border: 2px solid var(--grey3);
+  padding: 10px 6px 5px 6px;
+  border-radius: var(--bRadius);
+  max-width: 300px;
+  width: 100%;
+}
+
 
 
 main{
   display: block;
+  padding-bottom: 1rem;
 }
 .prof-sect{
   display: grid;
@@ -15,10 +32,13 @@ margin: 10px;
 }
 .holder-sect{
   align-items: flex-start;
+  padding: 2rem 1rem;
 }
 .detail{
   display: flex;
   margin: 15px 0;
+  width: 100%;
+justify-content: space-around;
 }
 .input-grp{
   margin: unset;
@@ -29,8 +49,9 @@ margin: 10px;
 }
 .input-elmt{
   width: unset;
+  max-width: 185px;
 }
-.edit-btn, .repair-btn, .add-btn, .del-btn{
+.edit-btn, .repair-btn, .add-btn, .del-btn, .save-changes{
   padding: 5px 10px;
   border-radius: var(--bRadius);
   border: 2px solid var(--textGreyish);
@@ -45,15 +66,19 @@ margin: 10px;
 height: 20px;
 margin: 0 3px;
 }
+.edit-btn{
+  margin-top: 5px;
+}
 .repair-btn{
   color: var(--orangeColor);
   border-color: var(--orangeColor);
   width: max-content;
 }
-.add-btn{
+.add-btn, .save-changes{
   background: var(--blue);
   border-color: var(--blue);
   color: white;
+  margin-left: unset;
 }
 .del-btn{
   color: var(--red);
@@ -97,6 +122,47 @@ justify-content: center;
 align-items: center;
 margin: 15px 0;
 }
+.pwd-pop{
+  /* padding: 10px; */
+border: 2px solid var(--grey3);
+border-radius: var(--bRadius);
+max-width: 300px;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50% ,-50%);
+z-index: 5;
+background: white;
+padding: 10px;
+width: 100%;
+max-width: 300px;
+display: none;
+}
+.pwd-pop form div{
+  margin: 14px 0;
+}
+
+.pwd-btns{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.dark-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.329);
+  z-index: 2;
+  display: none;
+  pointer-events: all;
+}
+
+
+
 
 
 @media screen and (max-width:320px){
@@ -104,4 +170,10 @@ margin: 15px 0;
   width: 120px;
   height: 120px;
 }
+}
+
+
+
+.show-flex{
+  display: flex;
 }

@@ -11,6 +11,9 @@ nav{
     z-index: 20;
     transition: top 0.3s;
 }
+/* main{
+  padding-top: 5rem;
+} */
 .admin-drop .icon{
   width: 20px;
   height: 20px;
