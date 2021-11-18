@@ -25,6 +25,12 @@ nav{
 }
 .links a:hover{
   color: var(--textGreyish);
+  padding: 4px 0;
+  border-bottom: 2px solid var(--textGreyish);
+}
+.links a .activePageLink{
+  color: var(--textGreyish);
+  border-bottom: 2px solid var(--textGreyish);
 }
 .logo{
     width: 50px;
@@ -183,7 +189,19 @@ padding-bottom: 5px;
 .admin-holder a:last-child{
   border:none;
 }
-
+.log-out-btn{
+  padding: var(--btnPadding);
+  background: none;
+  border-radius: var(--bRadius);
+border: 2px solid var(--f3White);
+color: var(--f3White);
+font-size: 16px;
+cursor: pointer;
+}
+.log-out-btn:hover{
+  border-color: var(--textGreyish);
+color: var(--textGreyish);
+}
 /* animations */
 @keyframes moveDown {
     0%{

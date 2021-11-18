@@ -67,7 +67,7 @@ height: 20px;
 margin: 0 3px;
 }
 .edit-btn{
-  margin-top: 5px;
+  margin-top: unset;
 }
 .repair-btn{
   color: var(--orangeColor);
@@ -138,6 +138,11 @@ width: 100%;
 max-width: 300px;
 display: none;
 }
+.pwd-pop form{
+  width: 100%;
+display: grid;
+justify-items: center;
+}
 .pwd-pop form div{
   margin: 14px 0;
 }
@@ -145,7 +150,7 @@ display: none;
 .pwd-btns{
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   
 }

@@ -11,3 +11,9 @@ function closePop(targetClass){
     let overlay = document.querySelector(".dark-overlay");
     overlay.classList.remove("show-flex");
 }
+
+function allowWrite(targetId){
+    let target = document.querySelector(`#${targetId}`);
+    target.removeAttribute("readonly");
+}
+// removeAttribute('readonly');

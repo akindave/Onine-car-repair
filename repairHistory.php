@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/history.css">
   </head>
   <body>
-<?php include 'php/header.php'; ?>
+<?php include 'php/header.php';?>
     <main>
 
     <section class="holder-sect">

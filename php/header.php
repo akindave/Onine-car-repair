@@ -2,7 +2,7 @@
 //create db connection
 session_start();
 require 'connect.php';
-echo '
+?>
         <nav class="nav">
         <img src="icons/car.svg" alt="logo" class="logo">
         <button class="menu-btn">
@@ -15,18 +15,24 @@ echo '
 
         <a href="#">Home</a>
 
-            <a class="has-drop" href="#">Mechanics</a>
-            <a>Contact us </a>
+            <a href="allMechanics.php">Mechanics</a>
+            <a href="contact.php">Contact us </a>
 
-            <div class="admin-holder user-holder">
+            <?php
+            if(isset($_SESSION['name'])){
+                echo '
+                <div class="admin-holder user-holder">
                 <div class="has-drop">
 
-                <img src="icons/user.svg" alt="user" class="icon"> Username
+                <img src="icons/user.svg" alt="user" class="icon">' .$_SESSION['name']. '
                 <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
                 </div>
-
-            <!-- admin options dropdown -->
                 <div class="admin-drop">
+
+                <a href="userProfile.php" class="noti-holder flex-wrap">
+                <img src="icons/user.svg" alt="user" class="icon">
+                My profile
+                 </a>
 
                 <a href="#" class="noti-holder flex-wrap">
                     <small class="noti-no">3</small>
@@ -37,13 +43,27 @@ echo '
                 <a href="#" class="noti-holder flex-wrap">
                     <img src="icons/plus.svg" alt="notification" class="icon">
                     Add a car
-                    </a>
+                </a>
 
+                
+                <form action="php/destroySession.php" method="post">
+                    <input type="submit" value="Log out" class="log-out-btn">
+                </form>
                 </div>
             </div>
+                ';
+            }
+            else{
+                echo '
+            <a href="login.php">Log in</a>
+            <a href="signup.php">Sign up</a>
+
+                
+                ';
+            }
+            ?>
+            
 
         </div>
         </nav>
-';
 
-?>
