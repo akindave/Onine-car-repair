@@ -2,9 +2,9 @@
 $user = "mechApp";
 $host = 'localhost';
 $password = 'mech1234';
-$database = 'mechlocator';
+$database = 'mechlocatorv2';
 
-if($conn = mysqli_connect($host,$user,$password,$database)){
+if($connection = mysqli_connect($host,$user,$password,$database)){
 echo "<h3 style='color:green'>Connected successfully</h3>";
 }
 else{ 
