@@ -13,7 +13,7 @@ require 'connect.php';
         </button>
         <div class="flex-wrap links">
 
-        <a href="#">Home</a>
+        <a href="motorist-Homepage.php">Home</a>
 
             <a href="allMechanics.php">Mechanics</a>
             <a href="contact.php">Contact us </a>
@@ -21,27 +21,27 @@ require 'connect.php';
             <?php
             if(isset($_SESSION['name'])){
                 echo '
+                
                 <div class="admin-holder user-holder">
                 <div class="has-drop">
 
-                <img src="icons/user.svg" alt="user" class="icon">' .$_SESSION['name']. '
+                <img src="icons/prof-pic.svg" alt="user" class="icon">'.$_SESSION['name']. '
                 <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
                 </div>
                 <div class="admin-drop">
 
-                <a href="userProfile.php" class="noti-holder flex-wrap">
+                <a href="userProfile.php" class="noti-holder prof-link flex-wrap">
                 <img src="icons/user.svg" alt="user" class="icon">
                 My profile
                  </a>
+                
+                 
+                <a href="addRepair.php"> 
+                <img src="icons/repair-white.svg" alt="repair" class="icon">
+                Add Repair</a>
 
-                <a href="#" class="noti-holder flex-wrap">
-                    <small class="noti-no">3</small>
-                    <img src="icons/notification-dark.svg" alt="notification" class="icon">
-                    Notifications
-                </a>
-
-                <a href="#" class="noti-holder flex-wrap">
-                    <img src="icons/plus.svg" alt="notification" class="icon">
+                <a class="noti-holder flex-wrap" onclick="openPop(`car-pop`)">
+                    <img src="icons/car-white.svg" alt="notification" class="icon">
                     Add a car
                 </a>
 
@@ -67,3 +67,7 @@ require 'connect.php';
         </div>
         </nav>
 
+<?php include 'php/addCar.php'; ?>
+
+
+        <script src="http://localhost/mechlocator/js/profile.js"></script>

@@ -1,0 +1,50 @@
+main{
+    padding: 5rem 10px;
+}
+.edit-btn, .repair-btn, .add-btn, .del-btn, .save-changes{
+    padding: 5px 10px;
+    border-radius: var(--bRadius);
+    border: 2px solid var(--textGreyish);
+    /* outline: none; */
+    background: white;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .edit-btn .icon, .repair-btn .icon, .add-btn .icon{
+    width: 20px;
+  height: 20px;
+  margin: 0 3px;
+  }
+  .add-btn, .save-changes{
+    background: var(--blue);
+    border-color: var(--blue);
+    color: white;
+    margin-left: unset;
+  }
+  .add-btn:hover , .save-changes:hover{
+    background: #0B496A;
+  }
+
+  
+.input-grp{
+    display: grid;
+    grid-row-gap: 5px;
+    margin: 13px 0;
+  }
+  .input-elmt{
+    border: 2px solid var(--grey3);
+    padding: 10px 6px 5px 6px;
+    border-radius: var(--bRadius);
+    max-width: 300px;
+    width: 100%;
+  }
+  .input-grp span {
+    display: flex;
+    align-items: baseline;
+  }
+  .cost-input{
+    width: max-content;
+    /* flex-grow: 1; */
+    margin-left: 6px;
+  }

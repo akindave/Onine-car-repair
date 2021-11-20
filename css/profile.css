@@ -29,6 +29,14 @@ main{
   align-content: center;
   padding: unset;
 margin: 10px;
+flex-grow: 0.3;
+}
+.prof-sect form{
+  width: 100%;
+}
+.prof-sect h4{
+  color: var(--grey3);
+  font-size: 14px;
 }
 .holder-sect{
   align-items: flex-start;
@@ -43,13 +51,14 @@ justify-content: space-around;
 .input-grp{
   margin: unset;
   margin-left:5px;
+  flex-grow: 0.8;
 }
 .input-grp label{
   font-weight: 600;
 }
 .input-elmt{
-  width: unset;
-  max-width: 185px;
+  /* width: unset; */
+  max-width: 210px;
 }
 .edit-btn, .repair-btn, .add-btn, .del-btn, .save-changes{
   padding: 5px 10px;
@@ -68,6 +77,14 @@ margin: 0 3px;
 }
 .edit-btn{
   margin-top: unset;
+  display: none;
+}
+.edit-pwd{
+  display: flex;
+}
+.edit-pwd .icon{
+  width: 15px;
+height: 15px;
 }
 .repair-btn{
   color: var(--orangeColor);
@@ -79,6 +96,9 @@ margin: 0 3px;
   border-color: var(--blue);
   color: white;
   margin-left: unset;
+}
+.add-btn:hover , .save-changes:hover{
+  background: #0B496A;
 }
 .del-btn{
   color: var(--red);
@@ -110,19 +130,20 @@ font-size: 22px;
 font-weight: 600;
 text-align: center;
 flex-grow: 1;
+padding-right: 1rem;
 }
 .car-detail{
-  padding: 8px 5px;
-border: 1px solid var(--f3White);
-border-radius: var(--bRadius);
+  padding: 10px 15px;
+  border: 2px solid var(--horizontalLine);
+  border-radius: var(--bRadius);
 box-shadow: var(--darkerShadow);
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-margin: 15px 0;
+margin: 15px;
 }
-.pwd-pop{
+.pwd-pop, .car-pop{
   /* padding: 10px; */
 border: 2px solid var(--grey3);
 border-radius: var(--bRadius);
@@ -138,12 +159,12 @@ width: 100%;
 max-width: 300px;
 display: none;
 }
-.pwd-pop form{
+.pwd-pop form, .car-pop form{
   width: 100%;
 display: grid;
 justify-items: center;
 }
-.pwd-pop form div{
+.pwd-pop form div , .car-pop form div{
   margin: 14px 0;
 }
 

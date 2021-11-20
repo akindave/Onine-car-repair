@@ -17,105 +17,109 @@
     <main>
 
     <section class="holder-sect">
-      <h3><span class="num-plate">KAA 123A</span> Repair History</h3>
+
+    <?php
+        if(isset($_SESSION['user_id'])){
+            $user_id = $_SESSION['user_id'];
+
+        }
+        else{ 
+            header('Location:login.php');
+        }
+?>
+
 
       <section class="flex-wrap">
 
-        <article class="repair-card">
-                    <div class="row1 flex-wrap">
-                      <div class="date">15-09-2021</div>
-                      <div class="mech-name">John Mechanic</div>
-                    </div>
+                
 
-                    <!-- <table cellpadding="15">
-                      <tr class="tbl-row1">
-                        <th>Activity</th>
-                        <th>Cost (Kshs)</th>
-                      </tr>
+                    <?php
+                    $selectAllCars = "SELECT * FROM cars WHERE user_id = '$user_id'";
+                    $TotalCost = 0;
+                    $results = mysqli_query($connection,$selectAllCars);
+                    if(!$results){
+                      echo 'Error getting cars';
+                    }
+                    else{
 
+                          $row = mysqli_num_rows($results);
+                          if($row > 0){
+                                while($row = mysqli_fetch_array($results)){
+                                  $car_plate = $row['num_plate'];
+                                  $selectRecord = "SELECT * FROM repairs WHERE num_plate = '$car_plate'";
+                                  $received = mysqli_query($connection,$selectRecord);
+                                  $repair_row = mysqli_num_rows($received);
+                                  if($repair_row>0){
 
-                      <tr>
-                            <td>Brake pad replacement</td>
-                            <td>2000</td>
+                                  
+                                  echo '
+                                  <article class="repair-card">
 
-                      </tr>
-                      <tr>
-                            <td>Wheel alignment</td>
-                            <td>2000</td>
-                          
-                      </tr>
-          
-                      <tr>
-                        <td class="total-lbl">Total</td>
-                        <td class="total-val">4000</td>
-                      </tr>
-                      
-                    </table> -->
+                                  <h4><span class="num-plate"> <img src="icons/car.svg" class="icon" alt="car">'.$car_plate.'</span></h4> 
+                                        
+                                          <div class="holder-tbl">
+                                            <div class="header-row flex-wrap">
+                                              <span class="act-header"><strong>Activity</strong></span>
+                                              <span class="cost-header"><strong>Cost (Kshs)</strong></span>
+                                            </div>
+
+                                          <ol>
+                                  ';
+
+                                    while($repair_row = mysqli_fetch_array($received)){ 
+                                      // echo 'working';
+                                      $activity = $repair_row['activity'];
+                                      $cost = $repair_row['cost'];
+                                      $date = $repair_row['date'];
+                                      $TotalCost = $TotalCost + $cost;
+                                      echo '
+                                          <div class="data-row">
+                                          <li> <div class="row-activity">'.$activity.'</div></li>
+                                            <div class="row-cost">'.$cost.'</div>
+                                          </div>
+                                      ';
+
+                                      // echo '<br>'.$repair_row['activity'];
+                                      
+                                      
+                                    }
+                                    $username = $_SESSION['name'];
+                                    echo '
+                                    <div class="header-row flex-wrap">
+                                        <span class="total-header"><strong>Total</strong></span>
+                                        <span class="total-val"> '.$TotalCost.' </span>
+                                      </div>
+
+                                      <div class="row1 flex-wrap">
+                                      <div class="mech-name">Uploaded by: '.$username.'</div>
+
+                                          <div class="date">'.$date.'</div>
+                                        </div>
+
+                                    </div>
+                                </article>
+                                
+                                    ';
+                                    $TotalCost = 0;
+                                  }
+                                }
+                          }
+                          else{
+                            // echo '       <h3><span class="num-plate">KAA 123A</span> Repair History</h3>        ';
                   
-                    <div class="holder-tbl">
-                      <div class="header-row flex-wrap">
-                        <span class="act-header"><strong>Activity</strong></span>
-                        <span class="cost-header"><strong>Cost (Kshs)</strong></span>
-                      </div>
+                          }
+                        }        
+ ?>
 
-                    <ol>
-                      
-                    <div class="data-row">
-                    <li> <div class="row-activity">Wheel balancing</div></li>
-                      <div class="row-cost">2000</div>
-                    </div>
 
-                    <div class="data-row ">
-                      <li> <div class="row-activity">Brake pads replacement</div></li>
-                      <div class="row-cost">2000</div>
-                    </div>
-
-                    <div class="data-row ">
-                      <li> <div class="row-activity">Brake pads replacement and rear brake lining adjustment</div></li>
-                      <div class="row-cost">2000</div>
-                    </div>
                     
-                  </ol>
 
-                  <div class="header-row flex-wrap">
-                    <span class="total-header"><strong>Total</strong></span>
-                    <span class="total-val"> 4000 </span>
-                  </div>
-
-                </div>
-
-        </article>
 
         <article class="repair-card">
           <div class="row1 flex-wrap">
             <div class="date">15-09-2021</div>
             <div class="mech-name">John Mechanic</div>
           </div>
-
-          <!-- <table cellpadding="15">
-            <tr class="tbl-row1">
-              <th>Activity</th>
-              <th>Cost (Kshs)</th>
-            </tr>
-
-
-            <tr>
-                  <td>Brake pad replacement</td>
-                  <td>2000</td>
-
-            </tr>
-            <tr>
-                  <td>Wheel alignment</td>
-                  <td>2000</td>
-                
-            </tr>
-
-            <tr>
-              <td class="total-lbl">Total</td>
-              <td class="total-val">4000</td>
-            </tr>
-            
-          </table> -->
         
           <div class="holder-tbl">
             <div class="header-row flex-wrap">

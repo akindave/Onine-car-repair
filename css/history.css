@@ -1,13 +1,16 @@
 .num-plate{
     color:var(--blue);
     font-weight: 600;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 main{
     padding: 5rem 1rem;
 }
-h3{
+h3, h4{
     text-align: center;
+    margin-bottom: 8px;
 }
 .total-lbl,.total-val{
     font-weight: 600;
@@ -20,7 +23,8 @@ box-shadow: var(--darkerShadow);
 margin: 15px 5px;
 }
 .date{
-    margin-right:10px ;
+    /* margin-right:10px ; */
+    font-size:  14px;
 }
 table th{
     text-align: left;
@@ -39,15 +43,20 @@ table th{
 text-align: left;
 display: flex;
 justify-content: space-between;
-margin: 2px 0;
+margin: 4px 0;
+padding: 4px 0;
+border-bottom: 1px solid var(--horizontalLine);
 /* align-items: center; */
 
 }
 .data-row:first-child{
-    border-top: 1px solid var(--grey3);
+    border-top: 2px solid var(--grey3);
+    margin-top: 5px;
+
 }
 .data-row:last-child{
-    border-bottom: 1px solid var(--grey3);
+    border-bottom: 2px solid var(--grey3);
+    margin-bottom: 5px;
 
 }
 .header-row{
@@ -55,4 +64,13 @@ margin: 2px 0;
 }
 .row-activity{
     max-width: 200px;
+}
+.mech-name{
+    max-width: 130px;
+    font-size:  14px;
+    margin-right: 10px;
+}
+.row1{
+    margin-top: 10px;
+    justify-content: space-between;
 }

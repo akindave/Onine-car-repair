@@ -17,3 +17,10 @@ function allowWrite(targetId){
     target.removeAttribute("readonly");
 }
 // removeAttribute('readonly');
+// let winLoc = window.location;
+// console.log(winLoc);
+if(window.location == 'http://localhost/mechLocator/userProfile.php'){
+let linkItem = document.querySelector(".prof-link");
+linkItem.style.display = "none";
+}
+console.log("hi")

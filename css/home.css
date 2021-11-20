@@ -104,7 +104,17 @@ background: var(--blue);
 color: white;
 font-size: 16px;
 }
-
+.dark-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.71);
+    z-index: 2;
+    display: none;
+    pointer-events: all;
+  }
 
 .search-holder{
     background: #ffffff;
@@ -495,13 +505,13 @@ font-size: 16px;
     cursor: pointer;
     transition: 0.1s;
     background: none;
-    border: 1.4px solid var(--orangeColor);
+    border: 2px solid var(--orangeColor);
     color: var(--orangeColor);
   }
   .cancel-btn:hover{
-    border: 1.4px solid var(--highlightBlue);
+    border-color: var(--blue);
     background: none;
-    color: var(--highlightBlue);
+    color: var(--blue);
   }
   .api-img{
     width: 100%;
@@ -698,11 +708,11 @@ justify-items: center;
   }
 }
 .show-grid{
-  display: grid;
+  display: grid! important;
 }
 .hide{
-  display: none;
+  display: none! important;
 }
 .show-flex{
-  display: flex;
+  display: flex! important;
 }
