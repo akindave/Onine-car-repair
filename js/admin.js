@@ -1,3 +1,4 @@
+console.log("Hello world.")
 let navText = document.querySelectorAll(".nav-text")
 let navMenu = document.querySelector(".menu-dark")
 let navHolder = document.querySelector(".menu-links")
@@ -71,6 +72,7 @@ if(screenWidth > 600){
   alterText();
 }
 function changeDisplay(targetBtnClass, targetSect){
+  
   function changeActiveStatus(targetBtnClass){
     buttonsList.forEach(item =>{
         if(item.classList.contains(targetBtnClass)){

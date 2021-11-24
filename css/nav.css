@@ -22,11 +22,14 @@ nav{
   color: white;
     margin: 0 10px;
     cursor: pointer;
+    padding: 4px 0;
 }
 .links a:hover{
   color: var(--textGreyish);
-  padding: 4px 0;
   border-bottom: 2px solid var(--textGreyish);
+}
+.white-icon{
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(233deg) brightness(105%) contrast(102%);
 }
 .links a .activePageLink{
   color: var(--textGreyish);
@@ -341,7 +344,11 @@ border-bottom: 2px solid var(--orangeColor);
 }
 
 /* responsiveness  */
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 650px) {
+  .reverse{
+    flex-direction:column-reverse;
+    width: 100%;
+  }
     .links{
         display: none;
         position: absolute;
@@ -372,6 +379,14 @@ border-bottom: 2px solid var(--orangeColor);
     }
     .links a{
         margin: 20px 0;
+    }
+    .links .icon{
+  /* filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(233deg) brightness(105%) contrast(102%); */
+
+    }
+    .links a:hover{
+      color: var(--lightOrange);
+border-bottom: 2px solid var(--lightOrange);
     }
     .admin-drop{
       border-top: 2px dashed var(--orangeColor);

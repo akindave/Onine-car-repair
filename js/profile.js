@@ -23,4 +23,3 @@ if(window.location == 'http://localhost/mechLocator/userProfile.php'){
 let linkItem = document.querySelector(".prof-link");
 linkItem.style.display = "none";
 }
-console.log("hi")

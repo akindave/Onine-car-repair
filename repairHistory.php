@@ -16,20 +16,26 @@
 <?php include 'php/header.php';?>
     <main>
 
-    <section class="holder-sect">
 
+    <section class="holder-sect">
+          <a href="addRepair.php" class="add-btn flex-wrap">
+          <img src="icons/plus.svg" alt="add" class="icon">
+            Add repair record
+          </a>
     <?php
         if(isset($_SESSION['user_id'])){
             $user_id = $_SESSION['user_id'];
-
+            $username = $_SESSION['name'];
         }
         else{ 
             header('Location:login.php');
         }
-?>
+      ?>
+      <h4>
+        (Records are sorted by car number plate and date)
+      </h4>
 
-
-      <section class="flex-wrap">
+      <section class="flex-wrap reverse">
 
                 
 
@@ -65,25 +71,77 @@
 
                                           <ol>
                                   ';
-
+                                    $counter = 0;
                                     while($repair_row = mysqli_fetch_array($received)){ 
                                       // echo 'working';
                                       $activity = $repair_row['activity'];
                                       $cost = $repair_row['cost'];
                                       $date = $repair_row['date'];
-                                      $TotalCost = $TotalCost + $cost;
-                                      echo '
-                                          <div class="data-row">
-                                          <li> <div class="row-activity">'.$activity.'</div></li>
-                                            <div class="row-cost">'.$cost.'</div>
-                                          </div>
-                                      ';
 
-                                      // echo '<br>'.$repair_row['activity'];
-                                      
-                                      
+                                      //create an array for storing the date 
+                                      $dateArray[$counter] = $date;
+
+                                      // separating by date 
+                                      if($counter>0 && $dateArray[$counter-1] != $dateArray[$counter]){
+                                        //card ends when dates are different
+                                              
+                                                  echo '
+                                                  <div class="header-row flex-wrap">
+                                                      <span class="total-header"><strong>Total</strong></span>
+                                                      <span class="total-val"> '.$TotalCost.' </span>
+                                                    </div>
+
+                                                    <div class="row1 flex-wrap">
+                                                    <div class="mech-name">Recorded by: '.$username.'</div>
+
+                                                        <div class="date">'.$dateArray[$counter-1].'</div>
+                                                      </div>
+
+                                                  </div>
+                                              </article>';
+                                          $TotalCost = 0;
+
+
+                                              //creating a new card
+                                              echo '
+                                              <article class="repair-card">
+            
+                                              <h4><span class="num-plate"> <img src="icons/car.svg" class="icon" alt="car">'.$car_plate.'</span></h4> 
+                                                    
+                                                      <div class="holder-tbl">
+                                                        <div class="header-row flex-wrap">
+                                                          <span class="act-header"><strong>Activity</strong></span>
+                                                          <span class="cost-header"><strong>Cost (Kshs)</strong></span>
+                                                        </div>
+            
+                                                      <ol>
+                                              ';
+                                              echo '
+                                                <div class="data-row">
+                                                <li> <div class="row-activity">'.$activity.'</div></li>
+                                                  <div class="row-cost">'.$cost.'</div>
+                                                </div>
+                                            ';
+
+                                        // break;
+                                      $TotalCost = $TotalCost + $cost;
+
+                                      }
+
+                                      //if the dates are the same
+                                      else{
+                                            echo '
+                                              <div class="data-row">
+                                              <li> <div class="row-activity">'.$activity.'</div></li>
+                                                <div class="row-cost">'.$cost.'</div>
+                                              </div>
+                                          ';
+                                      $TotalCost = $TotalCost + $cost;
+
+
+                                      }
+                                      $counter++;                                
                                     }
-                                    $username = $_SESSION['name'];
                                     echo '
                                     <div class="header-row flex-wrap">
                                         <span class="total-header"><strong>Total</strong></span>
@@ -91,7 +149,7 @@
                                       </div>
 
                                       <div class="row1 flex-wrap">
-                                      <div class="mech-name">Uploaded by: '.$username.'</div>
+                                      <div class="mech-name">Recorded by: '.$username.'</div>
 
                                           <div class="date">'.$date.'</div>
                                         </div>
@@ -106,50 +164,13 @@
                           }
                           else{
                             // echo '       <h3><span class="num-plate">KAA 123A</span> Repair History</h3>        ';
-                  
+                            echo  '<h3><span class="num-plate">No repair history added</span></h3>        ';
                           }
                         }        
  ?>
 
 
-                    
-
-
-        <article class="repair-card">
-          <div class="row1 flex-wrap">
-            <div class="date">15-09-2021</div>
-            <div class="mech-name">John Mechanic</div>
-          </div>
-        
-          <div class="holder-tbl">
-            <div class="header-row flex-wrap">
-              <span class="act-header"><strong>Activity</strong></span>
-              <span class="cost-header"><strong>Cost (Kshs)</strong></span>
-            </div>
-
-          <ol>
-            
-          <div class="data-row">
-          <li> <div class="row-activity">Wheel balancing</div></li>
-            <div class="row-cost">2000</div>
-          </div>
-
-          <div class="data-row ">
-            <li> <div class="row-activity">Brake pads replacement</div></li>
-            <div class="row-cost">2000</div>
-          </div>
-
-          
-        </ol>
-
-        <div class="header-row flex-wrap">
-          <span class="total-header"><strong>Total</strong></span>
-          <span class="total-val"> 4000 </span>
-        </div>
-
-      </div>
-
-</article>
+         
       </section>
 
 

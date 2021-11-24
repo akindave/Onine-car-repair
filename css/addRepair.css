@@ -1,5 +1,9 @@
 main{
-    padding: 5rem 10px;
+    /* padding: 5rem 10px; */
+    min-height: 90vh;
+display: flex;
+place-items: center;
+justify-content: center;
 }
 .edit-btn, .repair-btn, .add-btn, .del-btn, .save-changes{
     padding: 5px 10px;
@@ -48,3 +52,9 @@ main{
     /* flex-grow: 1; */
     margin-left: 6px;
   }
+  /* .record-pop{
+    display: flex;
+  }
+  .dark-overlay{
+    display: flex;
+  } */

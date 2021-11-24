@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/nav.css">
 
     <link rel="stylesheet" href="css/addRepair.css">
-    <!-- <script src="js/profile.js"></script> -->
 
 </head>
 <body>
@@ -24,6 +23,7 @@
             <img src="icons/plus.svg" alt="add" class="icon">
             Add repair record
 </button>
+
 
  </section>
 <aside class="record-pop">
@@ -63,6 +63,11 @@
 
     
 </main>    
+<script src="js/nav.js" defer></script>
+
+<script defer>
+  openPop('record-pop');
+</script>
 </body>
 </html>
 

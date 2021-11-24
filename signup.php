@@ -49,17 +49,17 @@
 
         <div class="input-grp">
           <label for="pass">Password*</label>
-          <input type="Password" name="pass" required placeholder="******" class="input-elmt">
+          <input type="Password" name="pass" required placeholder="******" class="input-elmt" id="pass">
         </div>
 
         <div class="input-grp">
           <label for="pass2">Confirm Password*</label>
-          <input type="Password" name="pass2" required placeholder="******" class="input-elmt">
+          <input type="Password" name="pass2" required placeholder="******" class="input-elmt" id="con-pass">
         </div>
 
 
         <div class="input-grp">
-          <button type="submit" name="register" class="reg-btn shadow-drop-2-tb">Register</button>
+          <button type="submit" name="register" class="reg-btn shadow-drop-2-tb" onclick="checker">Register</button>
         </div>
 
         <p>Already have an account?
@@ -73,5 +73,43 @@
     </main>
   </body>
   <script src="js/nav.js" charset="utf-8"></script>
+  <script>
+     let firstPassword = document.querySelector("#pass");
+        // document.getElementById("pass")
 
+        let secondPassword = document.querySelector("#con-pass");
+
+        // function checker(){} is same as line below
+
+        const checker = ()=>{
+            //if it does not match
+            if(firstPassword.value!==secondPassword.value){
+        // alert("Oops! Validation failed!");
+    //  returnToPreviousPage();
+
+    //animation
+    secondPassword.classList.add("shake");
+    secondPassword.value = "";
+    secondPassword.setAttribute("placeholder","Password does not match. Please Try again");
+    
+    //prevent form from submitting
+    event.preventDefault();
+      return false;
+            }
+
+            else{
+                // alert("Validations successful!");
+        secondPassword.classList.remove("shake");
+        return true;
+            }
+        }
+
+        const removeShake = ()=>{
+            if(secondPassword.classList.contains("shake")){
+                secondPassword.classList.remove("shake");
+                secondPassword.setAttribute("placeholder","****");
+            }
+        }
+        secondPassword.addEventListener("click",removeShake());
+  </script>
 </html>

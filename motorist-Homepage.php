@@ -20,10 +20,7 @@
 
     <main>
 
-      <!-- button for locating a mech  -->
-      <button type="button" name="button" class="loc-btn flex-wrap">
-        <img src="icons/location.svg" alt="locate" class="icon"> Mechanic near me
-      </button>
+
        <section class="landing">
            <article class="mid-landing">
               <article class="search-holder">
@@ -59,15 +56,29 @@
         </section>
 
         <section class="flex-wrap card-sect">
-          <article class="card">
-            <img src="icons/repair.svg" alt="repair history" class="card-icon">
-            <p>Repair History</p>
-          </article>
+          <a href="repairHistory.php">
+            <article class="card">
+              <img src="icons/repair.svg" alt="repair history" class="card-icon">
+              <p>Repair History</p>
+            </article>
+          </a>
 
-          <article class="card">
-            <img src="icons/tools.svg" alt="repair history" class="card-icon">
-            <p>Mechanics</p>
-          </article>
+          <a href="allMechanics.php">
+              <article class="card">
+                <img src="icons/tools.svg" alt="repair history" class="card-icon">
+                <p>Mechanics</p>
+              </article>
+          </a>
+
+          <a href="addRepair.php" class="add-btn flex-wrap">
+          <img src="icons/plus.svg" alt="add" class="icon">
+            Add repair record
+          </a>
+
+                <!-- button for locating a mech  -->
+      <button type="button" name="button" class="loc-btn flex-wrap">
+        <img src="icons/location.svg" alt="locate" class="icon"> Mechanic near me
+      </button>
         </section>
   </body>
   <script src="js/nav.js" charset="utf-8"></script>

@@ -94,9 +94,9 @@ margin: 5px;
   padding: 0 1rem;
 }
 .loc-btn{
-  position: fixed;
+  /* position: fixed;
 bottom: 15px;
-left: 20px;
+left: 20px; */
 border-radius: 30px;
 padding: 10px 14px;
 border: none;

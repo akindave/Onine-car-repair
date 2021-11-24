@@ -331,9 +331,11 @@
                   </div>
                 </article>
     
+                <a href="repairHistory.php">
                 <button type="button" name="button" class="repair-btn flex-wrap">
                   <img src="icons/repair.svg" alt="repair" class="icon">
                   Repair History</button>
+                </a>
               </div>
                 ';
               }

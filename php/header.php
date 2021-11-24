@@ -15,13 +15,17 @@ require 'connect.php';
 
         <a href="motorist-Homepage.php">Home</a>
 
-            <a href="allMechanics.php">Mechanics</a>
-            <a href="contact.php">Contact us </a>
+            <a href="allMechanics.php">
+            <!-- <img src="icons/repair.svg" class="icon white-icon" alt="mechanics">     -->
+            Mechanics</a>
+            <a href="contact.php">
+            <!-- <img src="icons/call.svg" class="icon white-icon"alt="call">     -->
+            Contact us </a>
 
             <?php
             if(isset($_SESSION['name'])){
                 echo '
-                
+                <a href="repairHistory.php">My Repair History </a>
                 <div class="admin-holder user-holder">
                 <div class="has-drop">
 
@@ -70,4 +74,5 @@ require 'connect.php';
 <?php include 'php/addCar.php'; ?>
 
 
-        <script src="http://localhost/mechlocator/js/profile.js"></script>
+        <!-- <script src="js/nav.js"></script> -->
+        <script src="js/profile.js"></script>

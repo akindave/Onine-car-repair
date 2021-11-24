@@ -38,7 +38,7 @@ else{
                     // sleep(5);
 
                     //if its the admin logging in, take him to admin page
-                    if($_SESSION['name'] == 'admin'){
+                    if($_SESSION['name'] == 'admin' && $pass=='admin1234'){
                         header("location: ../adminDashboard.php");
                     }
                     //go to landing page

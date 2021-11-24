@@ -1,3 +1,25 @@
+<?php include 'php/header.php';?>
+<?php
+//check if its the admin 
+if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
+  header('Location:motorist-homepage.php');
+}
+
+           function getTotal($table){
+            $getNumUsers = "SELECT * FROM `$table`";
+            $totalUsers = mysqli_query($GLOBALS['connection'],$getNumUsers);
+            $row = mysqli_num_rows($totalUsers);
+
+                if($row<1){
+                  echo "0";
+                }
+                else{
+                echo $row;
+                }
+           }
+            
+                
+  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -13,7 +35,6 @@
     <link rel="stylesheet" href="css/adminPanel.css">
   </head>
   <body>
-  <?php include 'php/header.php';?>
 
 
 <main>
@@ -69,11 +90,11 @@
         <div class="detail-card">
           <img src="icons/user-dark.svg" alt="users" class="icon detail-icon">
           <p class="num-value">
-            437
+           <?php getTotal('users'); ?>
           </p>
 
           <p class="detail-desc">
-            Total no. of car owners
+            Total no. of users
           </p>
         </div>
 
@@ -81,7 +102,7 @@
         <div class="detail-card">
           <img src="icons/mechanic.svg" alt="mechanic" class="icon detail-icon">
           <p class="num-value">
-            237
+          <?php getTotal('mechanics'); ?>
           </p>
 
           <p class="detail-desc">
@@ -93,7 +114,7 @@
         <div class="detail-card">
           <img src="icons/car.svg" alt="cars" class="icon detail-icon">
           <p class="num-value">
-            300
+          <?php getTotal('cars'); ?>
           </p>
 
           <p class="detail-desc">
@@ -105,7 +126,7 @@
         <div class="detail-card">
           <img src="icons/application.svg" alt="applications" class="icon detail-icon">
           <p class="num-value">
-            120
+          <?php getTotal('mech_applications'); ?>
           </p>
 
           <p class="detail-desc">
@@ -126,39 +147,68 @@
 
       <div class="detail-cards-holder flex-wrap">
 
+      <?php
+        $getUsers = "SELECT users.name, users.email, users.phone FROM users INNER JOIN cars ON users.user_id = cars.user_id";
+        $results = mysqli_query($connection,$getUsers);
+        // echo mysqli_num_rows($results);
+
+            if(!$results){
+               echo "msqli error" .mysqli_error($connection);
+            }
+              else{
+                $row = mysqli_num_rows($results);
+
+                if($row<1){
+                  echo "No car owners in database";
+                }
+                else{
+                $count = 0;
+                while($row = mysqli_fetch_assoc($results)){
+                  // echo "<br>";
+                  // echo $row['name'];
+                  $emailArray[$count] = $row['email'];
+
+                  if($count>0 && ($emailArray[$count] === $emailArray[$count-1])){
+                     continue;
+                  }
+                  else{ 
+                    echo '
+                    <div class="detail-card">
+                        <div class="flex-wrap">
+                            <img src="icons/user-holder.svg" alt="user" class="user-icon">
+  
+                        <article class="contact-dets">
+                            <div class="username">
+                                <strong>'.$row['name'].'</strong>
+                              </div>
+                              <div class="detail-option">
+                                <img src="icons/email-svgrepo-com.svg" alt="email" class="icon">
+                                '.$row['email'].'
+                              </div>
+                              <a href="tel:'.$row['phone'].'" >
+                              <div class="detail-option">
+                                <img src="icons/call-grey.svg" alt="call" class="icon">
+                                '.$row['phone'].'
+                              </div>
+                              </a>
+                            
+                        </article>
+  
+                        </div>
+                    </div>
+                    ';
+                  }
+
+                  $count++;
+
+                 
+                }
+          }
+        }
+      ?>
+      
         <!-- one owner -->
-        <div class="detail-card">
-        <div class="flex-wrap">
-            <img src="icons/user-holder.svg" alt="user" class="user-icon">
-
-        <article class="contact-dets">
-            <div class="username">
-                <strong>George Doe</strong>
-              </div>
-              <div class="detail-option">
-                <img src="icons/email-svgrepo-com.svg" alt="email" class="icon">
-                john@gmail.com
-              </div>
-              <div class="detail-option">
-                <img src="icons/call-grey.svg" alt="call" class="icon">
-                0712345678
-              </div>
-              <div class="detail-option">
-                <img src="icons/car.svg" alt="car" class="icon">
-               KAA 123A
-              </div>
-        </article>
-
-        </div>
-          <div class="detail-option">
-           <button class="del-btn">
-            <img src="icons/delete-red.svg" alt="delete" class="icon">
-            Delete user
-            </button>
-          </div>
-
-        </div>
-
+        
 
       </div>
     </section>
@@ -220,22 +270,46 @@
   
         <div class="detail-cards-holder flex-wrap">
   
+          <?php 
+              //getting cars 
+              $selectAllCars = "SELECT * FROM `cars` INNER JOIN users ON cars.user_id = users.user_id ORDER BY name ASC";
+              $results = mysqli_query($connection,$selectAllCars);
+              // $row = mysqli_num_rows($results);
+              if(!$results){
+            echo "msqli error" .mysqli_error($connection);
+              }
+              else{
+                $row = mysqli_num_rows($results);
+
+                if($row<1){
+                  echo "No cars in database";
+                }
+                else{
+                while($row = mysqli_fetch_assoc($results)){
+                  echo '
+                  <div class="detail-card">
+                    <div class="flex-wrap">
+                     <img src="icons/car.svg" alt="user" class="icon">
+  
+                      <article class="contact-dets">
+                          <div class="num-plate">
+                              '.$row["num_plate"].'
+                          </div>
+                          
+                          <div class="detail-option">
+                            Owner: <strong class="own-name">'.$row['name'].'</strong>
+                          </div>
+                      </article>
+                  </div>
+          </div>  
+                  ';
+              }
+                }
+                
+                }
+          ?>
           <!-- car -->
-          <div class="detail-card">
-            <div class="flex-wrap">
-                <img src="icons/car.svg" alt="user" class="icon">
-    
-                <article class="contact-dets">
-                    <div class="num-plate">
-                        KAA 123A
-                    </div>
-                    
-                    <div class="detail-option">
-                       Owner: <strong class="own-name">John Doe</strong>
-                    </div>
-                </article>
-    
-            </div>    
+            
         </div>
   
         </div>
@@ -243,7 +317,8 @@
       </section>
 
        <!-- applications section -->
-    <section class="view-details applications-details">
+    
+       <section class="view-details applications-details">
         <div class="detail-title">
           <img src="icons/application.svg" alt="user" class="icon">
           Applications
@@ -407,6 +482,6 @@
 
 <div class="dark-overlay"></div>
   </main>
-
   <script src="js/admin.js"></script>
 </body>
+</html>
