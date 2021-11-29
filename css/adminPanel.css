@@ -119,6 +119,11 @@ justify-content: flex-start;
   margin: 0.5rem 0;
   justify-content:flex-start;
 }
+.rating-icon {
+  width: 14px;
+  height: 14px;
+  margin: 0 2px;
+}
 .detail-card{
   /* box-shadow: var(--lessSpaceBoxShaodw); */
   box-shadow: var(--darkerShadow);
@@ -243,6 +248,7 @@ margin: 0 3px;
   background: var(--blue);
   border-color: var(--blue);
   color: white;
+  margin: auto;
 }
 .edit-btn{
   /* margin-top: 5px; */

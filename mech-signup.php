@@ -17,50 +17,34 @@
 
     <main>
 
-
-
-    <div class="bgImage">
-
-    </div>
-    <section class="form-sect">
+    <section class="form-sect wrap">
+      <img src="icons/Welcome.svg" alt="welcome" class="welcome-svg">
 
       <form class="register-form" action="php/signup.php" method="post">
-        <h3>Register as a mechanic</h3>
+        <h3>Apply as a mechanic</h3>
         <p>Please enter the details below.</p>
+       
         <div class="input-grp">
-          <label for="name">Name*</label>
-          <input type="text" name="name" required placeholder="e.g John Doe" class="input-elmt">
+          <label for="location" class="loc" data-tooltip="(We need your location to find customers near you.)">Location<img src="icons/question-dark.svg" alt="ask" class="icon"></label>
+          <!-- <input type="text" name="location" required placeholder="e.g Rongai" class="input-elmt"> -->
+          <button class="add-btn current-loc-btn" type="submit">
+            <img src="icons/location.svg" alt="location" class="icon">
+            Use current location
+          </button>
+
+          <p>or</p>
+
+          <button class="add-btn current-loc-btn loc-map" type="submit">
+            <img src="icons/map-loc.svg" alt="location" class="icon">
+            Choose location on map
+          </button>
+
         </div>
 
         <div class="input-grp">
-          <label for="email">Email*</label>
-          <input type="email" name="email" required placeholder="e.g john@gmail.com" class="input-elmt">
+          <button type="submit" name="register" class="reg-btn shadow-drop-2-tb">Apply now</button>
         </div>
 
-        <div class="input-grp">
-          <label for="phone">Phone number*</label>
-          <input type="number" name="phone" required placeholder="e.g 0712345678" class="input-elmt">
-        </div>
-
-
-        <div class="input-grp">
-          <label for="pass">Password*</label>
-          <input type="Password" name="pass" required placeholder="******" class="input-elmt">
-        </div>
-
-        <div class="input-grp">
-          <label for="pass2">Confirm Password*</label>
-          <input type="Password" name="pass2" required placeholder="******" class="input-elmt">
-        </div>
-
-
-        <div class="input-grp">
-          <button type="submit" name="register" class="reg-btn shadow-drop-2-tb">Register</button>
-        </div>
-
-        <p>Already have an account?
-          <a href="login.html">Log in</a>
-        </p>
       </form>
 
 

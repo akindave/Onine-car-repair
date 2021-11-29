@@ -9,20 +9,20 @@ let ownersBtn = document.querySelector(".owners-btn")
 let mechanicsBtn = document.querySelector(".mechanics-btn")
 let carsBtn = document.querySelector(".cars-btn")
 let applicationBtn = document.querySelector(".applications-btn")
-let quesBtn = document.querySelector(".questions-btn")
+// let quesBtn = document.querySelector(".questions-btn")
 
 let buttonsList = document.querySelectorAll(".menu-option-btn")
-let addQuesBtn = document.querySelector(".addQues-btn")
+// let addQuesBtn = document.querySelector(".addQues-btn")
 let overlay = document.querySelector(".dark-overlay")
 let form = document.querySelector(".register-form")
 
 let closeIcon = document.querySelectorAll(".close-icon");
 let cancelBtns = document.querySelectorAll(".cancel-btn");
 
-addQuesBtn.addEventListener("click", ()=>{
-  overlay.classList.add("showFlex")
-  form.classList.add("showFlex")
-})
+// addQuesBtn.addEventListener("click", ()=>{
+//   overlay.classList.add("showFlex")
+//   form.classList.add("showFlex")
+// })
 
 closeIcon.forEach( elem =>{
   elem.addEventListener("click",()=>{
@@ -42,12 +42,12 @@ cancelBtns.forEach( elem =>{
 })
 
 // getting sections
-let overSect = document.querySelector(".overview-details")
-let ownerSect = document.querySelector(".owners-details")
-let mechSect = document.querySelector(".mech-details")
-let carsSect = document.querySelector(".cars-details")
-let appliSect = document.querySelector(".applications-details")
-let quesSect = document.querySelector(".ques-details")
+// let overSect = document.querySelector(".overview-details")
+// let ownerSect = document.querySelector(".owners-details")
+// let mechSect = document.querySelector(".mech-details")
+// let carsSect = document.querySelector(".cars-details")
+// let appliSect = document.querySelector(".applications-details")
+// let quesSect = document.querySelector(".ques-details")
 
 let allSections = document.querySelectorAll(".view-details")
 let allDelBtns = document.querySelectorAll(".del-btn")
@@ -107,6 +107,6 @@ overviewBtn.addEventListener("click",()=>{ changeDisplay("overview-btn","overvie
 ownersBtn.addEventListener("click",()=>{ changeDisplay("owners-btn","owners-details") });
 mechanicsBtn.addEventListener("click",()=>{ changeDisplay("mechanics-btn","mech-details") });
 carsBtn.addEventListener("click",()=>{ changeDisplay("cars-btn","cars-details") });
-applicationBtn.addEventListener("click",()=>{ changeDisplay("applications-btn","applications-details") });
-quesBtn.addEventListener("click",function(){changeDisplay("questions-btn","ques-details")});
+// applicationBtn.addEventListener("click",()=>{ changeDisplay("applications-btn","applications-details") });
+// quesBtn.addEventListener("click",function(){changeDisplay("questions-btn","ques-details")});
 

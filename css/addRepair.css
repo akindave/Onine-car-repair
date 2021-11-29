@@ -34,7 +34,7 @@ justify-content: center;
 .input-grp{
     display: grid;
     grid-row-gap: 5px;
-    margin: 13px 0;
+    margin: 20px 0;
   }
   .input-elmt{
     border: 2px solid var(--grey3);
@@ -47,14 +47,116 @@ justify-content: center;
     display: flex;
     align-items: baseline;
   }
-  .cost-input{
+  .holder-tbl .cost-input{
     width: max-content;
     /* flex-grow: 1; */
     margin-left: 6px;
+    max-width: 90px;
+    border: unset !important;
   }
-  /* .record-pop{
+  .data-row{
     display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: unset;
   }
-  .dark-overlay{
+  .holder-tbl .input-elmt{
+    border: none;
+    border-right: 2px solid var(--grey2Box);
+    border-radius: unset !important;
+    padding: 12px 1px 6px 2px;
+    font-size: 16px;
+  }
+  .repair-card{ 
+    border: 2px solid var(--grey2Box);
+    margin-top: 0px;
+    box-shadow: unset;
+  }
+.plate-input{
+  width:max-content;
+  border-radius: var(--bRadius);
+
+}
+.act-input{ 
+  flex-grow: 1;
+  max-width: unset;
+}
+.form-large{
+  width: 95%;
+
+}
+.data-row:last-child, .data-row:first-child{
+  /* border-bottom: unset; */
+border-top: unset;
+border-bottom: 1px solid var(--horizontalLine);
+margin:unset;
+}
+
+.data-row{
+  border-bottom: 1px solid var(--horizontalLine);
+}
+.new-add{ 
+  background: unset;
+  color: var(--blue);
+  margin: 10px 0;
+}
+.new-add:hover{ 
+  background-color: #b5e5ff;
+}
+.save-record{ 
+  background: var(--green);
+  border-radius: 30px;
+  color: white;
+  max-width: 300px;
+    width: 100%;
+    border: none;
     display: flex;
-  } */
+    justify-content: center;
+    place-items: center;
+    font-size: 18px;
+    padding: 8px;
+    max-width: 240px;
+    margin-top: 1rem;
+    margin: auto;
+}
+
+/* operation pop up code */
+.op-pop{ 
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  z-index: 3;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius:var(--bRadius);
+  align-content: space-around;
+  display:none;
+}
+.success-svg{  
+  width: 75px;
+  height: 75px;
+}
+.green-p{ 
+  color: var(--green);
+  margin:10px 0;
+}
+
+.okay{ 
+  padding: 5px 10px;
+  border-radius: var(--bRadius);
+  border: 2px solid var(--green);
+  /* outline: none; */
+  background: var(--green);
+  font-weight: 500;
+  font-size: 16px;
+  color:white;
+  margin: auto;
+
+}
+.okay:hover{
+  background: #02582a;
+}

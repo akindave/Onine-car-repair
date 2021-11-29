@@ -73,7 +73,7 @@ border-bottom: 1px solid var(--horizontalLine);
     max-width: 200px;
 }
 .mech-name{
-    max-width: 130px;
+    max-width: 200px;
     font-size:  14px;
     margin-right: 10px;
 }

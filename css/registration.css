@@ -5,6 +5,7 @@ main{
   display: flex;
 justify-content: space-between;
 align-items: center;
+min-height: 100vh;
 }
 section{
   padding: 4rem 1rem;
@@ -14,6 +15,10 @@ align-items: center;
 height: 100%;
 padding-bottom: 0;
 flex-grow: 1;
+}
+.wrap{
+  flex-wrap: wrap;
+  padding: unset;
 }
 form h3{
   text-align: center;
@@ -64,9 +69,83 @@ background: linear-gradient(320deg,transparent,#f98e0ea3),url("../Images/brake-d
 .reg-btn:hover{
   background: var(--highlightBlueHover);
 }
-
-
-
+.welcome-svg{
+  width: 90%;
+  height: auto;
+  max-width: 500px;
+}
+.loc-btn{
+  /* position: fixed;
+bottom: 15px;
+left: 20px; */
+border-radius: 30px;
+padding: 10px 14px;
+border: none;
+background: var(--blue);
+color: white;
+font-size: 16px;
+}
+.loc{
+    position: relative;
+    display: flex;
+    place-items: center;
+}
+.loc .icon{
+    width:18px;
+    height:18px;
+}
+.loc::before{
+    content: "";
+    position: absolute;
+    top: -0.4em;
+    left: 0.5em;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.loc::after{
+  content: attr(data-tooltip);
+  margin: 0 5px;
+  display: none;
+  opacity: 0;
+  font-weight: 400;
+  color: white;
+  position: absolute;
+  top: -3.5em;
+  background: #000000e3;
+  padding: 5px 10px;
+  border-radius: var(--bRadius);
+  /* border-bottom-left-radius: 0px; */
+  left: 0em;
+}
+.loc:hover::before, .loc:hover::after{
+    opacity: 1;
+    display: inline;
+}
+.current-loc-btn{
+  background: var(--deepOrange);
+  border-color: var(--deepOrange);
+  color: white;
+  margin-left: unset;
+  width: max-content;
+  display: flex;
+  place-items: center;
+}
+.current-loc-btn:hover{
+  background-color: #dd3606;
+}
+.loc-map{
+  color: var(--deepOrange);
+  border-color: var(--deepOrange);
+  background-color: unset;
+}
+.loc-map:hover{
+  border-color: var(--blue);
+  background-color:unset;
+}
+.input-grp p{
+  text-align: center;
+}
 @media screen and (max-width:600px){
 .bgImage{
   display: none;

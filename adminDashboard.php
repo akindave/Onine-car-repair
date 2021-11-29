@@ -1,9 +1,15 @@
 <?php include 'php/header.php';?>
 <?php
 //check if its the admin 
-if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
-  header('Location:motorist-homepage.php');
+if(isset($_SESSION['name'])){
+      if($_SESSION['name'] != 'admin'){
+        header('Location:motorist-homepage.php');
+      }
 }
+  else{
+    header('Location:motorist-homepage.php');
+  }
+
 
            function getTotal($table){
             $getNumUsers = "SELECT * FROM `$table`";
@@ -66,15 +72,7 @@ if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
                     <span class="nav-text">Cars</span>
                   </div>
 
-                <div class="applications-btn menu-option-btn ">
-                    <img src="icons/application.svg" alt="Mechanics" class="icon">
-                    <span class="nav-text">Applications</span>
-                </div>
-            
-                <div class="questions-btn menu-option-btn ">
-                    <img src="icons/question.svg" alt="Mechanics" class="icon">
-                    <span class="nav-text">Mechanic Questions</span>
-                </div>
+                
       </div>
     </section>
 
@@ -122,17 +120,8 @@ if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
           </p>
         </div>
 
-        <!-- received applications  -->
-        <div class="detail-card">
-          <img src="icons/application.svg" alt="applications" class="icon detail-icon">
-          <p class="num-value">
-          <?php getTotal('mech_applications'); ?>
-          </p>
-
-          <p class="detail-desc">
-            Received applications
-          </p>
-        </div>
+       
+       
 
       </div>
     </section>
@@ -211,6 +200,10 @@ if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
         
 
       </div>
+      <button class="accept-btn">
+        <img src="icons/white-print.svg" alt="print" class="icon">
+        Print report
+      </button>
     </section>
 
     <!-- mechs section -->
@@ -240,6 +233,20 @@ if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
                     0712345678
                   </div>
                   <div class="detail-option">
+                    <img src="icons/loc-dark.svg" alt="call" class="icon">
+                    Karen
+                  </div>
+                  <div class="detail-option">
+                    Rating:
+                    <img src="icons/orange-Star.svg" alt="call" class="icon rating-icon">
+                    <img src="icons/orange-Star.svg" alt="call" class="icon rating-icon">
+                    <img src="icons/orange-Star.svg" alt="call" class="icon rating-icon">
+                    <img src="icons/orange-Star.svg" alt="call" class="icon rating-icon">
+                    <img src="icons/orange-Star.svg" alt="call" class="icon rating-icon">
+
+                   
+                  </div>
+                  <div class="detail-option">
                     <button class="remove-btn">
                         <img src="icons/red-remove.svg" alt="remove" class="icon">
                     Remove mechanic status
@@ -259,6 +266,10 @@ if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
     
       </div>
 
+      <button class="accept-btn">
+        <img src="icons/white-print.svg" alt="print" class="icon">
+        Print report
+      </button>
     </section>
 
      <!-- cars section -->
@@ -313,7 +324,10 @@ if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
         </div>
   
         </div>
-  
+        <button class="accept-btn">
+        <img src="icons/white-print.svg" alt="print" class="icon">
+        Print report
+      </button>
       </section>
 
        <!-- applications section -->
@@ -366,70 +380,7 @@ if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
   
       </section>
 
-       <!-- questions section -->
-    <section class="view-details ques-details">
-        <div class="detail-title">
-          <img src="icons/question.svg" alt="user" class="icon">
-          Mechanic questions
-        </div>
-  
-        <div class="detail-cards-holder flex-wrap">
-  
-        <!-- one quiz -->
-        <div class="detail-card question-card">
-            <h3 class="ques-title">
-                1. What is a crankshaft?
-            </h3>
-                <div class="detail-option ques-choices">
-                    <ul type="disc">
-                        <li>Vulputate tincidunt auctor condimentum.</li>
-                        <li>Vulputate tincidunt auctor condimentum.</li>
-                        <li>Vulputate tincidunt auctor condimentum.</li>
-                        <li>Vulputate tincidunt auctor condimentum.</li>
 
-                    </ul>
-                </div>
-              <div class="detail-option around">
-               <button class="edit-btn">
-                   Edit Question
-               </button>
-               <button class="del-btn">
-                   Delete Question
-               </button>
-              </div>
-        </div>
-  
-         <!-- second quiz -->
-         <div class="detail-card question-card">
-            <h3 class="ques-title">
-                2. What is a piston ring?
-            </h3>
-                <div class="detail-option ques-choices">
-                    <ul type="disc">
-                        <li>Vulputate tincidunt auctor condimentum.</li>
-                        <li>Vulputate tincidunt auctor condimentum.</li>
-                        <li>Vulputate tincidunt auctor condimentum.</li>
-                        <li>Vulputate tincidunt auctor condimentum.</li>
-
-                    </ul>
-                </div>
-              <div class="detail-option around">
-               <button class="edit-btn">
-                   Edit Question
-               </button>
-               <button class="del-btn">
-                   Delete Question
-               </button>
-              </div>
-        </div>
-
-        </div>
-  
-        
-      <button class="accept-btn addQues-btn">
-        <img src="icons/plus.svg" alt="add" class="icon">
-        Add Question
-    </button>
 
 
     <form action="" class="register-form">
@@ -482,6 +433,7 @@ if(!isset($_SESSION['name']) && !$_SESSION['name']=='admin'){
 
 <div class="dark-overlay"></div>
   </main>
-  <script src="js/admin.js"></script>
+  <script src="http://localhost/mechLocator/js/admin.js"></script>
+  <!-- <script src="js/admin.js"></script> -->
 </body>
 </html>
