@@ -100,7 +100,10 @@ if(isset($_SESSION['name'])){
         <div class="detail-card">
           <img src="icons/mechanic.svg" alt="mechanic" class="icon detail-icon">
           <p class="num-value">
-          <?php getTotal('mechanics'); ?>
+          <?php 
+          // getTotal('mechanics'); 
+          ?>
+          0
           </p>
 
           <p class="detail-desc">
