@@ -75,7 +75,7 @@ justify-content: center;
 .plate-input{
   width:max-content;
   border-radius: var(--bRadius);
-
+  text-transform: uppercase;
 }
 .act-input{ 
   flex-grow: 1;

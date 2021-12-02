@@ -2,6 +2,72 @@
 //create db connection
 session_start();
 require 'connect.php';
+if(isset($_SESSION['user_id'])){
+    $user_id = $_SESSION['user_id'];
+}
+function checkNotification(){
+    $connection = $GLOBALS['connection'];
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+        // $selectRecord = "SELECT * FROM repairs WHERE mech_user_id = '$user_id'";
+        // $selectCar = "SELECT * FROM cars WHERE user_id='$user_id'";
+
+        $join = "SELECT * FROM repairs INNER JOIN cars ON cars.num_plate = repairs.num_plate  WHERE repairs.seen ='NO'";
+        $joinResult = mysqli_query($connection,$join);
+        if(!$joinResult){
+            echo "msqli error" .mysqli_error($connection);
+        }
+        else{ 
+
+            $row = mysqli_num_rows($joinResult);
+                if($row > 0){
+                    
+                    while($row = mysqli_fetch_array($joinResult)){
+                        if($row['user_id'] == $user_id){
+                            //running
+                            $_SESSION['notification'] = 1;
+                        }
+                        else{
+                            $_SESSION['notification'] = 0;
+                        }
+                    }
+                }
+                else{
+                    $_SESSION['notification'] = 0;
+                }
+        }
+        
+
+        // $received = mysqli_query($connection,$selectRecord);
+        // if(!$received){
+        //     echo "error".mysqli_error($connection);
+        // }
+
+        // echo "received";
+        // $Row = mysqli_num_rows($received);
+        // while($row = mysqli_fetch_assoc($received)){
+        //     if($row['seen']=="NO"){
+        //         $_SESSION['notification'] = 1;
+        //     }
+        //     else{
+        //         $_SESSION['notification'] = 0;
+        //     }
+    
+        // }
+    }
+
+}
+
+function makeMechanic($user_id){
+    $query = "UPDATE `users` SET `is_mech` = 'YES' WHERE `users`.`user_id` = '$user_id'";
+    if(!mysqli_query($GLOBALS['connection'], $query)){
+        echo "Error updating mechanic";
+    }
+}
+// makeMechanic($user_id);
+checkNotification();
+// $_SESSION['notification'] = "0";
+
 ?>
         <nav class="nav">
         <img src="icons/car.svg" alt="logo" class="logo">
@@ -38,8 +104,25 @@ require 'connect.php';
                 <img src="icons/user.svg" alt="user" class="icon">
                 My profile
                  </a>
-                
-                 
+                 ';
+                 if((isset($_SESSION['notification'])) && ($_SESSION['notification']==1)){
+                    echo'
+                        <a href="notification.php" class="noti-holder prof-link flex-wrap">
+                        <img src="icons/notification.svg" alt="noti" class="icon">
+                        Notifications
+                        <span class="dot"></span>
+                         </a>
+                    ';
+                 }
+                 else{
+                        echo '
+                        <a href="notification.php" class="noti-holder prof-link flex-wrap">
+                        <img src="icons/notification.svg" alt="noti" class="icon">
+                        Notifications
+                        </a>
+                        ';
+                 }
+                 echo '
                 <a href="addRepair.php"> 
                 <img src="icons/repair-white.svg" alt="repair" class="icon">
                 Add Repair</a>
@@ -55,7 +138,7 @@ require 'connect.php';
                 </form>
                 </div>
             </div>
-                ';
+            ';
             }
             else{
                 echo '
@@ -70,6 +153,22 @@ require 'connect.php';
 
         </div>
         </nav>
+
+
+    <!-- notification pop up   -->
+    <?php 
+     if(isset($_SESSION['notification']) && $_SESSION['notification']==1){
+        echo'
+        <a href="notification.php">
+                <p class="noti-pop">
+                <img src="icons/notification.svg" alt="notification" class="icon">  
+                New notification(s)
+                </p>
+        </a>
+        ';
+     }
+    ?>
+       
 
 <?php include 'php/addCar.php'; ?>
 

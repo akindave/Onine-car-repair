@@ -37,6 +37,11 @@ else{
                    //delay the code below for 5 seconds
                     // sleep(5);
 
+                    //when a mechanic logs in
+                    if($received['is_mech']=="YES"){
+                        $_SESSION['mechId'] = $received['user_id'];
+                    }
+
                     //if its the admin logging in, take him to admin page
                     if($_SESSION['name'] == 'admin' && $pass=='admin1234'){
                         header("location: ../adminDashboard.php");
@@ -51,7 +56,7 @@ else{
                     $_SESSION['errorNumber'] = 1;
                    $checkPassword = "<div style = 'color:red'> <strong>Check Your password </strong></div>";
                  
-                //    header("location:../login.php");
+                   header("location:../login.php");
 
                 }
             }
@@ -59,10 +64,10 @@ else{
          {
             $_SESSION['errorNumber'] = 3;
              $noUser = "<h1 style= 'color:red;'>User not registered</h1> <br> ";
-             echo $noUser;
-    echo "hellow welcome";
+            //  echo $noUser;
+    // echo "hellow welcome";
 
-            //  header("location:../login.php");
+             header("location:../login.php");
 
             }
         }

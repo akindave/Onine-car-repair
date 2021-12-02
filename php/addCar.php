@@ -31,7 +31,7 @@ if(isset($_SESSION['user_id'])){
       <form action="" method="post">
         <div class="input-grp">
           <label for="num_plate">Enter car number plate</label>
-          <input type="text" name="num_plate" required placeholder="e.g KAA 123A" class="input-elmt">
+          <input type="text" name="num_plate" required placeholder="e.g KAA 123A" class="input-elmt number-plate">
         </div>
 
         

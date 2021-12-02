@@ -84,6 +84,14 @@ body{margin: 0;position: relative;}
     place-items: center;
     color: white;
     left: 0;
+    top: 10%;
+    z-index: 4;
+}
+.number-plate{
+    text-transform: uppercase;
+}
+.noti-pop:hover{
+    background: var(--blue);
 }
 
 /* new  */

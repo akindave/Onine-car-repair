@@ -164,16 +164,16 @@ $GLOBALS['i']++;
 
 
     <aside class="op-pop">
-<div class="close-icon" onclick="closePop('op-pop')">X</div>
+        <div class="close-icon" onclick="closePop('op-pop')">X</div>
 
-    <img src="icons/green-success.svg" alt="success" class='success-svg'>
-    <p class="op-p green-p">
-      Operation was successful
-    </p>
-    <button class="okay" onclick="closePop('op-pop')">
-      Okay
-    </button>
-</aside>    
+        <img src="icons/green-success.svg" alt="success" class='success-svg'>
+        <p class="op-p green-p">
+          Operation was successful
+        </p>
+        <button class="okay" onclick="closePop('op-pop')">
+          Okay
+        </button>
+    </aside>    
 
   </main>    
 <script src="js/nav.js" defer></script>

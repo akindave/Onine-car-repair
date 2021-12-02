@@ -23,6 +23,17 @@ nav{
     margin: 0 10px;
     cursor: pointer;
     padding: 4px 0;
+    position: relative;
+}
+.dot{
+  position:absolute;
+  top: 2px;
+  left: 2px;
+  width:5px;
+  height: 5px;
+  border-radius:50%;
+  background-color:var(--blue);
+  z-index: 3;
 }
 .links a:hover{
   color: var(--textGreyish);

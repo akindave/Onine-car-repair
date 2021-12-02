@@ -13,7 +13,20 @@
     <link rel="stylesheet" href="css/registration.css">
   </head>
   <body>
-  <?php include 'php/header.php';?>
+  <?php include 'php/header.php';
+    function checkError() {
+      if(isset($_SESSION['errorNumber'])){
+        if($_SESSION['errorNumber'] == 1){
+          $errMsg = "<strong style = 'color:var(--red);'>Check Your password </strong>";
+        }
+        else{ 
+          $errMsg = "<strong style= 'color:var(--red);'>User not registered</strong> <br> ";
+        }
+        echo $errMsg;
+      }
+    }
+
+  ?>
 
     <main>
 
@@ -27,6 +40,8 @@
       <form class="login-form" action="php/login.php" method="post">
         <h3>Log in</h3>
         <p>Please enter the details below.</p>
+
+      <?php checkError();?>
 
         <div class="input-grp">
           <label for="email">Email*</label>

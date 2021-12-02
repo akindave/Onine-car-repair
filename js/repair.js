@@ -54,4 +54,3 @@ document.querySelector("#length").value = hiddenAct.length;
 document.querySelector("#hiddenActivity").value = hiddenAct;
 document.querySelector("#hiddenCost").value = hiddenCost;
 }
-

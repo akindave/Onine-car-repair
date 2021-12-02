@@ -11,9 +11,9 @@
 }
 
 .repair-card,.noti-holder-div{ 
-    z-index: 5;
-    background: white;
-    box-shadow: unset;
+    /* z-index: 5; */
+    /* background: white; */
+    /* box-shadow: unset; */
 }
 .noti-holder{ 
     padding: 20px 10px;
@@ -30,13 +30,14 @@
 }
 .input-grp{
     justify-items: center;
+    width: 100%;
+    margin: 10px 0;
 }
 .save-review{
     margin-top: 10px;
 }
 .maxH{
-    max-height: 55vh;
-    overflow-y: scroll;
+    justify-content: center;
 }
 .rates .icon{
     border-radius: 50%;

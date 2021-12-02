@@ -16,11 +16,7 @@
 <?php include 'php/header.php';?>
     <main>
 
-    <!-- notification pop up   -->
-      <p class="noti-pop">
-      <img src="icons/notification.svg" alt="notification" class="icon">  
-      1 new notification(s)
-      </p>
+
 
     <section class="holder-sect">
           <a href="addRepair.php" class="add-btn flex-wrap">
@@ -82,6 +78,13 @@
                                       $activity = $repair_row['activity'];
                                       $cost = $repair_row['cost'];
                                       $date = $repair_row['date'];
+                                      $id = $repair_row['repair_id'];
+
+                                      //showing that its seen  
+                                      $setSeen = "UPDATE `repairs` SET `seen` = 'YES' WHERE `repairs`.`repair_id` = '$id'";
+                                      if(!mysqli_query($connection,$setSeen)){ 
+                                          echo "Error setting seen";
+                                      }
 
                                       //create an array for storing the date 
                                       $dateArray[$counter] = $date;
