@@ -23,7 +23,19 @@ if(isset($_SESSION['name'])){
                 echo $row;
                 }
            }
-            
+          
+           function getNumMechs($table){
+            $getNumUsers = "SELECT * FROM `$table` WHERE is_mech = 'YES'";
+            $totalUsers = mysqli_query($GLOBALS['connection'],$getNumUsers);
+            $row = mysqli_num_rows($totalUsers);
+
+                if($row<1){
+                  echo "0";
+                }
+                else{
+                echo $row;
+                }
+           }
                 
   ?>
 <!DOCTYPE html>
@@ -101,9 +113,9 @@ if(isset($_SESSION['name'])){
           <img src="icons/mechanic.svg" alt="mechanic" class="icon detail-icon">
           <p class="num-value">
           <?php 
-          // getTotal('mechanics'); 
+          getNumMechs("users");
           ?>
-          0
+          
           </p>
 
           <p class="detail-desc">
@@ -218,8 +230,68 @@ if(isset($_SESSION['name'])){
 
       <div class="detail-cards-holder flex-wrap">
 
+      <?php
+        $getUsers = "SELECT * FROM users WHERE is_mech = 'YES'";
+        $results = mysqli_query($connection,$getUsers);
+        // echo mysqli_num_rows($results);
+
+            if(!$results){
+               echo "msqli error" .mysqli_error($connection);
+            }
+              else{
+                $row = mysqli_num_rows($results);
+
+                if($row<1){
+                  echo "No car owners in database";
+                }
+                else{
+                $count = 0;
+                while($row = mysqli_fetch_assoc($results)){
+                  // echo "<br>";
+                  // echo $row['name'];
+                  $emailArray[$count] = $row['email'];
+
+                  if($count>0 && ($emailArray[$count] === $emailArray[$count-1])){
+                     continue;
+                  }
+                  else{ 
+                    echo '
+                    <div class="detail-card">
+                        <div class="flex-wrap">
+                            <img src="icons/user-holder.svg" alt="user" class="user-icon">
+  
+                        <article class="contact-dets">
+                            <div class="username">
+                                <strong>'.$row['name'].'</strong>
+                              </div>
+                              <div class="detail-option">
+                                <img src="icons/email-svgrepo-com.svg" alt="email" class="icon">
+                                '.$row['email'].'
+                              </div>
+                              <a href="tel:'.$row['phone'].'" >
+                              <div class="detail-option">
+                                <img src="icons/call-grey.svg" alt="call" class="icon">
+                                '.$row['phone'].'
+                              </div>
+                              </a>
+                            
+                        </article>
+  
+                        </div>
+                    </div>
+                    ';
+                  }
+
+                  $count++;
+
+                 
+                }
+          }
+        }
+      ?>
+      
          <!-- one mech -->
-         <div class="detail-card">
+         <!-- <div class="detail-card">
             <div class="flex-wrap">
                 <img src="icons/user-holder.svg" alt="user" class="user-icon">
     
@@ -267,7 +339,7 @@ if(isset($_SESSION['name'])){
     
             </div>
     
-      </div>
+      </div> -->
 
       <button class="accept-btn">
         <img src="icons/white-print.svg" alt="print" class="icon">

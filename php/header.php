@@ -12,7 +12,7 @@ function checkNotification(){
         // $selectRecord = "SELECT * FROM repairs WHERE mech_user_id = '$user_id'";
         // $selectCar = "SELECT * FROM cars WHERE user_id='$user_id'";
 
-        $join = "SELECT * FROM repairs INNER JOIN cars ON cars.num_plate = repairs.num_plate  WHERE repairs.seen ='NO'";
+        $join = "SELECT * FROM repairs INNER JOIN cars ON cars.num_plate = repairs.num_plate  WHERE repairs.seen ='NO' AND mech_user_id>0";
         $joinResult = mysqli_query($connection,$join);
         if(!$joinResult){
             echo "msqli error" .mysqli_error($connection);
@@ -80,7 +80,13 @@ checkNotification();
         <div class="flex-wrap links">
 
         <a href="motorist-Homepage.php">Home</a>
-
+            <?php
+                if(isset($_SESSION['name']) && $_SESSION['name']=='admin'){
+                    echo '
+                    <a href="adminDashboard.php">Dashboard</a>
+                    ';
+                }
+            ?>
             <a href="allMechanics.php">
             <!-- <img src="icons/repair.svg" class="icon white-icon" alt="mechanics">     -->
             Mechanics</a>

@@ -76,9 +76,23 @@
           </a>
 
                 <!-- button for locating a mech  -->
-      <button type="button" name="button" class="loc-btn flex-wrap">
+      
+<?php
+    if(!isset($_SESSION['mechId'])){
+        echo '
+        <button type="button" name="button" class="loc-btn flex-wrap">
         <img src="icons/location.svg" alt="locate" class="icon"> Mechanic near me
       </button>
+      
+        <a href="mech-signup.php">
+        <button class="add-btn">
+        Apply to be a mechanic
+        </button>
+      </a>
+        ';
+
+    }
+  ?>
         </section>
   </body>
   <script src="js/nav.js" charset="utf-8"></script>

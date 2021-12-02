@@ -15,3 +15,10 @@ window.onscroll = function() {
   }
   prevScrollpos = currentScrollPos;
 }
+
+function openPop(targetClass){
+  let target = document.querySelector(`.${targetClass}`);
+  target.classList.add("show-flex");
+  let overlay = document.querySelector(".dark-overlay");
+  overlay.classList.add("show-flex");
+  }

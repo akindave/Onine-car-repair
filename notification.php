@@ -20,16 +20,20 @@ if(isset($_SESSION['user_id'])){
   // $user_id = $_SESSION['user_id'];
   $username = $_SESSION['name'];
 }
+else{ 
+  header('Location: login.php');
+}
 $TotalCost = 0;
 
 $mechId;
+$mechanicName;
 
 function showRecords($car_plate,$date) {
         $TotalCost = $GLOBALS['TotalCost'];
         $connection = $GLOBALS['connection'];
         $mechId =$GLOBALS['mechId'];
 
-        $selectRecord = "SELECT * FROM repairs WHERE num_plate = '$car_plate'";
+        $selectRecord = "SELECT * FROM repairs WHERE num_plate = '$car_plate' AND mech_user_id>0";
         $received = mysqli_query($connection,$selectRecord);
         // $username = $GLOBALS['username'];
       echo '
@@ -57,7 +61,10 @@ function showRecords($car_plate,$date) {
 
                                                   $mechName = mysqli_query($connection,"SELECT * FROM users WHERE user_id = '$mechId' LIMIT 1");
                                                   $mechName = mysqli_fetch_array($mechName);
-                                                  $mechanicName = $mechName['name'];
+                                                  if(isset($mechName['name'])){ 
+                                                    $mechanicName = $mechName['name'];
+                                                    $GLOBALS['mechanicName'] = $mechName['name'];
+                                                  }
 
 
                                                    //showing that its seen  
@@ -168,7 +175,7 @@ function showRateDivs($mechName){
         </p>
       </div>
 
-      <form method="post" action="" onsubmit="readRating();">
+      <form method="post" action="php/rate.php" onsubmit="readRating();">
           <div class="input-grp">
             <label for="message">Add review message (optional)</label>
             <textarea name="message" id="" cols="15" rows="3" placeholder="e.g Excellent service" required  class="input-elmt rev-text"></textarea>
@@ -191,6 +198,7 @@ function getCarFromDB(){
             $connection = $GLOBALS['connection'];
             $user_id = $GLOBALS['user_id'];
             $username = $GLOBALS['username'];
+            $new = 0;
                           $selectAllCars = "SELECT * FROM cars WHERE user_id = '$user_id'";
                            $results = mysqli_query($connection,$selectAllCars);
                            if(!$results){
@@ -202,7 +210,7 @@ function getCarFromDB(){
                                                 if($row > 0){
                                                       while($row = mysqli_fetch_array($results)){
                                                         $car_plate = $row['num_plate'];
-                                                        $selectRecord = "SELECT * FROM repairs WHERE num_plate = '$car_plate'";
+                                                        $selectRecord = "SELECT * FROM repairs WHERE num_plate = '$car_plate' AND mech_user_id>0";
                                                         $received = mysqli_query($connection,$selectRecord);
                                                         $repair_row = mysqli_num_rows($received);
                                                         $new = 0;
@@ -212,8 +220,9 @@ function getCarFromDB(){
                                                                 if($seenRow['seen']=="NO" && ($seenRow['mech_user_id']>0)){
                                                                       $date = $seenRow['date'];
                                                                      $GLOBALS['mechId'] = $seenRow['mech_user_id'];
+                                                                     $_SESSION['mechId'] = $seenRow['mech_user_id'];
                                                                         showRecords($car_plate,$date);  
-                                                                        showRateDivs($username);
+                                                                        showRateDivs($GLOBALS['mechanicName']);
                                                                         $new++;
                                                                 }
                                                                 else{
@@ -236,16 +245,7 @@ function getCarFromDB(){
                       }
 
 
-  if(isset($_POST['saveReview'])){
-    $rating = $_POST['hiddenRating'];
-    $rating++;
-    $message = mysqli_escape_string($connection,$_POST['message']);
 
-    $insertRating = "INSERT INTO ratings(rating,message,user_id) VALUES ('$rating','$message','$mechId')";
-    if(!mysqli_query($connection,$insertRating)){
-      echo "Error inserting rating";
-      }  
-  }
  ?>
 <!-- <div class="dark"></div> -->
 

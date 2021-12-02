@@ -13,14 +13,45 @@
     <link rel="stylesheet" href="css/registration.css">
   </head>
   <body>
-  <?php include 'php/header.php';?>
+  <?php include 'php/header.php';
+  
+  if(isset($_POST['register'])){ 
+    if(isset($_SESSION['user_id'])){
+      $user_id = $_SESSION['user_id'];
+      makeMechanic($user_id);
+      echo '
+      
+      <aside class="op-pop">
+        <div class="close-icon" onclick="closePop(`op-pop`)">X</div>
+
+        <img src="icons/green-success.svg" alt="success" class="success-svg">
+        <p class="op-p green-p">
+          Operation was successful
+        </p>
+        <button class="okay" onclick="closePop(`op-pop`)">
+          Okay
+        </button>
+    </aside> 
+    <script type="text/javascript">
+      openPop(`op-pop`);
+    </script>
+      ';
+    }
+    else{
+      header('Location:login.php');
+    }
+  }
+
+  
+  
+  ?>
 
     <main>
 
     <section class="form-sect wrap">
       <img src="icons/Welcome.svg" alt="welcome" class="welcome-svg">
 
-      <form class="register-form" action="php/signup.php" method="post">
+      <form class="register-form" action="" method="post">
         <h3>Apply as a mechanic</h3>
         <p>Please enter the details below.</p>
        

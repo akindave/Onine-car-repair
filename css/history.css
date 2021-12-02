@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-transform: uppercase;
 }
 main{
     padding: 5rem 1rem;

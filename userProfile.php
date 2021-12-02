@@ -320,7 +320,7 @@
                     <div class="flex-wrap">
     
                       
-                      <input type="text" name="car_plate" required value="' .$row1["num_plate"].'" class="input-elmt" readonly>
+                      <input type="text" name="car_plate" required value="' .$row1["num_plate"].'" class="input-elmt uppercase" readonly>
     
     
                       <button type="button" class="edit-btn flex-wrap">
