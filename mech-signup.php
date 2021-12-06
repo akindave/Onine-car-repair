@@ -19,6 +19,7 @@
     if(isset($_SESSION['user_id'])){
       $user_id = $_SESSION['user_id'];
       makeMechanic($user_id);
+      $_SESSION['mechId'] = $user_id;
       echo '
       
       <aside class="op-pop">

@@ -59,16 +59,21 @@
           <a href="repairHistory.php">
             <article class="card">
               <img src="icons/repair.svg" alt="repair history" class="card-icon">
-              <p>Repair History</p>
+              <p>My Repair History</p>
             </article>
           </a>
 
           <a href="allMechanics.php">
               <article class="card">
                 <img src="icons/tools.svg" alt="repair history" class="card-icon">
-                <p>Mechanics</p>
+                <p>Our Mechanics</p>
               </article>
           </a>
+
+          <button class="card" onclick="openPop('car-pop')">
+          <img src="icons/blue-plus.svg" alt="add" class="icon">
+            Add new Car
+          </button>
 
           <a href="addRepair.php" class="add-btn flex-wrap">
           <img src="icons/plus.svg" alt="add" class="icon">
@@ -76,14 +81,13 @@
           </a>
 
                 <!-- button for locating a mech  -->
-      
-<?php
-    if(!isset($_SESSION['mechId'])){
-        echo '
         <button type="button" name="button" class="loc-btn flex-wrap">
         <img src="icons/location.svg" alt="locate" class="icon"> Mechanic near me
       </button>
       
+<?php
+    if(!isset($_SESSION['mechId'])){
+        echo '
         <a href="mech-signup.php">
         <button class="add-btn">
         Apply to be a mechanic

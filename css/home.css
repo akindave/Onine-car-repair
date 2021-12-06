@@ -74,6 +74,7 @@ body{margin: 0;position: relative;}
     height: 24px;
     margin: 0 4px;
 }
+.card-sect .icon{ margin-right: 10px !important; }
 .noti-pop{ 
     position: fixed;
     background: var(--textGreyish);
@@ -96,23 +97,28 @@ body{margin: 0;position: relative;}
 
 /* new  */
 .card-icon{
-  width: 60px;
-margin: 5px;
+    width: 24px;
+    margin-right: 10px;
 }
 .card{
   box-shadow: var(--darkerShadow);
 padding: 10px;
 width: max-content;
-display: grid;
+display: flex;
+place-items: center;
+padding: 8px;
+color: var(--blue);
 justify-items: center;
 border-radius: var(--bRadius);
-border: 1px solid var(--horizontalLine);
+border: 2px solid var(--blue);
 align-content: center;
-min-width: 125px;
-margin: 5px;
+background: white;
+/* min-width: 125px; */
+margin: 8px;
 }
 .card-sect{
   padding: 0 1rem;
+  min-height: 200px;
 }
 
 .rating-icon {
@@ -759,7 +765,11 @@ justify-items: center;
 .uppercase{
     text-transform: uppercase;
 }
-
+.user-icon{
+    width: 60px;
+    height: 60px;
+    /* margin-right: 8px; */
+  }
 
 
 

@@ -80,6 +80,22 @@
                                       $date = $repair_row['date'];
                                       $id = $repair_row['repair_id'];
 
+
+                                      
+                                      $mechId = $repair_row['mech_user_id'];
+
+                                      if($mechId > 0){
+                                        $mechName = mysqli_query($connection,"SELECT * FROM users WHERE user_id = '$mechId' LIMIT 1");
+                                      $mechName = mysqli_fetch_array($mechName);
+                                     
+                                        $mechanicName = $mechName['name'];
+                                        $username = $mechanicName;
+                                        // continue;
+                                      }
+                                      
+
+
+
                                       //showing that its seen  
                                       $setSeen = "UPDATE `repairs` SET `seen` = 'YES' WHERE `repairs`.`repair_id` = '$id'";
                                       if(!mysqli_query($connection,$setSeen)){ 

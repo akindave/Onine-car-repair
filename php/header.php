@@ -70,7 +70,10 @@ checkNotification();
 
 ?>
         <nav class="nav">
+        <div class="flex-wrap">
         <img src="icons/car.svg" alt="logo" class="logo">
+        <strong class="logo-text">mechLocator</strong>
+        </div>
         <button class="menu-btn">
             <img src="icons/menu.svg" alt="menu" class="nav-icon">
             Menu
@@ -89,19 +92,26 @@ checkNotification();
             ?>
             <a href="allMechanics.php">
             <!-- <img src="icons/repair.svg" class="icon white-icon" alt="mechanics">     -->
-            Mechanics</a>
+            Our Mechanics</a>
             <a href="contact.php">
             <!-- <img src="icons/call.svg" class="icon white-icon"alt="call">     -->
             Contact us </a>
 
             <?php
             if(isset($_SESSION['name'])){
+
+                if(isset($_SESSION['mechId'])){
+                    $mech = "Mechanic";
+                }
+                else{
+                    $mech = "";
+                }
                 echo '
                 <a href="repairHistory.php">My Repair History </a>
                 <div class="admin-holder user-holder">
                 <div class="has-drop">
 
-                <img src="icons/prof-pic.svg" alt="user" class="icon">'.$_SESSION['name']. '
+                <img src="icons/prof-pic.svg" alt="user" class="icon">'.$mech.' '.$_SESSION['name']. '
                 <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
                 </div>
                 <div class="admin-drop">

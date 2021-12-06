@@ -33,7 +33,7 @@ function showRecords($car_plate,$date) {
         $connection = $GLOBALS['connection'];
         $mechId =$GLOBALS['mechId'];
 
-        $selectRecord = "SELECT * FROM repairs WHERE num_plate = '$car_plate' AND mech_user_id>0";
+        $selectRecord = "SELECT * FROM repairs WHERE num_plate = '$car_plate' AND mech_user_id > 0 AND seen = 'NO'";
         $received = mysqli_query($connection,$selectRecord);
         // $username = $GLOBALS['username'];
       echo '
@@ -59,13 +59,21 @@ function showRecords($car_plate,$date) {
                                                   $GLOBALS['mechId'] = $repair_row['mech_user_id'];
                                                   $mechId = $repair_row['mech_user_id'];
 
-                                                  $mechName = mysqli_query($connection,"SELECT * FROM users WHERE user_id = '$mechId' LIMIT 1");
-                                                  $mechName = mysqli_fetch_array($mechName);
-                                                  if(isset($mechName['name'])){ 
-                                                    $mechanicName = $mechName['name'];
-                                                    $GLOBALS['mechanicName'] = $mechName['name'];
-                                                  }
-
+                                                  if($mechId > 0){
+                                                  
+                                                    $mechName = mysqli_query($connection,"SELECT * FROM users WHERE user_id = '$mechId' LIMIT 1");
+                                                    $mechName = mysqli_fetch_array($mechName);
+                                                    if(isset($mechName['name'])){ 
+                                                      $mechanicName = $mechName['name'];
+                                                      $GLOBALS['mechanicName'] = $mechName['name'];
+                                                    }
+                                                    // continue;
+                                                    }
+                                                    else{ 
+                                                      $mechanicName = $_SESSION['name'];
+                                                      $GLOBALS['mechanicName'] =$mechanicName;
+  
+                                                    }
 
                                                    //showing that its seen  
                                                   $setSeen = "UPDATE `repairs` SET `seen` = 'YES' WHERE `repairs`.`repair_id` = '$id'";

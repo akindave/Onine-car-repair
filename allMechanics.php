@@ -72,7 +72,7 @@
                     echo '
                     <div class="detail-card">
                         <div class="flex-wrap">
-                            <img src="icons/user-holder.svg" alt="user" class="user-icon">
+                            <img src="icons/mech-white.svg" alt="user" class="user-icon">
   
                         <article class="contact-dets">
                             <div class="username">
@@ -98,7 +98,7 @@
                              <a href="mailto:'.$row['email'].'">
                                <img src="icons/email-svgrepo-com.svg" alt="email" class="icon">
                              </a>
-                             <a href="#">
+                             <a href="https://wa.me/'.$row['phone'].'">
                                <img src="icons/whatsapp.svg" alt="whatsapp" class="icon">
                              </a>
                              <a href="tel:'.$row['phone'].'">
@@ -133,7 +133,7 @@
       ?>
 
 
-          <article class="detail">
+          <!-- <article class="detail">
           <picture>
             <img src="Images/lady-mech.jpg" alt="mechanic" class="mech-avatar">
           </picture>
@@ -195,7 +195,7 @@
               </div>
               </div>
 
-          </article>
+          </article> -->
 
       </section>
 

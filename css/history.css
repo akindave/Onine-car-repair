@@ -41,7 +41,7 @@ table th{
     border-bottom: 1px solid var(--grey3);
 }
 .holder-tbl{
-    padding: 5px 12px;
+    padding: 5px 20px;
 }
 .data-row li{
     margin-right: 10px;

@@ -30,7 +30,7 @@ if(isset($_POST['addRecord'])){
     // if a mechanic is using the system 
     if(isset($_SESSION['mechId'])){
         $mech_user_id = $_SESSION['mechId'];
-        echo "I am a mechanic";
+        // echo "I am a mechanic";
         $actArray =($_POST['hiddenActivity']);
         $costArray = ($_POST['hiddenCost']);
         $length = ($_POST['length']);
@@ -52,6 +52,8 @@ if(isset($_POST['addRecord'])){
             }                   
         }
     }
+
+    else{ 
 
     //other users can only enter details about their own cars
     $selectCar = "SELECT * FROM cars WHERE user_id='$user_id'";
@@ -97,11 +99,13 @@ if(isset($_POST['addRecord'])){
         }
        
       }
+    }
+
 
       //when no value is stored
       if($carsEntered==0){
           
-          echo "No repair added";
+          echo "No repair added".mysqli_error($connection);
         //       echo '
         //       <aside class="op-pop">
         //       <div class="close-icon" onclick="closePop(`op-pop`)">X</div>
