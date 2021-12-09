@@ -81,9 +81,11 @@
           </a>
 
                 <!-- button for locating a mech  -->
+        <a href="mechNear.php">
         <button type="button" name="button" class="loc-btn flex-wrap">
         <img src="icons/location.svg" alt="locate" class="icon"> Mechanic near me
       </button>
+        </a>
       
 <?php
     if(!isset($_SESSION['mechId'])){

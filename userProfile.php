@@ -120,7 +120,36 @@
       header("location:login.php");
     }
     
+    if(isset($_POST['locUpdates'])){
+      $long = $_POST['long'];
+      $lat = $_POST['lat'];
+      
+        $user_id = $_SESSION['user_id'];
+        $insertor = "UPDATE map_details SET long_cor='$long',lat_cor='$lat' WHERE user_id = '$user_id')";
+        if(mysqli_query($connection,$insertor)){ 
+          // echo "Inserted successfully";
+          echo '
+      
+          <aside class="op-pop">
+            <div class="close-icon" onclick="closePop(`op-pop`)">X</div>
 
+            <img src="icons/green-success.svg" alt="success" class="success-svg">
+            <p class="op-p green-p">
+              Operation was successful
+            </p>
+            <button class="okay" onclick="closePop(`op-pop`)">
+              Okay
+            </button>
+        </aside> 
+        <script type="text/javascript">
+          openPop(`op-pop`);
+        </script>
+      ';
+        }
+        else{ 
+          echo "error ".mysqli_error($connection);
+        }
+    }
 
     ?>
     <!-- <nav class="nav">
@@ -177,7 +206,20 @@
 
     <main>
 <aside class="bgPattern">
+  <?php
+  if(isset($_SESSION['mechId'])){
+    echo '
+  <img src="icons/mech-white.svg" class="user-img mech-img" alt="image">
+    
+    ';
+  }
+  else{
+    echo'
   <img src="icons/prof-pic.svg" class="user-img" alt="image">
+    
+    ';
+  }
+  ?>
   
   <h3>Hello👋! 
 
@@ -226,6 +268,8 @@
 
           </article>
 
+         
+          
 
           <article class="detail">
             <img src="icons/call-grey.svg" alt="Username" class="icon">
@@ -271,11 +315,29 @@
             </div>
           </article> -->
 
+           <!-- updating location for a mechanic  -->
+           <?php
+          if(isset($_SESSION['mechId'])){
+            echo '
+            <article class="detail">
+            <form action="" method="post" onsubmit="fetchLoc()">
+                  <input type="hidden" name="long" id="long-cord" required>
+                  <input type="hidden" name="lat" id="lat-cord" required>
+                  <button class="current-loc-btn" type="submit" onclick="fetchLoc()" name="locUpdate">
+                    <img src="icons/location.svg" alt="location" class="icon">
+                    Update my location
+                  </button>
+              </form>
+          </article>';
+          }
+
+          ?>
+
           <article class="detail">
             <button type="button" name="button" class="edit-btn edit-pwd flex-wrap" onclick="openPop('pwd-pop')">
               <img src="icons/password.svg" alt="password" class="icon">
               Edit password
-              <img src="icons/edit.svg" alt="edit" class="icon">
+              <!-- <img src="icons/edit.svg" alt="edit" class="icon"> -->
              </button>
           </article>
 
@@ -388,5 +450,7 @@
     </main>
   </body>
   <script src="js/nav.js" charset="utf-8"></script>
+  <script src="js/map.js" charset="utf-8"></script>
+
 
 </html>

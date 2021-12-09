@@ -1,18 +1,37 @@
 const funguo = 'AIzaSyA0TOlBoaCqdBkmXn7YOw7BGP8CNtYE4sM';
 
 var x = document.getElementById("demo");
-function getLocation() {
+
+
+function getUpdatingLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.watchPosition(showPosition);
   } else {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
+
+function getCurrentLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    // x.innerHTML = "Geolocation is not supported by this browser.";
+    showError(error);
+  }
 }
+
+
+function showPosition(position) {
+  long = position.coords.longitude
+  lat = position.coords.latitude
+
+  // x.innerHTML = `${lat} and ${long}`;
+
+  document.querySelector('#long-cord').value = long;
+  document.querySelector('#lat-cord').value = lat;
+}
+
 
 function showError(error) {
     switch(error.code) {
@@ -31,13 +50,13 @@ function showError(error) {
     }
   }
 
-  function showPosition(position) {
+  function plotPosition(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
   
     // var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=
     // "+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
   
-    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+    // document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
   }
 
   
@@ -51,15 +70,25 @@ function showError(error) {
 // coords.speed	The speed in meters per second (returned if available)
 // timestamp	The date/time of the response (returned if available)
 
-var x = document.getElementById("demo");
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(showPosition);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
+
+// getCurrentLocation();
+
+    
+function fetchLoc(){
+  fetch(getCurrentLocation())
+  .then(response => {
+    showPosition(response);
+  })
+  .catch(error => {
+    // showError(error);
+  })
 }
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
+fetchLoc();
+function postData(){ 
+  fetch('../php/mechNear.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+  })
+  .then( response =>{})
+  .catch(error => {})
 }

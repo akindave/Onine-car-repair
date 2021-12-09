@@ -21,10 +21,15 @@
       <h3>Mechanics near your location</h3>
 
       <section class="flex-wrap">
-        <div class="map">
+        <div class="map" id="demo">
             <h2>Map will be here</h2>
+            <article>
+              Please allow mechLocator to access your location. 
+              We need it to find mechanics near you.
+            </article>
         </div>
 
+        
       </section>
 
 
@@ -32,4 +37,5 @@
   </body>
   <script src="js/nav.js" charset="utf-8"></script>
 
+ 
 </html>

@@ -186,7 +186,25 @@ justify-items: center;
   display: none;
   pointer-events: all;
 }
-
+.current-loc-btn {
+  padding: 5px 8px;
+  border-radius: var(--bRadius);
+  outline: none;
+  background: var(--deepOrange);
+  border: 2px solid var(--deepOrange);
+  font-size: 16px;
+  color: white;
+  margin-left: unset;
+  width: max-content;
+  display: flex;
+  place-items: center;
+}
+.current-loc-btn:hover{
+  background: #dd4113;
+}
+.mech-img{ 
+  background: white;
+}
 
 
 

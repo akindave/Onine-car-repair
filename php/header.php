@@ -100,20 +100,27 @@ checkNotification();
             <?php
             if(isset($_SESSION['name'])){
 
-                if(isset($_SESSION['mechId'])){
-                    $mech = "Mechanic";
-                }
-                else{
-                    $mech = "";
-                }
                 echo '
                 <a href="repairHistory.php">My Repair History </a>
                 <div class="admin-holder user-holder">
-                <div class="has-drop">
+                <div class="has-drop">';
 
-                <img src="icons/prof-pic.svg" alt="user" class="icon">'.$mech.' '.$_SESSION['name']. '
-                <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
-                </div>
+                if(isset($_SESSION['mechId'])){
+                    $mech = "Mechanic";
+                    echo '
+                    <img src="icons/mech-white.svg" alt="user" class="icon mech-icon">'.$mech.' '.$_SESSION['name']. '
+                    <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
+                    </div>';
+                }
+                else{
+                    
+                    echo '
+                    <img src="icons/prof-pic.svg" alt="user" class="icon">'.$_SESSION['name']. '
+                    <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
+                    </div>';
+                }
+                echo '
+
                 <div class="admin-drop">
 
                 <a href="userProfile.php" class="noti-holder prof-link flex-wrap">

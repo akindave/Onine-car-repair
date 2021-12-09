@@ -10,6 +10,7 @@ function closePop(targetClass){
     target.classList.remove("show-flex");
     let overlay = document.querySelector(".dark-overlay");
     overlay.classList.remove("show-flex");
+    window.location = 'http://localhost/mechLocator/motorist-Homepage.php';
 }
 
 function allowWrite(targetId){

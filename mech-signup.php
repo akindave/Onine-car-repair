@@ -14,13 +14,21 @@
   </head>
   <body>
   <?php include 'php/header.php';
-  
+
+
   if(isset($_POST['register'])){ 
     if(isset($_SESSION['user_id'])){
-      $user_id = $_SESSION['user_id'];
-      makeMechanic($user_id);
+
+      $long = $_POST['long'];
+      $lat = $_POST['lat'];
+      
+        $user_id = $_SESSION['user_id'];
+        makeMechanic($user_id);
       $_SESSION['mechId'] = $user_id;
-      echo '
+        $insertor = "INSERT INTO map_details (user_id,long_cor,lat_cor) VALUES ('$user_id','$long','$lat')";
+        if(mysqli_query($connection,$insertor)){ 
+          echo "Inserted successfully";
+          echo '
       
       <aside class="op-pop">
         <div class="close-icon" onclick="closePop(`op-pop`)">X</div>
@@ -37,6 +45,15 @@
       openPop(`op-pop`);
     </script>
       ';
+        }
+        else{ 
+          echo "error ".mysqli_error($connection);
+        }
+      
+
+     
+      
+      
     }
     else{
       header('Location:login.php');
@@ -47,34 +64,45 @@
   
   ?>
 
+
     <main>
 
     <section class="form-sect wrap">
       <img src="icons/Welcome.svg" alt="welcome" class="welcome-svg">
 
-      <form class="register-form" action="" method="post">
+      <form class="register-form" action="" method="post" onsubmit="fetchLoc()">
         <h3>Apply as a mechanic</h3>
         <p>Please enter the details below.</p>
+        <p id="demo"></p>
        
         <div class="input-grp">
           <label for="location" class="loc" data-tooltip="(We need your location to find customers near you.)">Location<img src="icons/question-dark.svg" alt="ask" class="icon"></label>
           <!-- <input type="text" name="location" required placeholder="e.g Rongai" class="input-elmt"> -->
-          <button class="add-btn current-loc-btn" type="submit">
+         
+      
+          <input type="hidden" name="long" id="long-cord" required>
+          <input type="hidden" name="lat" id="lat-cord" required>
+          <!-- <button class="add-btn current-loc-btn" type="button" onclick="fetchLoc()">
             <img src="icons/location.svg" alt="location" class="icon">
             Use current location
-          </button>
+          </button> -->
+          <p>
+          Kindly allow mechLocator to access your location. We need it to find customers near you.
+          </p>
 
-          <p>or</p>
+         
+
+          <!-- <p>or</p>
 
           <button class="add-btn current-loc-btn loc-map" type="submit">
             <img src="icons/map-loc.svg" alt="location" class="icon">
             Choose location on map
-          </button>
+          </button> -->
 
         </div>
 
         <div class="input-grp">
-          <button type="submit" name="register" class="reg-btn shadow-drop-2-tb">Apply now</button>
+          <button type="submit" name="register" class="reg-btn shadow-drop-2-tb" onclick="fetchLoc()">Apply now</button>
         </div>
 
       </form>
@@ -85,5 +113,7 @@
     </main>
   </body>
   <script src="js/nav.js" charset="utf-8"></script>
+  <script src="js/map.js" charset="utf-8"></script>
+
 
 </html>
