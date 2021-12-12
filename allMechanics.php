@@ -81,7 +81,7 @@
                               <div class="mech-loc flex-wrap">
                               <img src="icons/loc-dark.svg" alt="mech-location" class="icon loc-icon">
                               Rongai
-                            </div>
+                              </div>
                             
 
                             <p class="rates rates'.$k.'">

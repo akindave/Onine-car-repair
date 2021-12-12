@@ -1,4 +1,3 @@
-const funguo = 'AIzaSyA0TOlBoaCqdBkmXn7YOw7BGP8CNtYE4sM';
 
 var x = document.getElementById("demo");
 
@@ -83,12 +82,14 @@ function fetchLoc(){
     // showError(error);
   })
 }
+
 fetchLoc();
-function postData(){ 
-  fetch('../php/mechNear.php', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-  })
-  .then( response =>{})
-  .catch(error => {})
-}
+
+// function postData(){ 
+//   fetch('../php/mechNear.php', {
+//     method: 'POST',
+//     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+//   })
+//   .then( response =>{})
+//   .catch(error => {})
+// }

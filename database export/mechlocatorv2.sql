@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 06:58 AM
+-- Generation Time: Dec 12, 2021 at 10:30 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -61,6 +61,20 @@ CREATE TABLE `map_details` (
   `lat_cor` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `map_details`
+--
+
+INSERT INTO `map_details` (`user_id`, `long_cor`, `lat_cor`) VALUES
+(2, '-1.379863', '36.7'),
+(4, '-1.4', '37'),
+(5, '-1.35', '37'),
+(6, '-1.34210162459', '36.76622476'),
+(7, '-1.379863', '37.6'),
+(8, '-1.379863', '36.7'),
+(11, '-1.43', '37.2'),
+(12, '-1.13', '36.45');
+
 -- --------------------------------------------------------
 
 --
@@ -99,7 +113,8 @@ INSERT INTO `ratings` (`user_id`, `rating`, `message`) VALUES
 (8, 5, 'great'),
 (5, 5, 'Pami good job'),
 (5, 1, 'trial'),
-(7, 4, 'Thanks Bruce');
+(7, 4, 'Thanks Bruce'),
+(12, 5, 'Great job Kanyiri');
 
 -- --------------------------------------------------------
 
@@ -128,9 +143,9 @@ INSERT INTO `repairs` (`num_plate`, `activity`, `cost`, `date`, `repair_id`, `se
 ('KAA 113B', 'Gear oil checking', 300, '2021-12-01', 4, 'YES', 0),
 ('KAA 113B', 'Gear oil checking', 300, '2021-12-01', 5, 'YES', 0),
 ('KAA 113B', 'Gear oil checking', 300, '2021-12-01', 6, 'YES', 0),
-('KBA 123A', 'Spark plugs replacement', 1500, '2021-12-01', 7, 'NO', 0),
-('KBA 123A', 'Engine pistons replacement', 5000, '2021-12-01', 8, 'NO', 0),
-('KBA 123A', 'Wheel alignment', 2000, '2021-12-01', 9, 'NO', 0),
+('KBA 123A', 'Spark plugs replacement', 1500, '2021-12-01', 7, 'YES', 0),
+('KBA 123A', 'Engine pistons replacement', 5000, '2021-12-01', 8, 'YES', 0),
+('KBA 123A', 'Wheel alignment', 2000, '2021-12-01', 9, 'YES', 0),
 ('KAA 113B', 'Brake adjustment', 200, '2021-12-01', 10, 'YES', 0),
 ('KAA 113B', 'new repair', 500, '2021-12-01', 11, 'YES', 0),
 ('KBJ 123H', 'Wheel alignment', 2000, '2021-12-01', 12, 'YES', 0),
@@ -200,7 +215,8 @@ INSERT INTO `repairs` (`num_plate`, `activity`, `cost`, `date`, `repair_id`, `se
 ('KBJ 123H', 'second pami repair', 200, '2021-12-05', 78, 'YES', 5),
 ('KDA 123B', 'Exhaust pipe replacement', 300, '2021-12-06', 79, 'YES', 0),
 ('KBA 987D', 'Front shock absorber replacement', 1800, '2021-12-06', 80, 'YES', 7),
-('KBA 987D', 'Brake fluid addition', 300, '2021-12-06', 81, 'YES', 7);
+('KBA 987D', 'Brake fluid addition', 300, '2021-12-06', 81, 'YES', 7),
+('KAJ 513G', 'Main left rear leaf spring replacement', 2000, '2021-12-09', 82, 'YES', 12);
 
 -- --------------------------------------------------------
 
@@ -225,13 +241,15 @@ INSERT INTO `users` (`name`, `email`, `phone`, `password`, `is_mech`, `user_id`)
 ('Erick', 'erick@gmail.com', '0712345678', '$2y$10$Bes4LuFtJV3Ms6WwN7EigO/LTMXRVNryKlloRr4Jg76pTFgtykF5m', 'NO', 1),
 ('admin', 'admin@gmail.com', '07231344543', '$2y$10$IRYqMlbN.lH98oby0yIoKuiFx60KTgKKUqVCUW1NduGNvS0TtC6xy', 'YES', 2),
 ('John ', 'john@gmail.com', '0712345678', '$2y$10$pHte7vIve8a6pXHfX7G4B.tBs2F89EQCnnlag7A7iqRsdgtdhpWe.', 'NO', 3),
-('Jane', 'jane@gmail.com', '072341343', '$2y$10$nA9/JtHUQMCjN59sdQUq6OOMTKJMhGXbhQpK6cOYwPmtw1FNsaFNa', 'NO', 4),
+('Jane', 'jane@gmail.com', '072341343', '$2y$10$nA9/JtHUQMCjN59sdQUq6OOMTKJMhGXbhQpK6cOYwPmtw1FNsaFNa', 'YES', 4),
 ('Paminus King`ori', 'pkmurungi.pm@gmail.com', '0723805386', '$2y$10$P4pXIu.teAPE1MCOks/Wa.F2jxQJhw4ord2hW51E6xw3OUhJcHjSy', 'YES', 5),
 ('Venna', 'venna@gmail.com', '092338289', '$2y$10$fvPMB8b577InDEp3b7bLu.4SwzXOvzL29hlEBiaB4EpDkO7dUzpZK', 'YES', 6),
 ('Bruce', 'bruce@gmail.com', '0792743861', '$2y$10$pm5.kidvbp45RaTfnIZqhOTQpIecbPEogqiddR4wj3yOYIm3GhD7a', 'YES', 7),
 ('mech John', 'mech@gmail.com', '0283298413', '$2y$10$Xe0HZXfuK4sPZlQ3Ly9BM.w1HrJN5T1PKhvNONeTaeIoGGPbL34AC', 'YES', 8),
 ('George K', 'george@gmail.com', '098923489', '$2y$10$OHVyBzZ/x5M0ik3mwvURD.T6i1s6NCigqIrowKq1bQ5r9wtk10qz2', 'NO', 9),
-('Linah', 'linah@gmail.com', '082449494', '$2y$10$hqlsaGtvKjZROSYEn7c0au0UfXCchuLUBqaaNsL0a/EA553mHwNDq', 'NO', 10);
+('Linah', 'linah@gmail.com', '082449494', '$2y$10$hqlsaGtvKjZROSYEn7c0au0UfXCchuLUBqaaNsL0a/EA553mHwNDq', 'NO', 10),
+('Jasmine', 'jas@gmail.com', '0712345678', '$2y$10$Sjrm6TgNngP.7vdjUGjZjuHXNExdCUIaXM1gwOdKuZOGvdPfL2oTi', 'YES', 11),
+('Kanyiri', 'kanyiri@gmail.com', '0732242234', '$2y$10$KvXgSOBbvdmdwiauHWsXWOIFvUIhfkEjrg43x3V0oagGtGi.RcELK', 'YES', 12);
 
 --
 -- Indexes for dumped tables
@@ -248,6 +266,7 @@ ALTER TABLE `cars`
 -- Indexes for table `map_details`
 --
 ALTER TABLE `map_details`
+  ADD UNIQUE KEY `user_id` (`user_id`),
   ADD KEY `user` (`user_id`);
 
 --
@@ -279,13 +298,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `repairs`
 --
 ALTER TABLE `repairs`
-  MODIFY `repair_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `repair_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
