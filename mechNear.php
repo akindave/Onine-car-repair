@@ -112,7 +112,7 @@ function getAvgRating($mechId){
                     icon: markerIcon,
                     shape: shape,
                     title: mechs[i][2],
-                    zIndex: 3,
+                    zIndex: 5,
                     optimized: false,
                   });
 
@@ -167,8 +167,6 @@ function getAvgRating($mechId){
                       shouldFocus: true,
                     });
 
-                    console.log(".rates"+i)
-                    console.log(ratValue)
 
                    
                     // const para = document.querySelector(".rates"+i);

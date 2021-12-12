@@ -25,7 +25,7 @@
         $user_id = $_SESSION['user_id'];
         makeMechanic($user_id);
       $_SESSION['mechId'] = $user_id;
-        $insertor = "INSERT INTO map_details (user_id,long_cor,lat_cor) VALUES ('$user_id','$long','$lat')";
+        $insertor = "INSERT INTO map_details (user_id,long_cor,lat_cor) VALUES ('$user_id','$lat','$long')";
         if(mysqli_query($connection,$insertor)){ 
           echo "Inserted successfully";
           echo '
