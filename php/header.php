@@ -12,7 +12,7 @@ function checkNotification(){
         // $selectRecord = "SELECT * FROM repairs WHERE mech_user_id = '$user_id'";
         // $selectCar = "SELECT * FROM cars WHERE user_id='$user_id'";
 
-        $join = "SELECT * FROM repairs INNER JOIN cars ON cars.num_plate = repairs.num_plate  WHERE repairs.seen ='NO' AND mech_user_id>0";
+        $join = "SELECT * FROM repairs INNER JOIN cars ON cars.num_plate = repairs.num_plate  WHERE repairs.seen ='NO' AND mech_user_id>0 AND NOT mech_user_id='$user_id'";
         $joinResult = mysqli_query($connection,$join);
         if(!$joinResult){
             echo "msqli error" .mysqli_error($connection);

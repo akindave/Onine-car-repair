@@ -59,8 +59,9 @@ h2{font-family: 'Poppins', sans-serif;}
 
 a{text-decoration: none;}
 
-body{margin: 0;position: relative;}
+body{margin: 0;position: relative;padding-bottom: 1rem;}
 
+.minh{min-height: 250px;}
 .landing{
 
     padding: 3rem 0;
@@ -228,6 +229,7 @@ transition:0.2s;
 }
 .add-btn {
     padding: 8px! important;
+    margin: 10px;
 }
 .bottom-text a{
     text-decoration: none;

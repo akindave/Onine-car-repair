@@ -3,6 +3,8 @@ let allHolders = document.querySelectorAll(".rates");
 
 const showColors = (paragraph,value)=>{
     let para = document.querySelector(`.${paragraph}`)
+
+    
     // allHolders.forEach(item => {
         let stars = para.children;
         // Object.entries(stars).forEach(item => {
@@ -27,6 +29,9 @@ const showColors = (paragraph,value)=>{
         //      });
       
     // })
+    if(value == 0){
+      para.innerText = "Not rated."
+    }
   }
 
 

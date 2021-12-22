@@ -182,6 +182,7 @@ align-items: center;
 }
 .rates{
   margin: 5px 0;
+  color: var(--grey3);
 }
 .rates .icon{ 
   width: 14px;

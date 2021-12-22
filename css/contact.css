@@ -3,7 +3,7 @@
 }
 
 nav{
-    background: none;
+    /* background: none; */
 }
 .contact{
     position: relative;
@@ -13,7 +13,7 @@ nav{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: var(--orangeLinear);
+    /* background: var(--orangeLinear); */
     color: black;
 }
 .contact .content{
@@ -56,6 +56,7 @@ nav{
     width: 50px;
     display: flex;
     background: #fff;
+    border: 2px solid var(--deepOrange);
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -64,7 +65,7 @@ nav{
 }
 .container .contactinfo .box .text h3{
     font-weight: 500;
-    color: white;
+    /* color: white; */
     margin-left: 5px;
 }
 .container .contactinfo .box .text p{
@@ -200,7 +201,7 @@ nav{
 @media (max-width: 991px){
     .contact{
         padding: 20px;
-        padding-top: 3rem;
+        padding-top: 5rem;
     }
     .container{
         flex-direction: column;

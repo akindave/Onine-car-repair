@@ -152,4 +152,8 @@ font-size: 16px;
 .bgImage{
   display: none;
 }
+main{ 
+  min-height: unset;
+  padding-top: 4rem;
+}
 }

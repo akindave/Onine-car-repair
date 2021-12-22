@@ -55,7 +55,7 @@
 
         </section>
 
-        <section class="flex-wrap card-sect">
+        <section class="flex-wrap card-sect minh">
           <a href="repairHistory.php">
             <article class="card">
               <img src="icons/repair.svg" alt="repair history" class="card-icon">

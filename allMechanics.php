@@ -43,7 +43,7 @@
       <section class="flex-wrap mech-sect">
 
       <?php
-        $getUsers = "SELECT * FROM users WHERE is_mech = 'YES'";
+        $getUsers = "SELECT * FROM users INNER JOIN map_details ON users.user_id = map_details.user_id WHERE is_mech = 'YES'";
         $results = mysqli_query($connection,$getUsers);
         // echo mysqli_num_rows($results);
 
@@ -80,7 +80,7 @@
                               </div>
                               <div class="mech-loc flex-wrap">
                               <img src="icons/loc-dark.svg" alt="mech-location" class="icon loc-icon">
-                              Rongai
+                              '.$row['town'].'
                               </div>
                             
 

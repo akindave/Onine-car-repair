@@ -55,6 +55,7 @@ function getAvgRating($mechId){
       function showPosition(position) {
           longi = position.coords.longitude
           lati = position.coords.latitude
+          var accuracy = position.coords.accuracy;
           selfCoords = {lat: lati, lng: longi }
           longi = Math.round(longi * 100) / 100
           lati = Math.round(lati * 100) / 100                         
@@ -118,6 +119,12 @@ function getAvgRating($mechId){
 
 
                   let contentString;
+                  let ratingText;
+                  if(ratValue == 0) {
+                    ratingText = "Not rated"
+                  }
+                  else{ ratingText = ratValue + " / 5"}
+
                   contentString =    `<div class="detail-card" id="content">
                         <div class="flex-wrap">
                             <img src="icons/mech-white.svg" alt="user" class="user-icon">
@@ -125,8 +132,8 @@ function getAvgRating($mechId){
                         <article class="contact-dets">
                             <div class="username"> <strong> ${name}</strong></div>
                             
-                            <p class="rates">
-                            Rating: <strong> ${ratValue} </strong>/ 5
+                            <p class="rates"> 
+                            Rating: <strong> ${ratingText} </strong>
                             </p>
 
                             <span class="">
@@ -202,6 +209,8 @@ function getAvgRating($mechId){
 
       </div>
 
+      <div id="request"></div>
+      <div id="response"></div>
 
       <section class="flex-wrap">
            
@@ -266,13 +275,84 @@ function getAvgRating($mechId){
 
     <script defer>
        function initMap() {
+        const bounds = new google.maps.LatLngBounds();
+        const markersArray = [];
 
+     // initialize services
+      // const geocoder = new google.maps.Geocoder();
+      const service = new google.maps.DistanceMatrixService();
+      
+      // build request
+  // const origin1 = { lat: 55.93, lng: -3.118 };
+  const destNew = "Nairobi, Kenya";
+  // const destinationA = "Stockholm, Sweden";
+  // const destinationB = { lat: 50.087, lng: 14.421 };
 
-   
+  selfCoordsObj = {lat: -1.2841, lng: 36.8155}
+  mmu = {lat:-1.381831 , lng: 36.76847}
+  let dest = [{}];
+  p = 0
+  for(p = 0; p<mechs.length;p++){
+ 
+    dest[p] = {
+      lat: mechs[p][0],
+      lng: mechs[p][1]
+    }
+
+  }
+  // console.log(dest);
+  const request = {
+    origins: [selfCoordsObj],
+    destinations: dest,
+    travelMode: google.maps.TravelMode.DRIVING,
+    unitSystem: google.maps.UnitSystem.METRIC,
+    avoidHighways: false,
+    avoidTolls: false,
+  };
+
+  // put request on page
+  // document.getElementById("request").innerText = JSON.stringify(
+  //   request,
+  //   null,
+  //   2
+  // );
+  // get distance matrix response
+  service.getDistanceMatrix(request,callback);
+  shortestDistArray = [];
+  function callback(response, status) {
+  if (status == 'OK') {
+    var origins = response.originAddresses;
+    var destinations = response.destinationAddresses;
+
+    // console.log(destinations)
+    for (var i = 0; i < origins.length; i++) {
+      var results = response.rows[i].elements;
+      for (var j = 0; j < results.length; j++) {
+        var element = results[j];
+        var distance = element.distance.text;
+        var disVal = element.distance.value;
+        var duration = element.duration.text;
+        var from = origins[i];
+        var to = destinations[j];
+        shortestDistArray.push(disVal)
+        // console.log(distance, duration, from, to);
+        if(disVal < 400 ){
+          console.log("Shorter than 4km by " + disVal)
+        }
+      }
+    }
+
+    shortestDist = Math.min(...shortestDistArray)
+    console.log(shortestDist + " km")
+  }
+}
+            // show on map
+           
+
             // let coords = {lat: lati, lng: longi}
             map = new google.maps.Map(document.getElementById('map'), {
               center: selfCoords,
-              zoom: 12
+              zoom: 14
             });
 
             setMarkers(map);
@@ -281,16 +361,25 @@ function getAvgRating($mechId){
               // animation: google.maps.Animation.DROP,
               position: selfCoords, 
               map,
-              title: "my location", 
+              title: "My location", 
               zIndex:1,
             })
 
-}
-    
+            const cityCircle = new google.maps.Circle({
+              strokeColor: "#005e91",
+              strokeOpacity: 0.8,
+              strokeWeight: 3,
+              fillColor: "#036399c4",
+              fillOpacity: 0.35,
+              map,
+              center: selfCoords,
+              radius: 2000,
+            });
+          }
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnF2qmmYTCzGn72vSGQVJB1uCR2SHpKU&callback=initMap"
-    async defer> 
+  async   defer> 
   </script>
     <!-- <script src="js/rate.js"></script> -->
  

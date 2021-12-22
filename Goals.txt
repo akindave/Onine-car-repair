@@ -1,0 +1,12 @@
+Loading activity- google maps
+Reloading search without refreshing page
+
+Suggest the nearest distance, pop him/her up 
+
+Correct distance - Hard
+Error handling - Notification page 
+		- Rating
+
+
+
+Code homepage

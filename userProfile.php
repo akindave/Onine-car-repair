@@ -120,6 +120,18 @@
       header("location:login.php");
     }
     
+     // deleting a user account 
+     if(isset($_POST['del-account'])){ 
+      $del = "DELETE FROM users WHERE user_id = '$user_id'";
+      if(mysqli_query($connection,$del)){
+        header("location:php/destroySession.php");
+      }
+      else{
+        echo mysqli_error($connection);
+      }
+    }
+
+
     if(isset($_POST['locUpdates'])){
       $long = $_POST['long'];
       $lat = $_POST['lat'];
@@ -414,10 +426,15 @@
         </section>
     </section>
 
-    <button type="button" name="button" class="del-btn flex-wrap">
-      <img src="icons/delete-red.svg" alt="add" class="icon">
-      Delete account
-    </button>
+
+
+    <form action="" method="post">
+        <button type="submit" name="del-account" class="del-btn flex-wrap">
+          <img src="icons/delete-red.svg" alt="add" class="icon">
+          Delete account
+        </button>
+        
+    </form>
 
 
 

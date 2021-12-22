@@ -18,6 +18,7 @@
 
   if(isset($_POST['register'])){ 
     if(isset($_SESSION['user_id'])){
+      $location = mysqli_escape_string($connection,$_POST["location"]);
 
       $long = $_POST['long'];
       $lat = $_POST['lat'];
@@ -25,7 +26,7 @@
         $user_id = $_SESSION['user_id'];
         makeMechanic($user_id);
       $_SESSION['mechId'] = $user_id;
-        $insertor = "INSERT INTO map_details (user_id,long_cor,lat_cor) VALUES ('$user_id','$lat','$long')";
+        $insertor = "INSERT INTO map_details (user_id,long_cor,lat_cor,town) VALUES ('$user_id','$lat','$long','$location')";
         if(mysqli_query($connection,$insertor)){ 
           echo "Inserted successfully";
           echo '
@@ -76,8 +77,8 @@
         <p id="demo"></p>
        
         <div class="input-grp">
-          <label for="location" class="loc" data-tooltip="(We need your location to find customers near you.)">Location<img src="icons/question-dark.svg" alt="ask" class="icon"></label>
-          <!-- <input type="text" name="location" required placeholder="e.g Rongai" class="input-elmt"> -->
+          <label for="location" class="loc" data-tooltip="(We need your location to find customers near you.)">Your location<img src="icons/question-dark.svg" alt="ask" class="icon"></label>
+          <input type="text" name="location" required placeholder="e.g Rongai" class="input-elmt">
          
       
           <input type="hidden" name="long" id="long-cord" required>
@@ -86,9 +87,7 @@
             <img src="icons/location.svg" alt="location" class="icon">
             Use current location
           </button> -->
-          <p>
-          Kindly allow mechLocator to access your location. We need it to find customers near you.
-          </p>
+          
 
          
 
@@ -101,6 +100,11 @@
 
         </div>
 
+        <div class="input-grp">
+        <!-- <p>
+          Kindly allow mechLocator to access your location. We need it to find customers near you.
+          </p> -->
+        </div>
         <div class="input-grp">
           <button type="submit" name="register" class="reg-btn shadow-drop-2-tb" onclick="fetchLoc()">Apply now</button>
         </div>
