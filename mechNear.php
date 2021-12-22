@@ -25,6 +25,7 @@ function getAvgRating($mechId){
    <meta name="keywords" content="">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="description" content="">
+   <!-- <meta name="theme-color" content="#ffffff"> -->
    <meta name="author" content="">
     <title> Mechanics near you</title>
     <link rel="stylesheet" href="css/home.css">
@@ -36,7 +37,7 @@ function getAvgRating($mechId){
 
     <script>
     getCurrentLocation();
-
+var map;
     let longi, lati,selfCoords;
       function getCurrentLocation() {
         if (navigator.geolocation) {
@@ -201,7 +202,8 @@ function getAvgRating($mechId){
       <h3>Mechanics near your location</h3>
 
       <div class="map" id="map">
-      <h2>Map will be here</h2>
+     <img src="images/seo-edited.svg" alt="searching for mech" class="search-img">
+     <h4 class="flex-wrap search-title">Searching for mechanics <span><img src="icons/dots-loading.svg" alt="loading" class="icon rotate-icon"></span> </h4>
             <article>
               Please allow mechLocator to access your location. 
               We need it to find mechanics near you.
@@ -352,18 +354,22 @@ function getAvgRating($mechId){
             // let coords = {lat: lati, lng: longi}
             map = new google.maps.Map(document.getElementById('map'), {
               center: selfCoords,
-              zoom: 14
+              zoom: 10
             });
 
             setMarkers(map);
 
-            new google.maps.Marker({
+           myLoc = new google.maps.Marker({
               // animation: google.maps.Animation.DROP,
               position: selfCoords, 
               map,
+              animation: google.maps.Animation.DROP,
               title: "My location", 
               zIndex:1,
+              // shadow: shadow,
             })
+          
+            // myLoc.setAnimation(google.maps.Animation.BOUNCE);
 
             const cityCircle = new google.maps.Circle({
               strokeColor: "#005e91",
@@ -373,13 +379,12 @@ function getAvgRating($mechId){
               fillOpacity: 0.35,
               map,
               center: selfCoords,
-              radius: 2000,
+              radius: 5000,
             });
           }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnF2qmmYTCzGn72vSGQVJB1uCR2SHpKU&callback=initMap"
-  async   defer> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnF2qmmYTCzGn72vSGQVJB1uCR2SHpKU&callback=initMap"  async   defer> 
   </script>
     <!-- <script src="js/rate.js"></script> -->
  
