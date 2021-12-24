@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 10:30 AM
+-- Generation Time: Dec 22, 2021 at 05:56 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -58,22 +58,23 @@ INSERT INTO `cars` (`user_id`, `num_plate`) VALUES
 CREATE TABLE `map_details` (
   `user_id` int(11) NOT NULL,
   `long_cor` text NOT NULL,
-  `lat_cor` text NOT NULL
+  `lat_cor` text NOT NULL,
+  `town` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `map_details`
 --
 
-INSERT INTO `map_details` (`user_id`, `long_cor`, `lat_cor`) VALUES
-(2, '-1.379863', '36.7'),
-(4, '-1.4', '37'),
-(5, '-1.35', '37'),
-(6, '-1.34210162459', '36.76622476'),
-(7, '-1.379863', '37.6'),
-(8, '-1.379863', '36.7'),
-(11, '-1.43', '37.2'),
-(12, '-1.13', '36.45');
+INSERT INTO `map_details` (`user_id`, `long_cor`, `lat_cor`, `town`) VALUES
+(2, '-1.379863', '36.7', NULL),
+(4, '-1.4', '37', NULL),
+(5, '-1.35', '37', NULL),
+(6, '-1.34210162459', '36.76622476', NULL),
+(7, '-1.379863', '37.6', NULL),
+(8, '-1.379863', '36.7', NULL),
+(11, '-1.43', '37.2', NULL),
+(12, '-1.13', '36.45', NULL);
 
 -- --------------------------------------------------------
 
@@ -249,7 +250,8 @@ INSERT INTO `users` (`name`, `email`, `phone`, `password`, `is_mech`, `user_id`)
 ('George K', 'george@gmail.com', '098923489', '$2y$10$OHVyBzZ/x5M0ik3mwvURD.T6i1s6NCigqIrowKq1bQ5r9wtk10qz2', 'NO', 9),
 ('Linah', 'linah@gmail.com', '082449494', '$2y$10$hqlsaGtvKjZROSYEn7c0au0UfXCchuLUBqaaNsL0a/EA553mHwNDq', 'NO', 10),
 ('Jasmine', 'jas@gmail.com', '0712345678', '$2y$10$Sjrm6TgNngP.7vdjUGjZjuHXNExdCUIaXM1gwOdKuZOGvdPfL2oTi', 'YES', 11),
-('Kanyiri', 'kanyiri@gmail.com', '0732242234', '$2y$10$KvXgSOBbvdmdwiauHWsXWOIFvUIhfkEjrg43x3V0oagGtGi.RcELK', 'YES', 12);
+('Kanyiri', 'kanyiri@gmail.com', '0732242234', '$2y$10$KvXgSOBbvdmdwiauHWsXWOIFvUIhfkEjrg43x3V0oagGtGi.RcELK', 'YES', 12),
+('Shiru', 'shii@gmail.com', '0711221334', '$2y$10$CtwnAPDbnTVKkRp3su9xvO.BqBW9OHr.zrgCVfbQabdlvdYHLfToW', 'YES', 13);
 
 --
 -- Indexes for dumped tables
@@ -304,7 +306,7 @@ ALTER TABLE `repairs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

@@ -23,6 +23,10 @@
       $long = $_POST['long'];
       $lat = $_POST['lat'];
       
+      if($long == '' || $lat == ''){ 
+        $_SESSION['err-msg'] = "Could not get location";
+        header('Location: errorPage.php');
+      }
         $user_id = $_SESSION['user_id'];
         makeMechanic($user_id);
       $_SESSION['mechId'] = $user_id;
