@@ -22,13 +22,13 @@
 
 
        <section class="landing">
-           <article class="mid-landing">
+           <!-- <article class="mid-landing">
               <article class="search-holder">
                   <input type="text" name="search" id="" placeholder="Search mechanic by location.." class="searchType">
                   <img src="icons/search-icon.svg" alt="search" class="icon search-icon">
                </article>
-          </article>
-
+          </article> -->
+<!-- 
           <div class="swiper-container">
 
              <section class="swiper-wrapper swiper-wrapper-new houses-sect">
@@ -51,7 +51,7 @@
        <div class="swiper-button-prev swiper-button-prev-img"></div>
        <div class="swiper-pagination swiper-pagination-new"></div>
 
-     </div>
+     </div> -->
 
         </section>
 

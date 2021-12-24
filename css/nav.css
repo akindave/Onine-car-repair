@@ -366,7 +366,7 @@ border-bottom: 2px solid var(--orangeColor);
 }
 
 /* responsiveness  */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1070px) {
   .reverse{
     flex-direction:column-reverse;
     width: 100%;
@@ -422,6 +422,7 @@ border-bottom: 2px solid var(--lightOrange);
       background: unset !important;
       padding: 10px;
       position: relative;
+      width: 100%;
     }
     .save-btn{
       padding: 4px;

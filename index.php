@@ -12,16 +12,19 @@
     <title>mechLocator | Homepage</title>
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/nav.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 </head>
 <body>
-    <main class="home_main">
+    <main class="home_main" id="top">
         <section class="landing-sect flex-wrap">
             <article class="sect-text">
                 <h2 class="sect-title white-text">
                     What is mechLocator?
                 </h2>
                 <p class="white-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, veritatis fuga magni, ut adipisci reprehender
+                    MechLocator is a website that connects car owners with competent mechanics.
+                   It also helps keep track of your car's repair history.
                 </p>
                 <div class="landing-btns">
                 <a href="signup.php">
@@ -29,8 +32,9 @@
                 </a>
             </div>
             </article>
-            <picture class="img-holder flex-wrap">
-                <img src="Images/fly.svg" alt="grow with us" class="landing-img">
+            <picture class="img-holder light-bg flex-wrap">
+<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_gaqtay3b.json"  background="transparent"  speed="1" loop autoplay></lottie-player>
+                <!-- <img src="Images/growth-edited.svg" alt="grow with us" class="landing-img"> -->
             </picture>
 
             <div class="scroll">
@@ -46,6 +50,7 @@
     <section class="mech-locate flex-wrap">
         <aside class="svg_holder">
                     <img src="Images/seo-edited.svg" alt="search for a mech" class="svg_illustration">
+                    <!-- <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_iyskibdv.json"  background="transparent"  speed="1"  style="width: ; height: ;"  loop  autoplay></lottie-player> -->
         </aside>
 
         <article class="resources_text">
@@ -53,8 +58,8 @@
                         Find a mechanic near you
                     </h3>
                     <p class="margin20">
-                       lorem ipsum dolor sit amet, consectetur adip
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic illum accusantium autem expedita est quaerat ab animi labo
+                    No need to worry about finding professional mechanics. 
+                    Check out mechanics who have being <span>rated</span> by other users.
                     </p>
                     <a href="mechNear.php" class="card">
                         Mechanics near me
@@ -68,8 +73,7 @@
                         Keep track of your car repairs
                     </h3>
                     <p class="margin20">
-                       lorem ipsum dolor sit amet, consectetur adip
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic illum accusantium autem expedita est quaerat ab animi labo
+                       Track the repair history of your car and the expenses incurred. This helps you make better repair schedules.
                     </p>
                     <a href="repairHistory.php" class="card">
                         View records
@@ -83,7 +87,7 @@
 
     <section class="mech-locate flex-wrap">
         <aside class="svg_holder">
-                    <img src="Images/mech1.jpg" alt="search for a mech" class="svg_illustration">
+                    <img src="Images/agree.svg" alt="search for a mech" class="svg_illustration">
         </aside>
 
         <article class="resources_text">
@@ -92,7 +96,7 @@
                     </h3>
                     <p class="margin20">
                       Boost your customer reach by using our platform and increase your revenue. 
-                      Application is easy and free.
+                      Application is <span>easy</span> and <span>free</span>.
                     </p>
                     <a href="mech-signup.php" class="card">
                         Apply now
@@ -102,7 +106,7 @@
 
     <section class="review swiper-container">
        <h3 class="review-title listing-title">
-           Don't believe us, trust what our customers have said.
+           Don't believe us, <span>trust</span>  what our customers have said.
        </h3>
 
        <div class="swiper-wrapper customer-sect">
@@ -110,11 +114,11 @@
            <!-- joy customer  -->
            <article class="swiper-slide cust-card">
                <div class="box-circle"> <div class="semi-circle"></div> </div>
-               <img src="Images/lady-mech.jpg" alt="Joy landlady" class="cust-img">
+               <img src="Images/mech1.jpg" alt="Joy landlady" class="cust-img">
                <div class="cust-desc">
                    <img src="icons/quote.svg" alt="quote" class="quote-svg">
                    <p class="cust-text">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, eos laboriosam nemo reprehenderit
+                       Working with mechLocator has really helped market my engineering skills. My client base has greatly increased.
                    </p>
                    <div class="flex-wrap spaceBetween">
                        <aside class="stars flex-wrap">
@@ -126,7 +130,8 @@
 
                        </aside>
                        <p class="cust-name">
-                           ~ Joy Mutugi
+                           ~ John Simons
+                           
                        </p>
                    </div>
                </div>
@@ -135,11 +140,11 @@
             <!-- joy customer  -->
             <article class="swiper-slide cust-card">
                <div class="box-circle"> <div class="semi-circle"></div> </div>
-               <img src="Images/lady-mech.jpg" alt="Joy landlady" class="cust-img">
+               <img src="Images/lady1.jpg" alt="Joy landlady" class="cust-img">
                <div class="cust-desc">
                    <img src="icons/quote.svg" alt="quote" class="quote-svg">
                    <p class="cust-text">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, eos laboriosam nemo reprehenderit
+                       mechLocator helped me find a mechanic when my car had broken down. Their services were impeccable.
                    </p>
                    <div class="flex-wrap spaceBetween">
                        <aside class="stars flex-wrap">
@@ -151,7 +156,7 @@
 
                        </aside>
                        <p class="cust-name">
-                           ~ Joy Mutugi
+                           ~ Joleen Joy
                        </p>
                    </div>
                </div>
@@ -160,11 +165,11 @@
             <!-- joy customer  -->
             <article class="swiper-slide cust-card">
                <div class="box-circle"> <div class="semi-circle"></div> </div>
-               <img src="Images/lady-mech.jpg" alt="Joy landlady" class="cust-img">
+               <img src="Images/lady2.jpg" alt="Joy landlady" class="cust-img">
                <div class="cust-desc">
                    <img src="icons/quote.svg" alt="quote" class="quote-svg">
                    <p class="cust-text">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, eos laboriosam nemo reprehenderit
+                       It is very easy to store and retrieve my vehicle's repair history. This has helped me keep track of my expenses.
                    </p>
                    <div class="flex-wrap spaceBetween">
                        <aside class="stars flex-wrap">
@@ -176,7 +181,7 @@
 
                        </aside>
                        <p class="cust-name">
-                           ~ Joy Mutugi
+                           ~ Linet Juma
                        </p>
                    </div>
                </div>
@@ -194,24 +199,22 @@
     <aside class="quick-links">
         <h4>Quick Links</h4>
         <ul>
-            <li>Home</li>
-            <li>Mechanic near me</li>
-            <li>My repair records</li>
-            <li>Add a repair record</li>
-            <li>Apply to be a mechanic</li>
-            <li>My profile</li>
+            <li><a href="#top">Home</a></li>
+            <li><a href="mechNear.php">Mechanic near me</a></li>
+            <li><a href="repairHistory.php">My repair records</a></li>
+            <li><a href="addRepair.php">Add a repair record</a></li>
+            <li><a href="mech-signup.php">Apply to be a mechanic</a></li>
+            <li><a href="userProfile.php">My profile</a></li>
         </ul>
     </aside>
     <aside class="mission">
         <article class="mission-text">
             <h4>Vision</h4>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ercitationem,
-            tempore vero dolore velit providentdis odit aliquid voluptates eos id!
+            To be a leading solution provider.
         </article>
         <article class="vision-text">
             <h4>Mission</h4>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ercitationem,
-            tempore vero dolore velit providentdis odit aliquid voluptates eos id!
+            Connecting car owners to professional mechanics.
         </article>
     </aside>
     

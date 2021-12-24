@@ -70,10 +70,10 @@ checkNotification();
 
 ?>
         <nav class="nav">
-        <div class="flex-wrap">
+        <a href="index.php" class="flex-wrap">
         <img src="icons/car.svg" alt="logo" class="logo">
         <strong class="logo-text">mechLocator</strong>
-        </div>
+</a>
         <button class="menu-btn">
             <img src="icons/menu.svg" alt="menu" class="nav-icon">
             Menu
@@ -90,6 +90,9 @@ checkNotification();
                     ';
                 }
             ?>
+            <a href="mechNear.php">
+                Mechanic near me
+            </a>
             <a href="allMechanics.php">
             <!-- <img src="icons/repair.svg" class="icon white-icon" alt="mechanics">     -->
             Our Mechanics</a>
