@@ -82,7 +82,7 @@ body{margin: 0;position: relative;padding-bottom: 1rem;}
 
 .sect-text p{line-height: 1.3;     margin: 20px 0;}
 
-.landing-btns{width:100%; display:flex; place-items:center; justify-content:center;}
+.landing-btns{width:100%; display:flex; place-items:center; }
 
 .img-holder{flex-grow: .7;     background: url(../Images/blob-2.svg) center no-repeat; background-size: contain;}
 
