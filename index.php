@@ -73,7 +73,8 @@
                         Keep track of your car repairs
                     </h3>
                     <p class="margin20">
-                       Track the repair history of your car and the expenses incurred. This helps you make better repair schedules.
+                       Track the repair history of your car and the expenses incurred. A mechanic can enter the repair activities done for your car on his/her device and you will 
+                       receive a notification.
                     </p>
                     <a href="repairHistory.php" class="card">
                         View records

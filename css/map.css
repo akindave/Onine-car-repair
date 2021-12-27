@@ -6,7 +6,7 @@ main{
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 70vh;
+  height: 80vh;
       width: 100%;
   }
 
@@ -72,7 +72,7 @@ main{
     box-shadow: unset;
   }
   .rates {
-    margin: 4px 0;
+    margin: 2px 0;
     font-size: 14px;
 }
 .rates strong {
@@ -94,6 +94,50 @@ main{
   transform:translateY(-1rem);
   animation: show 0.3s linear forwards;
 }
+
+
+.directions-btn{
+  border: 2px solid var(--blue);
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: white;
+  margin: 8px 0;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--blue);
+}
+.mech-contact a{
+position: relative;
+}
+.mech-contact a::before{
+  content: "";
+  position: absolute;
+  top: -0.4em;
+  left: 0.5em;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+.mech-contact a::after{
+  content: attr(data-tooltip);
+  margin: 0 5px;
+  display: none;
+  opacity: 0;
+  font-weight: 400;
+  color: white;
+  position: absolute;
+  top: -2em;
+  background: #000000e3;
+  padding: 5px 10px;
+  border-radius: var(--bRadius);
+  /* border-bottom-left-radius: 0px; */
+  left: 0em;
+}
+.mech-contact a:hover::before, .mech-contact a:hover::after{
+    opacity: 1;
+    display: inline;
+}
+
 
 .rotate-icon{ 
 /* transform:rotate(0deg); */

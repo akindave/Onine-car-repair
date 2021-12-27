@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2021 at 09:05 PM
+-- Generation Time: Dec 27, 2021 at 11:14 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -67,14 +67,15 @@ CREATE TABLE `map_details` (
 --
 
 INSERT INTO `map_details` (`user_id`, `long_cor`, `lat_cor`, `town`) VALUES
-(2, '-1.379863', '36.7', NULL),
-(4, '-1.4', '37', NULL),
-(5, '-1.35', '37', NULL),
-(6, '-1.34210162459', '36.76622476', NULL),
-(7, '-1.379863', '37.6', NULL),
-(8, '-1.379863', '36.7', NULL),
-(11, '-1.43', '37.2', NULL),
-(12, '-1.13', '36.45', NULL);
+(2, '-0.6773', ' 34.7796', 'Kisii'),
+(4, '-0.3031', '36.0800', 'Nakuru'),
+(5, '-1.35', '37', 'Pridelands'),
+(6, '-1.34210162459', '36.76622476', 'Nairobi'),
+(7, '-1.379863', '37.6', 'Wamunyu'),
+(8, '-1.379863', '36.7', ' Olkeri'),
+(11, '-1.43', '37.2', 'Ngelani'),
+(12, '-1.13', '36.45', 'Ewaso Kendong'),
+(14, '-0.4371', '36.9580', 'Nyeri');
 
 -- --------------------------------------------------------
 
@@ -251,7 +252,8 @@ INSERT INTO `users` (`name`, `email`, `phone`, `password`, `is_mech`, `user_id`)
 ('Linah', 'linah@gmail.com', '082449494', '$2y$10$hqlsaGtvKjZROSYEn7c0au0UfXCchuLUBqaaNsL0a/EA553mHwNDq', 'NO', 10),
 ('Jasmine', 'jas@gmail.com', '0712345678', '$2y$10$Sjrm6TgNngP.7vdjUGjZjuHXNExdCUIaXM1gwOdKuZOGvdPfL2oTi', 'YES', 11),
 ('Kanyiri', 'kanyiri@gmail.com', '0732242234', '$2y$10$KvXgSOBbvdmdwiauHWsXWOIFvUIhfkEjrg43x3V0oagGtGi.RcELK', 'YES', 12),
-('Shiru', 'shii@gmail.com', '0711221334', '$2y$10$CtwnAPDbnTVKkRp3su9xvO.BqBW9OHr.zrgCVfbQabdlvdYHLfToW', 'YES', 13);
+('Shiru', 'shii@gmail.com', '0711221334', '$2y$10$CtwnAPDbnTVKkRp3su9xvO.BqBW9OHr.zrgCVfbQabdlvdYHLfToW', 'YES', 13),
+('Moreen W', 'moreen@gmail.com', '073938923', '$2y$10$QrMWlqDuHvbBhUoh81Hnau/GZzJrceIRgHKPaQRx3/dpoDtQHxPwy', 'YES', 14);
 
 --
 -- Indexes for dumped tables
@@ -306,7 +308,7 @@ ALTER TABLE `repairs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

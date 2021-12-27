@@ -37,8 +37,15 @@ function getAvgRating($mechId){
 
     <script>
     getCurrentLocation();
-var map;
-    let longi, lati,selfCoords;
+    var map;
+    let mechs = [];
+    let mechDetails = {};
+
+    let townName = document.querySelector("town-jina")
+    var directionsService, directionsDisplay , geocoder;
+
+
+    let longi, lati,selfCoords, mmu;
       function getCurrentLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
@@ -85,7 +92,8 @@ var map;
       let markerIcon = "icons/mech-marker.svg";
 
       let name = 'John';
-
+      
+      let markerId;
       
 
           function setMarkers(map) {              
@@ -106,9 +114,10 @@ var map;
                   email = mechs[i][3]
                   phone = mechs[i][4]
                   ratValue = mechs[i][5]
+                  townName = mechs[i][6]
 
                   let marker = new google.maps.Marker({
-                    
+                    markerId: i,
                     position: { lat: lati, lng: longi },
                     map,
                     icon: markerIcon,
@@ -119,12 +128,19 @@ var map;
                   });
 
 
+                  latCoord = dest[marker.markerId]['lat']
+                    longCoord = dest[marker.markerId]['lng']
+                    destCoords = {lat: latCoord, lng: longCoord};
+
+
                   let contentString;
                   let ratingText;
                   if(ratValue == 0) {
                     ratingText = "Not rated"
                   }
                   else{ ratingText = ratValue + " / 5"}
+
+                  
 
                   contentString =    `<div class="detail-card" id="content">
                         <div class="flex-wrap">
@@ -137,17 +153,26 @@ var map;
                             Rating: <strong> ${ratingText} </strong>
                             </p>
 
+                            <p class="rates"> 
+                            Location: <strong class="town-jina"> ${townName}  </strong>
+                            </p>
+
+                            <button class="directions-btn flex-wrap" onclick="calcRoute(directionsService,directionsDisplay,destCoords);">
+                            <img src="icons/directions.svg" alt="call" class="icon"> Get directions
+                            </button>
+
                             <span class="">
                                 <div class="mech-contact flex-wrap">
-                                <a href="mailto:${email}">
+                                <a href="mailto:${email}"  target="_blank"  data-tooltip="Email">
                                   <img src="icons/email-svgrepo-com.svg" alt="email" class="icon">
                                 </a>
-                                <a href="https://wa.me/${phone}">
+                                <a href="https://wa.me/${phone}" target="_blank"  data-tooltip="Whatsapp">
                                   <img src="icons/whatsapp.svg" alt="whatsapp" class="icon">
                                 </a>
-                                <a href="tel:${phone}">
+                                <a href="tel:${phone}"  target="_blank" data-tooltip="Call">
                                   <img src="icons/call.svg" alt="call" class="icon">
                                 </a>
+
                               </div>
                              </span>
 
@@ -158,43 +183,70 @@ var map;
 
                   
 
-                  let infoWindow = new google.maps.InfoWindow({
-                    content: contentString,
-                    
-                  })
+                  
                   
                   
 
                   // Add a click listener for each marker, and set up the info window.
                   marker.addListener("click", () => {
-                    infoWindow.close();
+                    // console.log(dest[marker.markerId]['lat'] + " is the lat")
+                    latCoord = dest[marker.markerId]['lat']
+                    longCoord = dest[marker.markerId]['lng']
+                    destCoords = {lat: latCoord, lng: longCoord};
 
+                    
+                    geocoder.geocode(
+                        {'latLng': destCoords}, 
+                        function(results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                if (results[0]) {
+                                    var add= results[0].formatted_address ;
+                                    var  value=add.split(",");
+
+                                    count=value.length;
+                                    country=value[count-1];
+                                    state=value[count-2];
+                                    city=value[count-3];
+                                    townName = results[0]['address_components'][1].long_name
+                                    // console.log(townName);
+                                    document.querySelector(".town-jina").innerText = `${townName}`;
+                                }
+                                else  {
+                                  console.log("address not found");
+                                }
+                            }
+                            else {
+                                console.log("Geocoder failed due to: " + status);
+                            }
+                        }
+                  )
+                    
+                  let infoWindow = new google.maps.InfoWindow({
+                    content: contentString,
+                    
+                  })
+
+                  infoWindow.close();
+
+                    // console.log(marker.markerId)
                     infoWindow.open({
                       anchor: marker,
                       map,
                       shouldFocus: true,
                     });
-
-
-                   
-                    // const para = document.querySelector(".rates"+i);
-                    //   // console.log(para.children)
-                    //       let stars = para.childNodes;
-                    //       let arr = Object.entries(stars);
-                    //       for(let p = 0;p < ratValue;p++){
-                    //         let itemArray = Object.entries(arr[p]) 
-                    //         itemArray[1][1].style.filter = 'invert(28%) sepia(97%) saturate(2124%) hue-rotate(357deg) brightness(100%) contrast(96%)';
-                    //       }
-                  
+                    
                   });
                   
 
                 }
 
 }
+sessionStorage.setItem('status','default')
+
+
     </script>
   </head>
-  <body>
+  <body onload="interval = setInterval(checkMap,10000)">
 
     <main>
 
@@ -219,8 +271,7 @@ var map;
         
       </section>
       <script>
-        let mechs = [];
-        let mechDetails = {};
+       
       </script>
 
       <?php
@@ -257,8 +308,9 @@ var map;
             mechDetails[3] = "'.$row['email'].'"
             mechDetails[4] = "'.$row['phone'].'"
             mechDetails[5] = '.$ratValue.'
+            mechDetails[6] = "'.$row['town'].'"
 
-            newArr = [mechDetails[0],mechDetails[1],mechDetails[2],mechDetails[3],mechDetails[4],mechDetails[5]]
+            newArr = [mechDetails[0],mechDetails[1],mechDetails[2],mechDetails[3],mechDetails[4],mechDetails[5],mechDetails[6]]
             mechs.push(newArr)
            </script>
            ';
@@ -276,23 +328,29 @@ var map;
   <!-- <script src="js/map.js"></script> -->
 
     <script defer>
+  let dest = [{}];
+
        function initMap() {
-        const bounds = new google.maps.LatLngBounds();
+
+        // getting name 
+       geocoder = new google.maps.Geocoder();
+   
+
+
+
+        // const bounds = new google.maps.LatLngBounds();
+    directionsService = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer();
+
         const markersArray = [];
 
-     // initialize services
-      // const geocoder = new google.maps.Geocoder();
+
       const service = new google.maps.DistanceMatrixService();
       
-      // build request
-  // const origin1 = { lat: 55.93, lng: -3.118 };
-  const destNew = "Nairobi, Kenya";
-  // const destinationA = "Stockholm, Sweden";
-  // const destinationB = { lat: 50.087, lng: 14.421 };
+
 
   selfCoordsObj = {lat: -1.2841, lng: 36.8155}
   mmu = {lat:-1.381831 , lng: 36.76847}
-  let dest = [{}];
   p = 0
   for(p = 0; p<mechs.length;p++){
  
@@ -312,17 +370,16 @@ var map;
     avoidTolls: false,
   };
 
-  // put request on page
-  // document.getElementById("request").innerText = JSON.stringify(
-  //   request,
-  //   null,
-  //   2
-  // );
+
   // get distance matrix response
   service.getDistanceMatrix(request,callback);
   shortestDistArray = [];
   function callback(response, status) {
   if (status == 'OK') {
+
+    //this means it has run successfully
+    sessionStorage.setItem('status','success')
+
     var origins = response.originAddresses;
     var destinations = response.destinationAddresses;
 
@@ -345,7 +402,7 @@ var map;
     }
 
     shortestDist = Math.min(...shortestDistArray)
-    console.log(shortestDist + " km")
+    // console.log(shortestDist + " m")
   }
 }
             // show on map
@@ -358,6 +415,8 @@ var map;
             });
 
             setMarkers(map);
+
+            directionsDisplay.setMap(map);
 
            myLoc = new google.maps.Marker({
               // animation: google.maps.Animation.DROP,
@@ -381,11 +440,43 @@ var map;
               center: selfCoords,
               radius: 5000,
             });
+
+
           }
 
+          function checkMap(){
+            status = sessionStorage.getItem('status')
+            if(status == 'success'){
+              // setTimeout(initMap,3000);
+              // console.log("successful")
+              clearInterval(interval);
+            }
+            else{
+              console.log("not successful") 
+              initMap();
+              
+            }
+          }
+
+      
+
+          function calcRoute(service,display,dest){
+            var request = {
+              origin: selfCoords,
+              destination: dest,
+              travelMode: 'DRIVING'
+            };
+            service.route(request)
+            .then((response) => {
+              display.setDirections(response);
+            })
+            .catch((e) => window.alert("Directions request failed due to " + status + e));     
+           }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnF2qmmYTCzGn72vSGQVJB1uCR2SHpKU&callback=initMap"  async   defer> 
   </script>
-    <!-- <script src="js/rate.js"></script> -->
- 
+
+
+
+
 </html>
