@@ -110,3 +110,15 @@ carsBtn.addEventListener("click",()=>{ changeDisplay("cars-btn","cars-details") 
 // applicationBtn.addEventListener("click",()=>{ changeDisplay("applications-btn","applications-details") });
 // quesBtn.addEventListener("click",function(){changeDisplay("questions-btn","ques-details")});
 
+// printing functionality 
+let printBtns = document.querySelectorAll(".print-btn");
+
+printBtns.forEach((printBtn)=>{
+printBtn.addEventListener('click', (event) => {
+PrintPage()
+setTimeout(function(){ window.close() },750)
+});
+})
+function PrintPage() {
+  window.print();
+}

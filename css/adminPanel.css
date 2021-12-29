@@ -114,6 +114,7 @@ padding-bottom: 4px;
 display: flex;
 align-items: end;
 justify-content: flex-start;
+font-weight: 600;
 }
 .detail-cards-holder{
   margin: 0.5rem 0;
@@ -276,9 +277,11 @@ margin: 0 3px;
   margin-left: 4px;
 }
 .num-plate{
-  color: var(--orangeColor);
+  /* color: var(--orangeColor); */
+  color: #c94100;
   font-weight: 600;
   font-size: 16px;
+  text-transform: uppercase;
 }
 .around{
   justify-content: space-around;
@@ -410,6 +413,28 @@ border-radius: var(--bRadius);
 }
 
 }
+
+/* printing  */
+
+@media print{
+  .user-icon{
+    display: none;
+  }
+  .print-btn{
+    display:none;
+  }
+  nav{
+    display: none;
+  }
+  main{ min-height: unset; padding-top:10px;}
+  .menu-sect{
+    display: none;
+  }
+  .view-details{padding: 1rem;}
+}
+
+.dash-link{display:none;}
+
 
 /* classes for use in js  */
 .hide{

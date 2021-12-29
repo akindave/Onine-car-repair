@@ -86,7 +86,7 @@ checkNotification();
             <?php
                 if(isset($_SESSION['name']) && $_SESSION['name']=='admin'){
                     echo '
-                    <a href="adminDashboard.php">Dashboard</a>
+                    <a href="adminDashboard.php" class="dash-link">Dashboard</a>
                     ';
                 }
             ?>

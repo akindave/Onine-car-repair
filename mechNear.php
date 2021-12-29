@@ -453,7 +453,10 @@ sessionStorage.setItem('status','default')
             }
             else{
               console.log("not successful") 
-              initMap();
+              // initMap();
+              let myScript = document.createElement("script");
+              myScript.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnF2qmmYTCzGn72vSGQVJB1uCR2SHpKU&callback=initMap");
+              document.body.appendChild(myScript);
               
             }
           }

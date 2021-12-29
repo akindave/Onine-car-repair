@@ -215,7 +215,7 @@ if(isset($_SESSION['name'])){
         
 
       </div>
-      <button class="accept-btn">
+      <button class="accept-btn print-btn">
         <img src="icons/white-print.svg" alt="print" class="icon">
         Print report
       </button>
@@ -258,7 +258,7 @@ if(isset($_SESSION['name'])){
                     echo '
                     <div class="detail-card">
                         <div class="flex-wrap">
-                            <img src="icons/user-holder.svg" alt="user" class="user-icon">
+                            <img src="icons/mech-white.svg" alt="user" class="user-icon">
   
                         <article class="contact-dets">
                             <div class="username">
@@ -341,7 +341,7 @@ if(isset($_SESSION['name'])){
     
       </div> -->
 
-      <button class="accept-btn">
+      <button class="accept-btn print-btn">
         <img src="icons/white-print.svg" alt="print" class="icon">
         Print report
       </button>
@@ -399,7 +399,7 @@ if(isset($_SESSION['name'])){
         </div>
   
         </div>
-        <button class="accept-btn">
+        <button class="accept-btn print-btn">
         <img src="icons/white-print.svg" alt="print" class="icon">
         Print report
       </button>
@@ -407,7 +407,7 @@ if(isset($_SESSION['name'])){
 
        <!-- applications section -->
     
-       <section class="view-details applications-details">
+       <!-- <section class="view-details applications-details">
         <div class="detail-title">
           <img src="icons/application.svg" alt="user" class="icon">
           Applications
@@ -415,7 +415,7 @@ if(isset($_SESSION['name'])){
   
         <div class="detail-cards-holder flex-wrap">
   
-                  <!-- one qualification -->
+               
                   <div class="detail-card">
                     <div class="flex-wrap">
                         <img src="icons/user-holder.svg" alt="user" class="user-icon">
@@ -453,12 +453,12 @@ if(isset($_SESSION['name'])){
                     </div>
         </div>
   
-      </section>
+      </section> -->
 
 
 
 
-    <form action="" class="register-form">
+    <!-- <form action="" class="register-form">
         <div class="close-icon close-btn">
             X
         </div>
@@ -502,7 +502,7 @@ if(isset($_SESSION['name'])){
                 Cancel
             </div>
            </div>
-    </form>
+    </form> -->
 
       </section>
 
