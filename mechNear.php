@@ -102,7 +102,7 @@ function getAvgRating($mechId){
                   type: "poly",
                 };
                 
-                let contentEle = document.querySelector("#content");
+                // let contentEle = document.querySelector("#content");
                
                   // Create an info window to share between markers.
                 for (let i = 0; i < mechs.length; i++) {
@@ -241,6 +241,7 @@ function getAvgRating($mechId){
                 }
 
 }
+
 sessionStorage.setItem('status','default')
 
 
@@ -275,7 +276,7 @@ sessionStorage.setItem('status','default')
       </script>
 
       <?php
-      $getLocs = "SELECT * FROM map_details INNER JOIN users ON map_details.user_id = users.user_id";
+      $getLocs = "SELECT * FROM map_details INNER JOIN users ON map_details.user_id = users.user_id WHERE users.availability = 'YES'";
       $results = mysqli_query($connection,$getLocs);
       if(!$results){
         echo "msqli error" .mysqli_error($connection);
@@ -330,13 +331,11 @@ sessionStorage.setItem('status','default')
     <script defer>
   let dest = [{}];
 
-       function initMap() {
+  function initMap() {
+
 
         // getting name 
        geocoder = new google.maps.Geocoder();
-   
-
-
 
         // const bounds = new google.maps.LatLngBounds();
     directionsService = new google.maps.DirectionsService();
@@ -346,65 +345,63 @@ sessionStorage.setItem('status','default')
 
 
       const service = new google.maps.DistanceMatrixService();
-      
 
-
-  selfCoordsObj = {lat: -1.2841, lng: 36.8155}
-  mmu = {lat:-1.381831 , lng: 36.76847}
-  p = 0
-  for(p = 0; p<mechs.length;p++){
- 
-    dest[p] = {
-      lat: mechs[p][0],
-      lng: mechs[p][1]
-    }
-
-  }
-  // console.log(dest);
-  const request = {
-    origins: [selfCoordsObj],
-    destinations: dest,
-    travelMode: google.maps.TravelMode.DRIVING,
-    unitSystem: google.maps.UnitSystem.METRIC,
-    avoidHighways: false,
-    avoidTolls: false,
-  };
-
-
-  // get distance matrix response
-  service.getDistanceMatrix(request,callback);
-  shortestDistArray = [];
-  function callback(response, status) {
-  if (status == 'OK') {
-
-    //this means it has run successfully
-    sessionStorage.setItem('status','success')
-
-    var origins = response.originAddresses;
-    var destinations = response.destinationAddresses;
-
-    // console.log(destinations)
-    for (var i = 0; i < origins.length; i++) {
-      var results = response.rows[i].elements;
-      for (var j = 0; j < results.length; j++) {
-        var element = results[j];
-        var distance = element.distance.text;
-        var disVal = element.distance.value;
-        var duration = element.duration.text;
-        var from = origins[i];
-        var to = destinations[j];
-        shortestDistArray.push(disVal)
-        // console.log(distance, duration, from, to);
-        if(disVal < 400 ){
-          console.log("Shorter than 4km by " + disVal)
+      selfCoordsObj = {lat: -1.2841, lng: 36.8155}
+      mmu = {lat:-1.381831 , lng: 36.76847}
+      p = 0
+      for(p = 0; p<mechs.length;p++){
+    
+        dest[p] = {
+          lat: mechs[p][0],
+          lng: mechs[p][1]
         }
+
       }
+      // console.log(dest);
+      const request = {
+        origins: [selfCoordsObj],
+        destinations: dest,
+        travelMode: google.maps.TravelMode.DRIVING,
+        unitSystem: google.maps.UnitSystem.METRIC,
+        avoidHighways: false,
+        avoidTolls: false,
+      };
+
+
+      // get distance matrix response
+      service.getDistanceMatrix(request,callback);
+      shortestDistArray = [];
+      function callback(response, status) {
+      if (status == 'OK') {
+
+        //this means it has run successfully
+        sessionStorage.setItem('status','success')
+
+        var origins = response.originAddresses;
+        var destinations = response.destinationAddresses;
+
+        // console.log(destinations)
+        for (var i = 0; i < origins.length; i++) {
+          var results = response.rows[i].elements;
+          for (var j = 0; j < results.length; j++) {
+            var element = results[j];
+            var distance = element.distance.text;
+            var disVal = element.distance.value;
+            var duration = element.duration.text;
+            var from = origins[i];
+            var to = destinations[j];
+            shortestDistArray.push(disVal)
+            // console.log(distance, duration, from, to);
+            if(disVal < 400 ){
+              console.log("Shorter than 4km by " + disVal)
+            }
+          }
     }
 
     shortestDist = Math.min(...shortestDistArray)
     // console.log(shortestDist + " m")
-  }
-}
+      }
+    }
             // show on map
            
 
@@ -444,6 +441,9 @@ sessionStorage.setItem('status','default')
 
           }
 
+
+          // It has been successful 
+
           function checkMap(){
             status = sessionStorage.getItem('status')
             if(status == 'success'){
@@ -461,8 +461,6 @@ sessionStorage.setItem('status','default')
             }
           }
 
-      
-
           function calcRoute(service,display,dest){
             var request = {
               origin: selfCoords,
@@ -475,6 +473,7 @@ sessionStorage.setItem('status','default')
             })
             .catch((e) => window.alert("Directions request failed due to " + status + e));     
            }
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnF2qmmYTCzGn72vSGQVJB1uCR2SHpKU&callback=initMap"  async   defer> 
   </script>

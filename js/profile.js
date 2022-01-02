@@ -10,7 +10,13 @@ function closePop(targetClass){
     target.classList.remove("show-flex");
     let overlay = document.querySelector(".dark-overlay");
     overlay.classList.remove("show-flex");
-    window.location = 'http://localhost/mechLocator/motorist-Homepage.php';
+
+    if(window.location != 'http://localhost/mechLocator/userProfile.php'){
+        window.location = 'http://localhost/mechLocator/motorist-Homepage.php';
+    }
+    else{
+        window.location = 'http://localhost/mechLocator/userProfile.php';
+    }
 }
 
 function allowWrite(targetId){

@@ -68,11 +68,32 @@
                      continue;
                   }
                   else{ 
-                    
+
                     echo '
                     <div class="detail-card">
                         <div class="flex-wrap">
-                            <img src="icons/mech-white.svg" alt="user" class="user-icon">
+                    ';
+                    
+                    // checking availability 
+                    if($row['availability']=="YES"){
+                      echo '
+                      <div class="status-part">
+                        <span class="status-type">Online</span>
+                        <span class="status-dot"></span>
+                       </div>
+                      ';
+                    }
+                    else{ 
+                      echo '
+                      <div class="status-part">
+                        <span class="status-type">Offline</span>
+                        <span class="status-dot red-dot"></span>
+                       </div>
+                      ';
+                    }
+
+                   echo '
+                        <img src="icons/mech-white.svg" alt="user" class="user-icon">
   
                         <article class="contact-dets">
                             <div class="username">
@@ -111,9 +132,6 @@
   
                         </div>
                     </div>
-
-
-
                     ';
 
 

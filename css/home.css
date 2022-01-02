@@ -936,6 +936,7 @@ justify-items: start;
     border-radius:var(--bRadius);
     align-content: space-around;
     display:none;
+    width: max-content;
   }
   .success-svg{  
     width: 75px;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2021 at 11:14 AM
+-- Generation Time: Jan 02, 2022 at 05:20 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -75,7 +75,8 @@ INSERT INTO `map_details` (`user_id`, `long_cor`, `lat_cor`, `town`) VALUES
 (8, '-1.379863', '36.7', ' Olkeri'),
 (11, '-1.43', '37.2', 'Ngelani'),
 (12, '-1.13', '36.45', 'Ewaso Kendong'),
-(14, '-0.4371', '36.9580', 'Nyeri');
+(14, '-0.4371', '36.9580', 'Nyeri'),
+(15, '', '', 'Nyeri');
 
 -- --------------------------------------------------------
 
@@ -232,28 +233,30 @@ CREATE TABLE `users` (
   `phone` varchar(20) NOT NULL,
   `password` varchar(250) NOT NULL,
   `is_mech` varchar(10) NOT NULL DEFAULT 'NO',
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `availability` varchar(10) NOT NULL DEFAULT 'YES'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`name`, `email`, `phone`, `password`, `is_mech`, `user_id`) VALUES
-('Erick', 'erick@gmail.com', '0712345678', '$2y$10$Bes4LuFtJV3Ms6WwN7EigO/LTMXRVNryKlloRr4Jg76pTFgtykF5m', 'NO', 1),
-('admin', 'admin@gmail.com', '07231344543', '$2y$10$IRYqMlbN.lH98oby0yIoKuiFx60KTgKKUqVCUW1NduGNvS0TtC6xy', 'YES', 2),
-('John ', 'john@gmail.com', '0712345678', '$2y$10$pHte7vIve8a6pXHfX7G4B.tBs2F89EQCnnlag7A7iqRsdgtdhpWe.', 'NO', 3),
-('Jane', 'jane@gmail.com', '072341343', '$2y$10$nA9/JtHUQMCjN59sdQUq6OOMTKJMhGXbhQpK6cOYwPmtw1FNsaFNa', 'YES', 4),
-('Paminus King`ori', 'pkmurungi.pm@gmail.com', '0723805386', '$2y$10$P4pXIu.teAPE1MCOks/Wa.F2jxQJhw4ord2hW51E6xw3OUhJcHjSy', 'YES', 5),
-('Venna', 'venna@gmail.com', '092338289', '$2y$10$fvPMB8b577InDEp3b7bLu.4SwzXOvzL29hlEBiaB4EpDkO7dUzpZK', 'YES', 6),
-('Bruce', 'bruce@gmail.com', '0792743861', '$2y$10$pm5.kidvbp45RaTfnIZqhOTQpIecbPEogqiddR4wj3yOYIm3GhD7a', 'YES', 7),
-('mech John', 'mech@gmail.com', '0283298413', '$2y$10$Xe0HZXfuK4sPZlQ3Ly9BM.w1HrJN5T1PKhvNONeTaeIoGGPbL34AC', 'YES', 8),
-('George K', 'george@gmail.com', '098923489', '$2y$10$OHVyBzZ/x5M0ik3mwvURD.T6i1s6NCigqIrowKq1bQ5r9wtk10qz2', 'NO', 9),
-('Linah', 'linah@gmail.com', '082449494', '$2y$10$hqlsaGtvKjZROSYEn7c0au0UfXCchuLUBqaaNsL0a/EA553mHwNDq', 'NO', 10),
-('Jasmine', 'jas@gmail.com', '0712345678', '$2y$10$Sjrm6TgNngP.7vdjUGjZjuHXNExdCUIaXM1gwOdKuZOGvdPfL2oTi', 'YES', 11),
-('Kanyiri', 'kanyiri@gmail.com', '0732242234', '$2y$10$KvXgSOBbvdmdwiauHWsXWOIFvUIhfkEjrg43x3V0oagGtGi.RcELK', 'YES', 12),
-('Shiru', 'shii@gmail.com', '0711221334', '$2y$10$CtwnAPDbnTVKkRp3su9xvO.BqBW9OHr.zrgCVfbQabdlvdYHLfToW', 'YES', 13),
-('Moreen W', 'moreen@gmail.com', '073938923', '$2y$10$QrMWlqDuHvbBhUoh81Hnau/GZzJrceIRgHKPaQRx3/dpoDtQHxPwy', 'YES', 14);
+INSERT INTO `users` (`name`, `email`, `phone`, `password`, `is_mech`, `user_id`, `availability`) VALUES
+('Erick', 'erick@gmail.com', '0712345678', '$2y$10$Bes4LuFtJV3Ms6WwN7EigO/LTMXRVNryKlloRr4Jg76pTFgtykF5m', 'NO', 1, 'YES'),
+('admin', 'admin@gmail.com', '07231344543', '$2y$10$IRYqMlbN.lH98oby0yIoKuiFx60KTgKKUqVCUW1NduGNvS0TtC6xy', 'YES', 2, 'YES'),
+('John ', 'john@gmail.com', '0712345678', '$2y$10$pHte7vIve8a6pXHfX7G4B.tBs2F89EQCnnlag7A7iqRsdgtdhpWe.', 'NO', 3, 'YES'),
+('Jane', 'jane@gmail.com', '072341343', '$2y$10$nA9/JtHUQMCjN59sdQUq6OOMTKJMhGXbhQpK6cOYwPmtw1FNsaFNa', 'YES', 4, 'YES'),
+('Paminus King`ori', 'pkmurungi.pm@gmail.com', '0723805386', '$2y$10$P4pXIu.teAPE1MCOks/Wa.F2jxQJhw4ord2hW51E6xw3OUhJcHjSy', 'YES', 5, 'NO'),
+('Venna', 'venna@gmail.com', '092338289', '$2y$10$fvPMB8b577InDEp3b7bLu.4SwzXOvzL29hlEBiaB4EpDkO7dUzpZK', 'YES', 6, 'NO'),
+('Bruce', 'bruce@gmail.com', '0792743861', '$2y$10$pm5.kidvbp45RaTfnIZqhOTQpIecbPEogqiddR4wj3yOYIm3GhD7a', 'YES', 7, 'YES'),
+('mech John', 'mech@gmail.com', '0283298413', '$2y$10$Xe0HZXfuK4sPZlQ3Ly9BM.w1HrJN5T1PKhvNONeTaeIoGGPbL34AC', 'YES', 8, 'YES'),
+('George K', 'george@gmail.com', '098923489', '$2y$10$OHVyBzZ/x5M0ik3mwvURD.T6i1s6NCigqIrowKq1bQ5r9wtk10qz2', 'NO', 9, 'YES'),
+('Linah', 'linah@gmail.com', '082449494', '$2y$10$hqlsaGtvKjZROSYEn7c0au0UfXCchuLUBqaaNsL0a/EA553mHwNDq', 'NO', 10, 'YES'),
+('Jasmine', 'jas@gmail.com', '0712345678', '$2y$10$Sjrm6TgNngP.7vdjUGjZjuHXNExdCUIaXM1gwOdKuZOGvdPfL2oTi', 'YES', 11, 'YES'),
+('Kanyiri', 'kanyiri@gmail.com', '0732242234', '$2y$10$KvXgSOBbvdmdwiauHWsXWOIFvUIhfkEjrg43x3V0oagGtGi.RcELK', 'YES', 12, 'YES'),
+('Shiru', 'shii@gmail.com', '0711221334', '$2y$10$CtwnAPDbnTVKkRp3su9xvO.BqBW9OHr.zrgCVfbQabdlvdYHLfToW', 'YES', 13, 'YES'),
+('Moreen W', 'moreen@gmail.com', '073938923', '$2y$10$QrMWlqDuHvbBhUoh81Hnau/GZzJrceIRgHKPaQRx3/dpoDtQHxPwy', 'YES', 14, 'YES'),
+('Explorer', 'ex@gmail.com', '0712345678', '$2y$10$kaSYsqXJM6MVeh3LJzLR.efRYObBQkw09bsoDfcY56ZiJnde..PZC', 'YES', 15, 'YES');
 
 --
 -- Indexes for dumped tables
@@ -308,7 +311,7 @@ ALTER TABLE `repairs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

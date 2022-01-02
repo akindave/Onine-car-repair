@@ -186,6 +186,9 @@ checkNotification();
      if(isset($_SESSION['notification']) && $_SESSION['notification']==1){
         echo'
         <a href="notification.php">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://assets3.lottiefiles.com/temp/lf20_rjQmSC.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player>
+        
                 <p class="noti-pop">
                 <img src="icons/notification.svg" alt="notification" class="icon">  
                 New notification(s)

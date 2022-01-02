@@ -27,6 +27,34 @@
   </head>
   <body>
     <?php
+    function changeAvailability($status,$user_id) {
+      $connection = $GLOBALS['connection'];
+      $changeStatus = "UPDATE users SET availability = '$status' WHERE user_id = '$user_id'";
+      if(mysqli_query($connection,$changeStatus)){
+        echo '
+      
+          <aside class="op-pop">
+            <div class="close-icon" onclick="closePop(`op-pop`)">X</div>
+
+            <img src="icons/green-success.svg" alt="success" class="success-svg">
+            <p class="op-p green-p">
+              Operation was successful
+            </p>
+            <button class="okay" onclick="closePop(`op-pop`)">
+              Okay
+            </button>
+        </aside> 
+        <script type="text/javascript">
+          openPop(`op-pop`);
+        </script>
+      ';
+        }
+        else{ 
+          echo "error ".mysqli_error($connection);
+        }
+      
+    }
+
     //Fetching profile data
     if(isset($_SESSION['name'])){ 
 
@@ -52,6 +80,7 @@
               $email = $received['email'];
               $phone = $received['phone'];
               $oldPassword = $received['password'];
+              $avaiStatus = $received['availability'];
             }
           }
 
@@ -163,58 +192,16 @@
         }
     }
 
+    if(isset($_POST['avai-btn'])){
+      changeAvailability("NO",$user_id);
+    }
+    
+    if(isset($_POST['on-btn'])){
+      changeAvailability("YES",$user_id);
+    }
+
+
     ?>
-    <!-- <nav class="nav">
-        <img src="icons/car.svg" alt="logo" class="logo">
-        <button class="menu-btn">
-            <img src="icons/menu.svg" alt="menu" class="nav-icon">
-            Menu
-
-            
-        </button>
-        <div class="flex-wrap links">
-
-          <a href="#">Home</a>
-
-            <a class="has-drop" href="#">Mechanics</a>
-            <a>Contact us </a>
-
-            <div class="admin-holder user-holder">
-                <div class="has-drop">
-
-                  <img src="icons/user.svg" alt="user" class="icon"> 
-                  
-                  <?php echo $_SESSION['name']; ?>
-
-                  <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
-                </div>
-
-               
-                 <div class="admin-drop">
-
-                   <a href="#" class="noti-holder flex-wrap">
-                     <small class="noti-no">3</small>
-                     <img src="icons/notification-dark.svg" alt="notification" class="icon">
-                     Notifications
-                   </a>
-
-                   <a href="#" class="noti-holder flex-wrap">
-                       <img src="icons/plus.svg" alt="notification" class="icon">
-                       Add a car
-                     </a>
-
-                  <form action="php/destroySession.php" method="post">
-                    <input type="submit" value="Log out" class="log-out-btn">
-                </form>
-
-                 </div>
-             </div>
-
-
-
-
-        </div>
-    </nav> -->
 
     <main>
 <aside class="bgPattern">
@@ -233,11 +220,30 @@
   }
   ?>
   
-  <h3>Hello👋! 
+  <h3>Hello👋!   <?php echo $_SESSION['name']; ?>  </h3>
 
-  <?php echo $_SESSION['name']; ?>
+  <?php
+          if(isset($_SESSION['mechId'])){
+            echo '
+            <form method="post" action="" class="avai-form">
+            ';
+           if($avaiStatus =='YES'){
+            echo ' <button type="submit" class="add-btn" name="avai-btn">Go offline</button>
+            </form>
+            ';
+           }
+           else{
+            echo '
+            <button type="submit" class="add-btn" name="on-btn">Go Online</button>
+            </form>
 
-  </h3>
+            ';
+           }
+        
+           
+          }
+
+          ?>
 </aside>
     <section class="flex-wrap holder-sect">
       <section class="prof-sect">
@@ -299,34 +305,6 @@
             </div>
           </article>
 
-          <!-- <article class="detail">
-            <img src="icons/loc-dark.svg" alt="location" class="icon">
-            <div class="input-grp">
-              <label for="email">Location:</label>
-              <div class="flex-wrap">
-                <input type="text" name="email" required value="Rongai" class="input-elmt">
-                <button type="button" class="edit-btn flex-wrap">
-                  Edit
-                  <img src="icons/edit.svg" alt="edit" class="icon">
-                </button>
-              </div>
-            </div>
-          </article> -->
-
-          <!-- <article class="detail">
-            <img src="icons/picture.svg" alt="picture" class="icon">
-            <div class="input-grp">
-              <label for="email">Profile image:</label>
-              <div class="flex-wrap">
-                <input type="file" name="email" required value="file name" class="input-elmt">
-                <button type="button" class="edit-btn flex-wrap">
-                  Edit
-                  <img src="icons/edit.svg" alt="edit" class="icon">
-                </button>
-              </div>
-            </div>
-          </article> -->
-
            <!-- updating location for a mechanic  -->
            <?php
           if(isset($_SESSION['mechId'])){
@@ -341,6 +319,7 @@
                   </button>
               </form>
           </article>';
+
           }
 
           ?>
