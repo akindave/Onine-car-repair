@@ -36,6 +36,8 @@ function getAvgRating($mechId){
     <!-- <script src="js/near.js"></script> -->
 
     <script>
+    sessionStorage.setItem('status','default')
+
     getCurrentLocation();
     var map;
     let mechs = [];
@@ -102,6 +104,7 @@ function getAvgRating($mechId){
                   type: "poly",
                 };
                 
+
                 // let contentEle = document.querySelector("#content");
                
                   // Create an info window to share between markers.
@@ -123,7 +126,7 @@ function getAvgRating($mechId){
                     icon: markerIcon,
                     shape: shape,
                     title: mechs[i][2],
-                    zIndex: 5,
+                    zIndex: 15,
                     optimized: false,
                   });
 
@@ -240,14 +243,15 @@ function getAvgRating($mechId){
 
                 }
 
+                // sessionStorage.setItem('status','success')
+
 }
 
-sessionStorage.setItem('status','default')
 
 
     </script>
   </head>
-  <body onload="interval = setInterval(checkMap,10000)">
+  <body onload="setTimeout(checkMap,4000)">
 
     <main>
 
@@ -416,6 +420,7 @@ sessionStorage.setItem('status','default')
             directionsDisplay.setMap(map);
 
            myLoc = new google.maps.Marker({
+             
               // animation: google.maps.Animation.DROP,
               position: selfCoords, 
               map,
@@ -448,8 +453,8 @@ sessionStorage.setItem('status','default')
             status = sessionStorage.getItem('status')
             if(status == 'success'){
               // setTimeout(initMap,3000);
-              // console.log("successful")
-              clearInterval(interval);
+              console.log("successful")
+              // clearInterval(interval);
             }
             else{
               console.log("not successful") 
