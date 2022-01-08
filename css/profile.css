@@ -1,4 +1,4 @@
-nav, .admin-drop{
+nav{
   background: unset;
 }
 button{
@@ -18,10 +18,57 @@ button{
 }
 
 
+/* mode  */
+.toggle-btn{
+  width: 36px;
+    height: 20px;
+    background: #333333;
+  border-radius: 30px;
+  padding: 1px;
+  position: relative;
+  margin-right: 4px;
+      cursor: pointer;
+}
+
+
+.white-circle{
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 18px;
+  height: 83%;
+  border-radius: 50%;
+  background: #F2F2F2;
+  transform: translateY(-50%);
+}
+.greenBorder{
+  border-color: var(--green);
+}
+.online-toggle{
+  background: var(--green);
+}
+.online-circle{
+  left: unset;
+  right:2px;
+}
+
+/* dark mode class features */
+.green{
+  background: linear-gradient(90deg,hsl(210, 78%, 56%),hsl(146, 68%, 55%));
+}
+.dark{
+  background: var(--topBg);
+}
+.move{
+  right: unset;
+  left: 2px;
+  /* transition: .4s all; */
+  /* background: var(--nightBtn); */
+}
 
 main{
   display: block;
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem; */
 }
 .prof-sect{
   display: grid;
@@ -40,7 +87,8 @@ flex-grow: 0.3;
 }
 .holder-sect{
   align-items: flex-start;
-  padding: 2rem 1rem;
+  padding: 1rem;
+  padding-bottom: 0;
 }
 .detail{
   display: flex;
@@ -108,22 +156,24 @@ height: 15px;
 }
 .bgPattern {
     width: 100%;
-    height: 250px;
+    height: 220px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: var(--orangeLinear);
     padding: 1rem;
     position: relative;
+    overflow-x: hidden;
     /* margin-top: 3rem; */
 }
+.circleBg::before{content: ""; position: absolute; top: 0; left: 50%; width:120%; border-radius: 0 0 50% 50%; height:100%; z-index: -1; background: var(--orangeLinear); transform: translateX(-50%);}
 .user-img{
-background: #d7d5d5;
-width: 150px;
-height: 150px;
+/* background: #d7d5d5; */
+margin-bottom: 8px;
+width: 130px;
+height: 130px;
 border-radius: 50%;
 align-self: flex-end;
-box-shadow: 2px 3px 8px 0px #00000047;
+/* box-shadow: 2px 3px 8px 0px #00000047;/ */
 }
 .bgPattern h3{
   color: white;
@@ -204,14 +254,21 @@ justify-items: center;
   background: #dd4113;
 }
 .mech-img{ 
-  background: white;
+  /* background: white; */
 }
 .avai-form{
   position: absolute;
-    bottom: 4px;
-    right: 4px;
+  bottom: 41px;
+  right: 30px;
 }
 
+@media screen and (min-width:850px){
+  .bgPattern{height:300px;}
+  .user-img{height:200px; width:200px;}
+  .avai-form {
+    bottom: 58px;
+}
+}
 
 
 @media screen and (max-width:320px){

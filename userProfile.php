@@ -101,7 +101,8 @@
         }
 
             //changing the password
-    if(isset($_POST['pass'])){
+    
+            if(isset($_POST['pass'])){
 
       $newPass = mysqli_escape_string($connection,password_hash($_POST['newPass'], PASSWORD_BCRYPT));
 
@@ -204,17 +205,18 @@
     ?>
 
     <main>
-<aside class="bgPattern">
+<aside class="bgPattern circleBg">
   <?php
   if(isset($_SESSION['mechId'])){
     echo '
-  <img src="icons/mech-white.svg" class="user-img mech-img" alt="image">
+    <img src="icons/mech-notebook.svg" class="user-img mech-img" alt="image">
     
     ';
   }
   else{
     echo'
-  <img src="icons/prof-pic.svg" class="user-img" alt="image">
+    <img src="icons/user.svg" class="user-img" alt="image">
+
     
     ';
   }
@@ -227,19 +229,26 @@
             echo '
             <form method="post" action="" class="avai-form">
             ';
-           if($avaiStatus =='YES'){
-            echo ' <button type="submit" class="add-btn" name="avai-btn">Go offline</button>
-            </form>
-            ';
+            if($avaiStatus =='YES'){
+              echo ' <button type="submit" class="go-btn flex-wrap" name="avai-btn">
+              <aside class="toggle-btn">
+                  <aside class="white-circle" id="circle"></aside>
+              </aside>
+                Go offline</button>
+                </form>
+                ';
            }
            else{
-            echo '
-            <button type="submit" class="add-btn" name="on-btn">Go Online</button>
-            </form>
+              echo '
+              <button type="submit" class="go-btn flex-wrap greenBorder" name="on-btn">
+              <aside class="toggle-btn online-toggle">
+                <aside class="white-circle online-circle" id="circle"></aside>
+                </aside>
+                Go Online</button>
+                </form>
 
-            ';
-           }
-        
+                ';
+           }      
            
           }
 

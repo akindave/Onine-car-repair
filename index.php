@@ -9,7 +9,10 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="description" content="mechLocator | online mechanic locator">
    <meta name="author" content="paminus">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/new-logo.svg">
+
     <title>mechLocator | Homepage</title>
+
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/nav.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -23,7 +26,7 @@
                     What is mechLocator?
                 </h2>
                 <p class="white-text">
-                    MechLocator is a website that connects car owners with competent mechanics.
+                    MechLocator is a website that connects <span>car owners</span> with <span>competent mechanics</span>.
                    It also helps keep track of your car's repair history.
                 </p>
                 <div class="landing-btns">
@@ -33,8 +36,8 @@
             </div>
             </article>
             <picture class="img-holder light-bg flex-wrap">
-<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_gaqtay3b.json"  background="transparent"  speed="1" loop autoplay></lottie-player>
-                <!-- <img src="Images/growth-edited.svg" alt="grow with us" class="landing-img"> -->
+<!-- <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_gaqtay3b.json"  background="transparent"  speed="1" loop autoplay></lottie-player> -->
+                <img src="Images/brown-mech.svg" alt="grow with us" class="landing-img">
             </picture>
 
             <div class="scroll">
@@ -49,9 +52,11 @@
 
     <section class="mech-locate flex-wrap">
         <aside class="svg_holder">
-                    <img src="Images/seo-edited.svg" alt="search for a mech" class="svg_illustration">
+                    <!-- <img src="Images/seo-edited.svg" alt="search for a mech" class="svg_illustration"> -->
                     <!-- <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_iyskibdv.json"  background="transparent"  speed="1"  style="width: ; height: ;"  loop  autoplay></lottie-player> -->
+                    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_9ee7bmlt.json"  background="transparent"  speed="1" loop  autoplay></lottie-player>
         </aside>
+
 
         <article class="resources_text">
                     <h3 class="article-text">
@@ -88,7 +93,8 @@
 
     <section class="mech-locate flex-wrap">
         <aside class="svg_holder">
-                    <img src="Images/agree.svg" alt="search for a mech" class="svg_illustration">
+                    <!-- <img src="Images/agree.svg" alt="search for a mech" class="svg_illustration"> -->
+                    <img src="Images/mech1.jpg" alt="search for a mech" class="svg_illustration">
         </aside>
 
         <article class="resources_text">

@@ -8,20 +8,138 @@
    <meta name="author" content="">
     <meta charset="utf-8">
     <title>MechLocator</title>
+
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/nav.css">  
+    <link rel="stylesheet" href="css/profile.css">
     <!-- <script src="https://kit.fontawesome.com/e5226850c4.js" crossorigin="anonymous"></script> -->
 
   </head>
   <body>
     
-<?php include 'php/header.php';?>
+<?php include 'php/header.php';
+function changeAvailability($status,$user_id) {
+  $connection = $GLOBALS['connection'];
+  $changeStatus = "UPDATE users SET availability = '$status' WHERE user_id = '$user_id'";
+  if(mysqli_query($connection,$changeStatus)){
+    echo '
+  
+      <aside class="op-pop">
+        <div class="close-icon" onclick="closePop(`op-pop`)">X</div>
+
+        <img src="icons/green-success.svg" alt="success" class="success-svg">
+        <p class="op-p green-p">
+          Operation was successful
+        </p>
+        <button class="okay" onclick="closePop(`op-pop`)">
+          Okay
+        </button>
+    </aside> 
+    <script type="text/javascript">
+      openPop(`op-pop`);
+    </script>
+  ';
+    }
+    else{ 
+      echo "error ".mysqli_error($connection);
+    }
+  
+}
+
+if(!isset($_SESSION['name'])){
+  header("Location:index.php");
+}
+
+else{
+    //getting user profile details from the db
+    $user_id = $_SESSION['user_id'];
+    $selectUser = "SELECT * FROM users  WHERE user_id='$user_id' ";
+
+    //  $selectCar = "SELECT * FROM cars WHERE user_id='$user_id'";
+    //  $receivedCar = mysqli_query($connection,$selectCar);
+
+    $received = mysqli_query($connection,$selectUser);
+
+      //getting person details from the db
+        if(!$received){
+          echo "msqli error" .mysqli_error($connection);
+        }
+        else{ 
+          $row =mysqli_num_rows($received);
+          $received = mysqli_fetch_assoc($received);
+          if($row>0)
+          {
+            $name = $received['name'];
+            $email = $received['email'];
+            $avaiStatus = $received['availability'];
+          }
+          //  else{ echo "no row";}
+        }
+}
+
+if(isset($_POST['avai-btn'])){
+  changeAvailability("NO",$user_id);
+}
+
+if(isset($_POST['on-btn'])){
+  changeAvailability("YES",$user_id);
+}
+?>
 
 
     <main>
 
 
        <section class="landing">
+      <aside class="bgPattern circleBg">
+        <?php
+        if(isset($_SESSION['mechId'])){
+          echo '
+        <img src="icons/mech-notebook.svg" class="user-img mech-img" alt="image">
+          
+          ';
+        }
+        else{
+          echo'
+        <img src="icons/user.svg" class="user-img" alt="image">
+          
+          ';
+        }
+        ?>
+        
+        <h3>Hello👋!   <?php echo $name; ?>  </h3>
+
+        <?php
+          // if(isset($_SESSION['mechId'])){
+          //   echo '
+          //   <form method="post" action="" class="avai-form">
+          //   ';
+          //  if($avaiStatus =='YES'){
+          //     echo ' <button type="submit" class="go-btn flex-wrap" name="avai-btn">
+          //     <aside class="toggle-btn">
+          //         <aside class="white-circle" id="circle"></aside>
+          //     </aside>
+          //       Go offline</button>
+          //       </form>
+          //       ';
+          //  }
+          //  else{
+          //     echo '
+          //     <button type="submit" class="go-btn flex-wrap greenBorder" name="on-btn">
+          //     <aside class="toggle-btn online-toggle">
+          //       <aside class="white-circle online-circle" id="circle"></aside>
+          //       </aside>
+          //       Go Online</button>
+          //       </form>
+
+          //       ';
+          //  }
+        
+           
+          // }
+
+        ?>
+      </aside>
            <!-- <article class="mid-landing">
               <article class="search-holder">
                   <input type="text" name="search" id="" placeholder="Search mechanic by location.." class="searchType">
@@ -123,5 +241,13 @@
   prevEl: '.swiper-button-prev-img',
  },
 });
+
+// toggleBtn = document.querySelector(".toggle-btn");
+// circle = document.querySelector(".white-circle");
+// toggleBtn.addEventListener('click',()=>{
+//     toggleBtn.classList.toggle("green");
+//     circle.classList.toggle("move");
+//     circle.classList.toggle("dark");
+// })
   </script>
 </html>

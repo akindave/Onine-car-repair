@@ -37,7 +37,7 @@
                     <div class="icon"><img src="icons/call-grey.svg" class="filter-icon" alt="phone icon" width="20px" height="20px"></div>
                     <div class="text">
                         <h3>Phone</h3>
-                        <p>+254701234567</p>
+                        <p>+254 723 805 386</p>
                     </div>
                 </div>
                 <div class="box">

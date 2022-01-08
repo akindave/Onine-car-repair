@@ -1,3 +1,5 @@
+<!-- <link rel="icon" type="image/png" sizes="32x32" href="icons/new-logo.svg"> -->
+
 <?php
 //create db connection
 session_start();
@@ -69,9 +71,10 @@ checkNotification();
 // $_SESSION['notification'] = "0";
 
 ?>
+
         <nav class="nav">
         <a href="index.php" class="flex-wrap">
-        <img src="icons/car.svg" alt="logo" class="logo">
+        <img src="icons/new-logo.svg" alt="logo" class="logo">
         <strong class="logo-text">mechLocator</strong>
 </a>
         <button class="menu-btn">
@@ -96,6 +99,7 @@ checkNotification();
             <a href="allMechanics.php">
             <!-- <img src="icons/repair.svg" class="icon white-icon" alt="mechanics">     -->
             Our Mechanics</a>
+            <a href="repairHistory.php">My Repair History </a>
             <a href="contact.php">
             <!-- <img src="icons/call.svg" class="icon white-icon"alt="call">     -->
             Contact us </a>
@@ -104,7 +108,7 @@ checkNotification();
             if(isset($_SESSION['name'])){
 
                 echo '
-                <a href="repairHistory.php">My Repair History </a>
+               
                 <div class="admin-holder user-holder">
                 <div class="has-drop">';
 
@@ -185,12 +189,11 @@ checkNotification();
     <?php 
      if(isset($_SESSION['notification']) && $_SESSION['notification']==1){
         echo'
-        <a href="notification.php">
+        <a href="notification.php" class="flex-wrap">
+        <p class="noti-pop">
+
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        <lottie-player src="https://assets3.lottiefiles.com/temp/lf20_rjQmSC.json"  background="transparent"  speed="1"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player>
-        
-                <p class="noti-pop">
-                <img src="icons/notification.svg" alt="notification" class="icon">  
+        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_imvcfu5s.json"  background="transparent"  speed="1"  style="width: 60px; height: 60px;"  loop  autoplay></lottie-player>
                 New notification(s)
                 </p>
         </a>

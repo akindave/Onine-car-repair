@@ -1,6 +1,6 @@
 nav{
     position: fixed;
-    /* background: #0000006b; */
+
     background: var(--orangeLinear);
     top: 0;
     width: 100%;
