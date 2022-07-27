@@ -460,7 +460,7 @@ function getAvgRating($mechId){
               console.log("not successful") 
               // initMap();
               let myScript = document.createElement("script");
-              myScript.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnF2qmmYTCzGn72vSGQVJB1uCR2SHpKU&callback=initMap");
+              myScript.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=[ENTER YOUR PRIVATE KEY]&callback=initMap");
               document.body.appendChild(myScript);
               
             }
@@ -480,7 +480,7 @@ function getAvgRating($mechId){
            }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnF2qmmYTCzGn72vSGQVJB1uCR2SHpKU&callback=initMap"  async   defer> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=[ENTER YOUR PRIVATE KEY]&callback=initMap"  async   defer> 
   </script>
 
 
