@@ -14,16 +14,18 @@ function checkNotification(){
         // $selectRecord = "SELECT * FROM repairs WHERE mech_user_id = '$user_id'";
         // $selectCar = "SELECT * FROM cars WHERE user_id='$user_id'";
 
-        $join = "SELECT * FROM repairs INNER JOIN cars ON cars.num_plate = repairs.num_plate  WHERE repairs.seen ='NO' AND mech_user_id>0 AND NOT mech_user_id='$user_id'";
+
+        $join = "SELECT * FROM repairs INNER JOIN cars ON repairs.num_plate = cars.num_plate  WHERE repairs.seen ='NO' AND mech_user_id>0 AND NOT mech_user_id = {$user_id}";
+       return;
         $joinResult = mysqli_query($connection,$join);
         if(!$joinResult){
             echo "msqli error" .mysqli_error($connection);
         }
-        else{ 
+        else{
 
             $row = mysqli_num_rows($joinResult);
                 if($row > 0){
-                    
+
                     while($row = mysqli_fetch_array($joinResult)){
                         if($row['user_id'] == $user_id){
                             //running
@@ -38,7 +40,7 @@ function checkNotification(){
                     $_SESSION['notification'] = 0;
                 }
         }
-        
+
 
         // $received = mysqli_query($connection,$selectRecord);
         // if(!$received){
@@ -54,7 +56,7 @@ function checkNotification(){
         //     else{
         //         $_SESSION['notification'] = 0;
         //     }
-    
+
         // }
     }
 
@@ -75,7 +77,7 @@ checkNotification();
         <nav class="nav">
         <a href="index.php" class="flex-wrap">
         <img src="icons/new-logo.svg" alt="logo" class="logo">
-        <strong class="logo-text">mechLocator</strong>
+        <strong class="logo-text">ERMS</strong>
 </a>
         <button class="menu-btn">
             <img src="icons/menu.svg" alt="menu" class="nav-icon">
@@ -108,7 +110,7 @@ checkNotification();
             if(isset($_SESSION['name'])){
 
                 echo '
-               
+
                 <div class="admin-holder user-holder">
                 <div class="has-drop">';
 
@@ -120,7 +122,7 @@ checkNotification();
                     </div>';
                 }
                 else{
-                    
+
                     echo '
                     <img src="icons/prof-pic.svg" alt="user" class="icon">'.$_SESSION['name']. '
                     <img src="icons/arrow-white.svg" alt="d" class="down-arrow">
@@ -153,7 +155,7 @@ checkNotification();
                         ';
                  }
                  echo '
-                <a href="addRepair.php"> 
+                <a href="addRepair.php">
                 <img src="icons/repair-white.svg" alt="repair" class="icon">
                 Add Repair</a>
 
@@ -162,7 +164,7 @@ checkNotification();
                     Add a car
                 </a>
 
-                
+
                 <form action="php/destroySession.php" method="post">
                     <input type="submit" value="Log out" class="log-out-btn">
                 </form>
@@ -175,18 +177,18 @@ checkNotification();
             <a href="login.php">Log in</a>
             <a href="signup.php">Sign up</a>
 
-                
+
                 ';
             }
             ?>
-            
+
 
         </div>
         </nav>
 
 
     <!-- notification pop up   -->
-    <?php 
+    <?php
      if(isset($_SESSION['notification']) && $_SESSION['notification']==1){
         echo'
         <a href="notification.php" class="flex-wrap">
@@ -200,7 +202,7 @@ checkNotification();
         ';
      }
     ?>
-       
+
 
 <?php include 'php/addCar.php'; ?>
 

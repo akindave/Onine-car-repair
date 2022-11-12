@@ -4,11 +4,11 @@ function getAvgRating($mechId){
   $avgRating = mysqli_query($GLOBALS['connection'],$select);
   if($avgRating){
     while($row = mysqli_fetch_assoc($avgRating)){
-    
+
     return round($row['avg']);
 
     }
-    
+
   }
   else{
     echo "No rating".mysqli_error($GLOBALS['connection']);
@@ -61,14 +61,14 @@ function getAvgRating($mechId){
 
         }
       }
-     
+
       function showPosition(position) {
           longi = position.coords.longitude
           lati = position.coords.latitude
           var accuracy = position.coords.accuracy;
           selfCoords = {lat: lati, lng: longi }
           longi = Math.round(longi * 100) / 100
-          lati = Math.round(lati * 100) / 100                         
+          lati = Math.round(lati * 100) / 100
      }
 
       function showError(error) {
@@ -94,19 +94,19 @@ function getAvgRating($mechId){
       let markerIcon = "icons/mech-marker.svg";
 
       let name = 'John';
-      
-      let markerId;
-      
 
-          function setMarkers(map) {              
+      let markerId;
+
+
+          function setMarkers(map) {
                 const shape = {
                   coords: [1, 1, 1, 20, 18, 20, 18, 1],
                   type: "poly",
                 };
-                
+
 
                 // let contentEle = document.querySelector("#content");
-               
+
                   // Create an info window to share between markers.
                 for (let i = 0; i < mechs.length; i++) {
                   let mech = mechs[i];
@@ -143,20 +143,20 @@ function getAvgRating($mechId){
                   }
                   else{ ratingText = ratValue + " / 5"}
 
-                  
+
 
                   contentString =    `<div class="detail-card" id="content">
                         <div class="flex-wrap">
                             <img src="icons/mech-white.svg" alt="user" class="user-icon">
-  
+
                         <article class="contact-dets">
                             <div class="username"> <strong> ${name}</strong></div>
-                            
-                            <p class="rates"> 
+
+                            <p class="rates">
                             Rating: <strong> ${ratingText} </strong>
                             </p>
 
-                            <p class="rates"> 
+                            <p class="rates">
                             Location: <strong class="town-jina"> ${townName}  </strong>
                             </p>
 
@@ -180,15 +180,15 @@ function getAvgRating($mechId){
                              </span>
 
                         </article>
-  
+
                         </div>
                   </div>`;
 
-                  
 
-                  
-                  
-                  
+
+
+
+
 
                   // Add a click listener for each marker, and set up the info window.
                   marker.addListener("click", () => {
@@ -197,9 +197,9 @@ function getAvgRating($mechId){
                     longCoord = dest[marker.markerId]['lng']
                     destCoords = {lat: latCoord, lng: longCoord};
 
-                    
+
                     geocoder.geocode(
-                        {'latLng': destCoords}, 
+                        {'latLng': destCoords},
                         function(results, status) {
                             if (status == google.maps.GeocoderStatus.OK) {
                                 if (results[0]) {
@@ -223,10 +223,10 @@ function getAvgRating($mechId){
                             }
                         }
                   )
-                    
+
                   let infoWindow = new google.maps.InfoWindow({
                     content: contentString,
-                    
+
                   })
 
                   infoWindow.close();
@@ -237,9 +237,9 @@ function getAvgRating($mechId){
                       map,
                       shouldFocus: true,
                     });
-                    
+
                   });
-                  
+
 
                 }
 
@@ -262,7 +262,7 @@ function getAvgRating($mechId){
      <img src="images/seo-edited.svg" alt="searching for mech" class="search-img">
      <h4 class="flex-wrap search-title">Searching for mechanics <span><img src="icons/dots-loading.svg" alt="loading" class="icon rotate-icon"></span> </h4>
             <article>
-              Please allow mechLocator to access your location. 
+              Please allow mechLocator to access your location.
               We need it to find mechanics near you.
             </article>
 
@@ -272,11 +272,11 @@ function getAvgRating($mechId){
       <div id="response"></div>
 
       <section class="flex-wrap">
-           
-        
+
+
       </section>
       <script>
-       
+
       </script>
 
       <?php
@@ -300,12 +300,12 @@ function getAvgRating($mechId){
         $count = 0;
         $k = 0;
          while($row = mysqli_fetch_assoc($results)){
-          
+
         $ratValue = getAvgRating($row['user_id']);
-          
+
           echo '
-           <script> 
-           
+           <script>
+
             mechDetails[0] = '.$row['long_cor'].'
             mechDetails[1] = '.$row['lat_cor'].'
             mechDetails[2] = "'.$row['name'].'"
@@ -325,7 +325,7 @@ function getAvgRating($mechId){
       ?>
 
     </main>
-  
+
 
 
   </body>
@@ -338,7 +338,7 @@ function getAvgRating($mechId){
   function initMap() {
 
 
-        // getting name 
+        // getting name
        geocoder = new google.maps.Geocoder();
 
         // const bounds = new google.maps.LatLngBounds();
@@ -354,7 +354,7 @@ function getAvgRating($mechId){
       mmu = {lat:-1.381831 , lng: 36.76847}
       p = 0
       for(p = 0; p<mechs.length;p++){
-    
+
         dest[p] = {
           lat: mechs[p][0],
           lng: mechs[p][1]
@@ -407,7 +407,7 @@ function getAvgRating($mechId){
       }
     }
             // show on map
-           
+
 
             // let coords = {lat: lati, lng: longi}
             map = new google.maps.Map(document.getElementById('map'), {
@@ -420,16 +420,16 @@ function getAvgRating($mechId){
             directionsDisplay.setMap(map);
 
            myLoc = new google.maps.Marker({
-             
+
               // animation: google.maps.Animation.DROP,
-              position: selfCoords, 
+              position: selfCoords,
               map,
               animation: google.maps.Animation.DROP,
-              title: "My location", 
+              title: "My location",
               zIndex:1,
               // shadow: shadow,
             })
-          
+
             // myLoc.setAnimation(google.maps.Animation.BOUNCE);
 
             const cityCircle = new google.maps.Circle({
@@ -447,7 +447,7 @@ function getAvgRating($mechId){
           }
 
 
-          // It has been successful 
+          // It has been successful
 
           function checkMap(){
             status = sessionStorage.getItem('status')
@@ -457,12 +457,12 @@ function getAvgRating($mechId){
               // clearInterval(interval);
             }
             else{
-              console.log("not successful") 
+              console.log("not successful")
               // initMap();
               let myScript = document.createElement("script");
-              myScript.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=[ENTER YOUR PRIVATE KEY]&callback=initMap");
+              myScript.setAttribute("src", "https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap");
               document.body.appendChild(myScript);
-              
+
             }
           }
 
@@ -476,11 +476,11 @@ function getAvgRating($mechId){
             .then((response) => {
               display.setDirections(response);
             })
-            .catch((e) => window.alert("Directions request failed due to " + status + e));     
+            .catch((e) => window.alert("Directions request failed due to " + status + e));
            }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=[ENTER YOUR PRIVATE KEY]&callback=initMap"  async   defer> 
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap"  async   defer>
   </script>
 
 

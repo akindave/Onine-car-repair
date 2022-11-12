@@ -11,7 +11,7 @@
    <meta name="author" content="paminus">
   <link rel="icon" type="image/png" sizes="32x32" href="icons/new-logo.svg">
 
-    <title>mechLocator | Homepage</title>
+    <title>Electronic Automobile repair system | Homepage</title>
 
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -23,10 +23,10 @@
         <section class="landing-sect flex-wrap">
             <article class="sect-text">
                 <h2 class="sect-title white-text">
-                    What is mechLocator?
+                    What is ERMS?
                 </h2>
                 <p class="white-text">
-                    MechLocator is a website that connects <span>car owners</span> with <span>competent mechanics</span>.
+                    ERMS is an electronic repair management system is a website that connects <span>car owners</span> with <span>competent mechanics</span>.
                    It also helps keep track of your car's repair history.
                 </p>
                 <div class="landing-btns">
@@ -63,7 +63,7 @@
                         Find a mechanic near you
                     </h3>
                     <p class="margin20">
-                    No need to worry about finding professional mechanics. 
+                    No need to worry about finding professional mechanics.
                     Check out mechanics who have being <span>rated</span> by other users.
                     </p>
                     <a href="mechNear.php" class="card">
@@ -78,14 +78,14 @@
                         Keep track of your car repairs
                     </h3>
                     <p class="margin20">
-                       Track the repair history of your car and the expenses incurred. A mechanic can enter the repair activities done for your car on his/her device and you will 
+                       Track the repair history of your car and the expenses incurred. A mechanic can enter the repair activities done for your car on his/her device and you will
                        receive a notification.
                     </p>
                     <a href="repairHistory.php" class="card">
                         View records
                     </a>
                 </article>
-    
+
         <aside class="svg_holder">
                     <img src="Images/notes.svg" alt="take note" class="svg_illustration">
         </aside>
@@ -102,7 +102,7 @@
                         Apply to join us as a mechanic
                     </h3>
                     <p class="margin20">
-                      Boost your customer reach by using our platform and increase your revenue. 
+                      Boost your customer reach by using our platform and increase your revenue.
                       Application is <span>easy</span> and <span>free</span>.
                     </p>
                     <a href="mech-signup.php" class="card">
@@ -138,7 +138,7 @@
                        </aside>
                        <p class="cust-name">
                            ~ John Simons
-                           
+
                        </p>
                    </div>
                </div>
@@ -202,7 +202,7 @@
 
     <footer class="flex-wrap">
         <div class="bg-footer"></div>
-    
+
     <aside class="quick-links">
         <h4>Quick Links</h4>
         <ul>
@@ -224,7 +224,7 @@
             Connecting car owners to professional mechanics.
         </article>
     </aside>
-    
+
     <aside class="media-handles">
       <h4>Connect with us on our social media accounts</h4>
       <aside class="socio-links">
@@ -233,7 +233,7 @@
          <a href="" class="flex-wrap"><img src="icons/IG.svg" alt="instagram" class="icon"> Instagram</a>
       </aside>
 
-    
+
     </aside>
 
 </footer>
